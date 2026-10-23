@@ -1,0 +1,304 @@
+== Changelog ==
+
+The full history of Vireo Analytics. The plugin's readme lists the most recent versions.
+
+= 0.10.3 =
+* Fixed: notices from Vireo Analytics Pro were hidden on Vireo's own screens along with other plugins' notices, so Pro's Freemius revenue set-up card never appeared on the Settings page.
+* Changed: the cache that remembers which country an address belongs to, and the fallback used to tell visitors apart, now key on a hash that cannot be reproduced without the site's own secret, instead of a plain MD5 of the address. The old cache rows are cleared on update and rebuild as visits arrive.
+
+= 0.10.2 =
+* Fixed: add-ons that wait for new data, such as the Pro spike alert, are now told when Vireo finishes writing it. They never were, so spike alerts never ran.
+
+= 0.10.1 =
+* Fixed: on sites using WP Rocket's JavaScript minification, the tracker could stay on an old copy after updates, so WP RSS Aggregator and Spotlight clicks were never counted.
+* Fixed: clicks on the padding of Spotlight's "View on Instagram" button weren't counted.
+
+= 0.10.0 =
+* Added: connected sites. Count visits to the other sites you run from this dashboard, whether or not they use WordPress: a static site, a docs site, a landing page. Each one keeps its own numbers, and a site selector on the Overview switches between them. Add a site under Settings, Tracking and paste its tag; visits are accepted only from that site's address. Free includes one connected site. Pages on a connected site are listed by address, and per-post reports, Search Console, the weekly email, the REST API and imports stay with this WordPress site.
+
+= 0.9.1 =
+* Added: headless WordPress. Enter the address of the Astro, Next.js or other front end that shows your posts under Settings, Tracking, and its pages send pageviews here and are matched to the posts they show. The front end adds one script tag, which also counts Astro view transitions and other client-side page changes. Pageviews sent from any other site are refused.
+* Added: a Popular posts block, shortcode and classic widget that list your most viewed posts over the last 7, 30 or 90 days or all time, with optional featured images and view counts. Counts are Vireo's own bot-filtered numbers, and private, draft and password-protected posts are never listed.
+* Added: a Post views block and [vireo_views] shortcode that show how many times a post has been viewed.
+* Added: comment counts next to views in the posts list, Top pages and each post's stats, with comments per 1,000 views once a page has enough traffic.
+* Added: Year in review. A screen for any calendar year with data: pageviews and visitors, the change on last year when there's a full record to compare, busiest month and day, pageviews by month, top pages, posts published that year, how people arrived, top countries, Google searches and AI crawlers. Months brought in from another tool are marked as imported and credited to it. Copy a plain-text summary or print it.
+* Added: weekly highlights. The Overview and the weekly email list up to three things worth knowing about the last seven days, such as your best week so far, a post passing 1,000 views or a site sending visitors for the first time. A quiet week shows none.
+* Added: imports bring across more of what each plugin kept, where it recorded it. Referrers per post, devices and missing pages from WP Statistics, Burst Statistics, Independent Analytics and SlimStat. Outbound clicks and downloads from WP Statistics, Independent Analytics, SlimStat and Plausible. Custom events from WP Statistics, Independent Analytics and Plausible. Missing pages and device types from Plausible. Filtered bots from WP Statistics and SlimStat. The Google Analytics import adds referrers per page, outbound clicks, downloads and your own events.
+* Changed: the weekly email opens with "Your week on" your site's name.
+* Changed: Jetpack Stats imports record pageviews only. Jetpack has no visitor counts, and copying views into visitors invented a number.
+* Changed: the Koko Analytics importer no longer offers countries and devices, which it could never read.
+* Fixed: importing from Independent Analytics filed every post under "/singular" and every missing page under "/404". Pages now land at their real addresses.
+* Fixed: importing from SlimStat counted downloads, crawlers and feed readers as pageviews.
+* Fixed: dates in chart titles, the dashboard widget and the email showed the day before on sites west of UTC.
+* Security: a pageview could name a draft, private or scheduled post and put its title on the dashboard. Only posts a visitor could see are accepted now, and titles of non-public posts already recorded show as their address instead.
+* Fixed: imported page paths, referrers and event names are cleaned the same way as the ones Vireo records itself.
+* Fixed: missing-page tracking stored addresses with accented or other non-Latin characters cut short, so /café/ was recorded as /caf/.
+* Fixed: a change too small to show as a whole percent appeared as a red 0% on the Overview and the dashboard widget.
+* Fixed: the import history line shows every date in your site's date format.
+
+= 0.9.0 =
+* Added: import your history from Plausible Analytics. Upload the export zip from Plausible's site settings, and Vireo brings across your daily visitors and pageviews, pages, referrers, countries and device types.
+* Added: groundwork for MainWP. A MainWP dashboard can now read a site's visitors, pageviews, top pages and referrers over MainWP's own signed connection, for an upcoming Vireo Analytics for MainWP add-on. Site owners can switch it off with the `vireo_mainwp_enabled` filter.
+* Added: the weekly email opens with a one-line summary of what changed since the week before.
+* Added: themes and landing pages that skip wp_footer() can load the tracker with do_action( 'vireo_print_tracking_script' ).
+* Added: Support and Rate links on the Plugins screen, a support-forum link in Settings, and a one-time review request on the Overview after two weeks of use, which you can dismiss for good.
+* Fixed: importing from another analytics plugin added its numbers on top of the days Vireo had already counted. Imports now stop the day before Vireo's own data begins, and the import screen says where. You can still include those days, with a warning that they'll be counted twice.
+* Fixed: the Search and Social source filters showed no referrers, and any source filter left "What changed" without its sources because of a database error.
+* Fixed: referrers now land in the same group on the dashboard card and in the source filters. Hacker News, Product Hunt, Slack, Discord and Mastodon instances count as Social, and AI assistants have their own group.
+* Fixed: visits from the Google app on Android show as "Google app" under Search, and other common Android apps (Gmail, LinkedIn, Reddit, Slack, Telegram) show by name.
+* Fixed: bots that name themselves (Amazon, Claude and DeepSeek search bots, xAI, Kimi, Mistral, Mojeek and more) are counted in their own category instead of "Other bots", about 40 bots that were counted as visitors are now filtered, and Internet Explorer 11 visitors on Windows 7 are no longer mistaken for search engines. Categories are assigned as stats are saved, so earlier history keeps its old ones.
+* Fixed: counts of one read correctly across the plugin ("1 day", "1 view", "1 request").
+* Changed: days with a note get a pin on the traffic chart, so a spike carries its explanation without hovering.
+* Changed: the countries card shows the map with the top ten under it, and the map shades every country with visitors, not only the top ten.
+* Changed: the front page is called "Home" in "What changed" and the weekly email, matching Top pages, and referrers shown by name (ChatGPT, Gemini) show their site address underneath.
+* Fixed: the import screen and first-run banner no longer offer a plugin whose tables are empty.
+* Fixed: the AI crawler ratio shows a whole number from 10 up, and several small layout issues in Top referrers, the bot note and the roles setting.
+* Fixed: the group totals in Top referrers (Search, AI assistants, Social, Referral) count every site in the range, not only the ten listed, so they match the source filters and the Search & AI tab.
+* Security: a Plausible upload is capped by its unpacked size, loading the import screen can no longer cancel a running import, each import run keeps its own progress so two tabs can't interfere, and long page paths or hosts in non-Latin scripts no longer make an import fail.
+
+= 0.8.9 =
+* Changed: Settings is split into tabs (General, Tracking, Email digest, Search Console & API, Import & export), and the dashboard into Overview, Search & AI, Page speed, and Issues & campaigns. The tab is kept in the URL, so reloads and shared links open on it.
+* Changed: the import screen starts with the analytics plugins found on this site, each with its own button. Other sources sit below as secondary options.
+* Fixed: after an import finished, the screen still offered "Start Import" next to a warning about running it twice, which read as if the first run had failed. It now says the import is done, with the date range and pageviews brought in, and running the same source again needs a confirmation. Jetpack gets the same overlap check as Google Analytics.
+* Fixed: the import screen's record count was wrong (it showed 180 for 90 days).
+
+= 0.8.8 =
+* Fixed: on a busy day with thousands of distinct pages or referrers, the database could reject the single statement that saved them, and after five tries that stretch of traffic was set aside instead of counted. Rows are now saved in batches of 500, still inside one transaction.
+* Fixed: a database error early in a save could go unnoticed if a later query in the same step succeeded, so the buffer was deleted with some of its rows missing. Every failed query now stops the save and keeps the buffer for another try.
+
+= 0.8.7 =
+* Fixed: sites on WP Engine recorded no visitors. WP Engine's network sends a `Cf-Verified-Bot: false` header with every request, and Vireo treated any value in that header as a verified bot. It now counts as a bot only when the value is `true`.
+
+= 0.8.6 =
+* Changed: Vireo Analytics is now developed and supported by RebelCode, the team behind WP RSS Aggregator and Spotlight.
+
+= 0.8.5 =
+* Added: a card for sites running WP RSS Aggregator. It counts the readers who click an aggregated item through to the original article, per feed source, and, for items imported as posts, the views each source's posts get on your site.
+* Added: a card for sites running Spotlight. It counts how often visitors open an Instagram post from a feed, follow a link from the post, press Follow or Load more, and on which page.
+* Both start counting when Vireo detects the plugin, and can be switched off with the `vireo_track_wpra` and `vireo_track_spotlight` filters.
+
+= 0.8.4 =
+* Fixed: a post ID that matches no post could list one page twice. The tracker sends the post ID from the visitor's browser, so a client can send any number; one that resolves to no post is now ignored and the view counts under the page's address.
+
+= 0.8.3 =
+* Fixed: one visitor could add unlimited pageviews in a day. A crawler that runs scripts viewed the same archive pages almost ninety times each and put several hundred pageviews into one day's report. Each visitor now counts for at most 5 views of a page and 50 views in total per day; anything past that is reported under filtered traffic as repeated views. Both limits can be changed with the `vireo_visitor_path_cap` and `vireo_visitor_daily_cap` filters.
+* Fixed: the front page could appear twice in the page lists and in What changed, once by its title and once as "/", because some views were recorded with its post ID and some without. Pages are now grouped by address.
+* Fixed: comparisons for a range that ends today weighed part of a day against a whole one, so every page looked like it was losing traffic in the morning. The previous period is now scaled to the share of today that has passed.
+
+= 0.8.2 =
+* Fixed: two long searches that began with the same 190 characters were stored as one, and the second overwrote the first's clicks and impressions. Searches are now told apart by their full text. Updating refetches the last 90 days of Search Console data once so the split applies to recent history.
+* Changed: the Search Console button now reads "Fetch the last 90 days". It fetches the last week straight away and the rest in the background, which "now" no longer described.
+* Changed: Japanese translations follow the Japanese WordPress style guide for spacing around English words, numbers, colons and brackets.
+
+= 0.8.1 =
+* Fixed: the "Connect Search Console" link on a post's stats screen opened Settings at the top of the page instead of at the Search Console section.
+
+= 0.8.0 =
+* Added: each post's screen now shows the searches it appeared for in Google, with the clicks and average position for each. Google has passed almost no organic search terms to websites since 2013, so no analytics plugin can read them from the visit itself. Search Console still has them, and this joins them to the post they reached.
+* Added: the site-wide search list on the Overview names the page Google showed for each search.
+* Fixed: Search Console history was being cut off. A pull stopped at 25,000 rows for the whole date range, and a 90-day pull on one modest site hit that exactly, so roughly nine rows in ten were dropped without any message. The top searches survived, because Google sorts by clicks, but the long tail and anything totalled from it did not. Pulls now read everything Google returns.
+* Changed: refreshing Search Console fetches the last week immediately and the rest of the history in the background, a fortnight at a time. Reading the full history in one request took over a minute once nothing was being dropped, which is longer than an admin page is allowed to run on many hosts.
+* Fixed: Search Console data was never removed by the data retention setting, so it was kept indefinitely whatever retention you chose.
+
+= 0.7.9 =
+* Fixed: the bundled translations never loaded. Nine locales have shipped inside the zip since 0.7.5 and none of them were ever read, so the plugin stayed in English whatever language the site ran in. The Text Domain and Domain Path lines in a plugin header are metadata; they do not make WordPress read a catalogue out of the plugin's own folder, and the call that does was missing. German, Spanish, French, Italian, Japanese, Dutch, Portuguese, Brazilian Portuguese and Russian now work.
+* Changed: the Overview now opens with what actually moved. The sentence explaining the change was being generated already, but it sat inside a card roughly two thirds of the way down the page while a shorter version of the same thought ran as one grey line near the top. The fuller one leads, and the card no longer repeats it.
+* Changed: the reorderable sections, including What changed and the traffic chart, now sit directly under the headline figures. AI assistants, Search Console, notes and page speed moved below them. Notes in particular read as a footnote to the chart, which now renders above them rather than below.
+* Changed: gained and lost rows carry a bar, scaled across both columns rather than within each one, so a month where the losses are twice the gains looks like one.
+* Changed: the headline figures use the plugin's own green. It was already on the chart but not on the numbers, which left the brand sitting on the supporting element.
+* Fixed: other plugins' admin notices no longer print on Vireo's screens. Several analytics and licensing plugins register banners with no screen check, so an unrelated plugin's marketing could sit above your traffic. WordPress's own notices, including the update prompt, still show, and so do Vireo's own warnings.
+
+= 0.7.8 =
+* Fixed: five importers that shipped without a way to reach them. Statify, WP Statistics, Burst Statistics, Independent Analytics and SlimStat have had working importers since 0.7.0 and the readme has listed them since, but no screen was ever registered for any of them, so the only sources you could actually import from were Koko Analytics, Jetpack Stats and Google Analytics. All five now have an import screen, and the list under Settings is built from the importers that exist rather than a separate hand-written list, so the two cannot drift apart again.
+* Changed: the first-run banner now looks for every source it can import from instead of only Koko Analytics and Jetpack Stats, and names the ones it found. A site running any of the other five previously got no prompt at all.
+* Fixed: the Overview said the geo-location database was missing on sites whose host or CDN already supplies the visitor's country, while Settings correctly said countries were resolving. Both now check the same thing, and the admin notice and the "What changed" hint follow suit. The "Set it up" link now goes straight to the Geo-location section instead of the top of Settings.
+* Fixed: clicking a section's move handle on the Overview, without dragging, left that section greyed out and pinned to the screen until the page was reloaded. A click now does nothing, and a drag always lets go of the section when you release it, even if the pointer leaves the window.
+* Changed: the test email now says who it went to. When sending fails it shows the reason the mail system gave, and when it succeeds it explains that WordPress only hands the message to the server, so a missing email points at the host's mail delivery, not at the digest.
+* Changed: the page speed card names what it measures (load time, response to clicks, layout shift), grades each figure in words as well as colour, and explains the 75th percentile in plain terms. With under 30 measured visits it says the figures will move.
+* Changed: "Countries to treat as junk" no longer shows example country codes, which read as a recommendation.
+* Changed: section headings on the Settings screen are larger, so the page scans as sections rather than one long form.
+* Changed: the Overview and Settings screens carry the Vireo mark and use the brand green for charts, the map, buttons and selected controls, in place of the default admin blue.
+
+= 0.7.7 =
+* Added: a way to clear what an excluded country already recorded. Excluding a country has only ever stopped it being counted from that point on, which left the earlier data in your reports with no way to remove it. Settings, then Geo-location, now offers to clear the stored days for the countries you exclude. It clears the countries report and the lookup cache, and leaves your pageview and visitor totals alone, because nothing else records which country a visit came from and guessing after the fact would be worse than leaving it.
+
+= 0.7.6 =
+* Fixed: excluded countries were only honoured on the daily rollups. Everything else that asks whether a request should be counted (including the Pro live visitor feed) never checked the list, so traffic you had chosen to discard kept appearing live while the same traffic was correctly absent from your reports. The check now lives in the shared rule, so anything that consults it gets the setting for free. Reported by a user who noticed the two views disagreeing.
+* Fixed: importing a history from another plugin wrote straight into the country report without checking your exclusions, putting back the countries you had already discarded. Imports now skip them.
+* Note: neither fix removes rows already stored. Excluding a country stops it being counted from that point on; it does not erase what was counted before.
+
+= 0.7.5 =
+* Every bundled translation is complete again. The catalogues were last built in July and covered about two thirds of the plugin, so anything added since (the Google Analytics import, Search Console, the bot filter, AI assistant traffic, Site Health, annotations, Web Vitals) appeared in English no matter what language the site was in. German, French, Italian, Japanese, Dutch, Portuguese in both variants, Russian and Spanish now cover all of it.
+* Fixed a batch of Spanish strings that stated the opposite of the English. The Jetpack importer told you to copy your API key into Jetpack rather than out of it, the retention note read as though whole tables were deleted, and the 404 table headed its request count with a word meaning successful accesses.
+
+= 0.7.4 =
+* Fixed: crawlers were only counted when they ran the tracking script, and almost none of them do. The filter saw the handful of agents that render JavaScript and missed every one that just fetches HTML, which skewed the categories against each other rather than only lowering them: one site reported AI crawlers at 22 times its search crawlers, where the server log for the same days had them at roughly 1.3 times. Crawlers are now counted when they ask WordPress for a page. Expect these numbers to step up sharply after you update, and expect the balance between categories to shift.
+* Fixed: the bot panel described its percentage as "everything that asked for a page". It is what Vireo saw. A site with full-page caching answers many crawler requests before WordPress runs, and nothing inside WordPress can count those, so the panel now says that instead.
+
+= 0.7.3 =
+* Fixed: an import that failed said it had succeeded. The browser showed "Import complete" in green, the range was filed in the already-imported list, and the message explaining what to correct was never displayed. A failed import now stops with that message on screen and records nothing.
+* Fixed: when Google refused a request because the Analytics Data API was not enabled on the project, the error said to check the service account's access on the property instead. Google's own message names the API and links the page that turns it on, and it is now shown as sent.
+
+= 0.7.2 =
+* Added: countries you can treat as junk traffic. Settings, then Geo-location, takes a list of two-letter codes, and anything from those countries is discarded instead of counted, the same as an excluded IP. Bots that announce themselves were already filtered; this is for the traffic that does not. Requested by a user who found the bot filter was not catching what he was seeing.
+
+= 0.7.1 =
+Hardening and import safety, from an independent review of the 0.7.0 code.
+
+* Fixed: the tracking endpoint believed a forwarded IP header from anyone who sent one, once proxy trust was switched on. A visitor could claim any address, which sidesteps the per-address rate limit and the excluded-IP rules and invents a new visitor on demand. Headers are now read only when the connection itself came from a known proxy, and the list of those can be set with the `vireo_trusted_proxies` filter. Cloudflare's ranges and the private ranges are trusted by default, so a site behind either keeps working unchanged.
+* Fixed: around the day boundary two visitors could be issued different daily salts, because rotation read, generated and wrote without claiming anything first. Only one salt survived, so visitors hashed under the others were counted a second time. A day's salt is now claimed once and shared. Salts older than yesterday are still deleted, so old hashes stay unrecoverable.
+* Fixed: the buffer's size limit applied to each file rather than to the directory. A burst arriving while no buffer existed could create several, each with its own allowance. There is now a ceiling across the directory, and the aggregator drains every buffer it finds in a tick rather than the first one.
+* Added: imports record what they brought in. Asking for dates already imported now says which run covers them and asks you to confirm, rather than adding the numbers on top in silence. Importing still cannot be undone, so the confirmation is the protection.
+* Added: setup instructions for the Google Analytics import and for Search Console now name each screen, both Google products involved, and which property ID is the right one.
+* Fixed: the import progress bar reports itself to screen readers, and results and errors are announced instead of appearing silently.
+
+= 0.7.0 =
+This release fixes a fault that could stop a site recording, and answers several questions the dashboard had been raising without being able to settle.
+
+* Fixed: on a site that had already been running, a new table could be missing while the code that writes to it was live. Because the daily rollups are written together, that one failure rolled back everything written beside it, including pageviews, and the site stopped recording. Schema changes no longer depend on anyone remembering to bump a version, and a missing table now costs its own rows and nothing else.
+* Fixed: deleting the plugin left a Google service-account key, a set of access tokens, four tables and every uploaded database behind. On a network it cleaned only the site you happened to be on. Uninstall now removes all of it, on every site.
+* Fixed: a saved Google key could not be removed once pasted. There is now a control for it, and removing the key drops its cached tokens too.
+* Fixed: Search Console could lose months of history if a sync timed out partway. It now works a day at a time and loses at most the day it was in the middle of.
+* Fixed: speed measurements ignored the excluded-IP list and stored page paths in a different form from everything else, so they never lined up with the pages they described.
+* Fixed: a crafted link could put arbitrary text into an admin notice on the settings screen.
+* Fixed: on a network, activating the plugin set up only one site, and sites created afterwards were never set up at all.
+* Fixed: on sites running Redis or Memcached, the per-address limit on the tracking endpoint counted by reading a value and writing it back, so requests arriving together could all read the same number and all pass. It now counts atomically, and treats an IPv6 allocation as one address rather than as the billions it contains.
+* Fixed: importing from Google Analytics could only be reached by knowing the address of its screen, because nothing linked to it.
+* Added: Core Web Vitals from real visitors, reported as the 75th percentile.
+* Added: Search Console, bringing in the searches people ran before they arrived.
+* Added: import from Google Analytics 4.
+* Added: notes pinned to a date on the chart.
+* Added: choose which roles can read the dashboard, without handing out administrator.
+* Added: a network-wide view on multisite.
+* Added: works with consent plugins that use the WP Consent API, and can be told to wait for consent on sites whose policy asks for it.
+* Added: a Site Health check that says whether the site is recording right now.
+
+= 0.6.2 =
+This release fixes a fault that could stop a site recording altogether, with nothing to show for it but a dashboard that stopped moving.
+
+* Fixed: one visit the database refused would fail the whole batch, and the retry left a file behind that the plugin then mistook for the buffer it was writing to. Visits kept being saved to it and never reached your reports. Any buffer left stranded this way is picked up and written when you update, so those visits come back.
+* Fixed: search terms and other text containing emoji could be cut in half mid-character, which produces text the database rejects. That is what set the above off. Text is now trimmed on character boundaries.
+* Fixed: when a batch failed partway, whatever had already been written stayed written, so retrying it counted some visits twice.
+* Fixed: the job that writes visits to the database was scheduled once, when the plugin was activated, and never checked again. If it went missing the site stopped recording permanently. It is now put back automatically.
+* Added: when the plugin cannot record, it says so in the admin and in the error log, rather than failing silently.
+
+= 0.6.1 =
+* Fixed: on sites also running Vireo Analytics Pro, 0.6.0 created a table that Pro already owns, with a different structure. Left in place it would have written malformed rows into Pro's entry and exit page data. The feature has been withdrawn from the free plugin, where it duplicated Pro to begin with. Sites without Pro were unaffected; no data is lost either way.
+
+= 0.6.0 =
+* Fixed: activating the plugin could fail with a fatal error when the daily salt rotation had not yet been scheduled, which included every fresh install and any site that was deactivated and reactivated. Introduced in 0.5.0.
+* New: see what the AI assistants take against what they send back. ChatGPT, Claude, Gemini, Perplexity, Copilot and others are reported as their own traffic source, next to how many pages their crawlers fetched, and the ratio between the two. Works on history you already collected.
+* New: import your history from Statify, WP Statistics, Burst Statistics, Independent Analytics and SlimStat, joining the existing Koko Analytics and Jetpack Stats importers.
+* Improved: bot coverage goes from around thirty user-agent patterns to over eight hundred named crawlers, sorted into the same categories the dashboard already reports. AI crawler coverage roughly triples.
+
+= 0.5.0 =
+* New: pageviews are counted even when JavaScript never runs. A no-script pixel catches readers whose browser blocks or strips the tracker, and it keeps working behind a full-page cache.
+* New: the bot filter reports what it caught. Crawlers, AI trainers, SEO tools, uptime monitors, link previews and headless browsers are sorted into categories and shown above your totals, so you can see what was excluded instead of taking it on trust.
+* New: automated browsers are no longer counted as readers. A headless browser can send any user agent it likes, so the tracker now checks the flags the automation tools set on themselves.
+* New: prefetched and prerendered pages are skipped. The browser fetched them speculatively and the reader may never look at them.
+* Improved: wider crawler coverage, including Amazonbot, OAI-SearchBot, ChatGPT-User, Meta's crawler and CommonCrawl.
+* Improved: the tracker posts to its own endpoint instead of admin-ajax, which skips loading every other plugin and your theme on each pageview. The more plugins a site runs, the bigger the saving. It never affected how fast a page loaded for the reader, but it did tie up a PHP worker and a database connection each time, and those run out before bandwidth does. Hosts that block direct PHP in wp-content keep using the old route automatically.
+* Fixed: page paths containing accented or non-Latin characters were recorded with those characters missing. A Japanese or Cyrillic slug could be reduced to little more than slashes, so those pages were effectively invisible in your reports. They are now recorded as written.
+* Fixed: the per-IP request limit counted each IPv6 address separately. A single IPv6 allocation covers billions of addresses, so one visitor could rotate past the limit indefinitely; IPv6 is now grouped by network block.
+* Fixed: the feature list claimed server-side tracking counted every pageview. That was never true of a JavaScript beacon; with the no-script pixel added, the claim now matches what the plugin does.
+
+= 0.4.4 =
+* Fixed: automated scanners could get themselves listed as broken links on your site by faking the page they came from. A referrer is now only believed when it could plausibly be a real page: it cannot be the missing page itself, and it cannot be another address that is also missing.
+
+= 0.4.3 =
+* Changed: the 404 report is now two reports. Pages on your site that link somewhere missing are listed as broken links, with the page doing the linking so you know where to go and fix it. Everything else, mostly automated scanners looking for software you don't run, is listed separately. Previously they were mixed, and on a typical site the handful of real broken links were buried under thousands of probes.
+
+= 0.4.2 =
+* New: goal completions now fire an action carrying which visitor completed which goal and when, so add-ons can measure things the daily totals can't answer, such as whether the same person completed one goal and then another, which is what a funnel is.
+
+= 0.4.1 =
+* Fixed: a flood of requests for pages that don't exist could grow the 404 report without limit. Those hits are now rate-limited the same way the tracker is, and there's a cap on how many distinct new paths get recorded per day (filterable, and you can turn it off). Broken links you already know about keep counting as before.
+* Fixed: the analytics abilities used by AI agents and other Abilities API clients were declared read-only in the wrong place, so WordPress treated them as if they changed your site. Asking for them over GET returned an error, and agents were told a request for your traffic numbers might modify something. They are now correctly marked read-only.
+
+= 0.4.0 =
+* New: you can rearrange the dashboard. Grab the handle above any card and drag it where you want it, or tab to the handle and use the arrow keys. Your layout is saved to your own account, so it doesn't change anyone else's, and a Reset layout link puts it back.
+* Changed: Top Pages, Top Referrers and Top Countries now sit above the traffic chart. The chart mostly restates the totals you've already read at the top of the page, and it was pushing the tables you actually came for below the fold.
+
+= 0.3.4 =
+* New: the dashboard now opens with a plain-language line telling you what matters, before the chart and tables. On a quiet or brand-new site it says so honestly instead of leaving you to read a wall of numbers.
+* New: a short note under the pageviews explains why Vireo's totals sit below what server-log or pixel tools report: it counts real browsers only, so bots that never run JavaScript are never counted. Dismissable, and it stays dismissed.
+
+= 0.3.3 =
+* New: the plugin now ships in nine languages: Spanish, German, French, Italian, Dutch, Portuguese (Portugal and Brazil), Russian and Japanese. Every screen is covered, including the analytics dashboard.
+* Fixed: the dashboard's JavaScript never loaded translations, so the chart tooltips and screen-reader labels, the world-map tooltip and the settings-page messages stayed in English whatever the site language. Those strings now translate like everything else (loaded via wp_set_script_translations).
+
+= 0.3.2 =
+* Fixed: the "What changed" panel mixed pages and traffic sources in one list, which double-counted the same change and read as a jumble. Pages and sources are now shown as two separate labelled groups, so you can tell "which of my content moved" from "which sources moved". Your own domain no longer shows up as a referrer.
+
+= 0.3.1 =
+* New: countries now set themselves up. Most sites are behind a host or CDN (Cloudflare, Kinsta, CloudFront) that already knows each visitor's country, and the plugin now uses that automatically, with nothing to install. The settings page tells you when this is the case instead of asking you to go and fetch a database.
+* New: for sites without that, one button installs a free country database (DB-IP, no account, no license key). This replaces the old four-step MaxMind process, which is still available as an advanced option for anyone who prefers it.
+* Fixed: the date-range tabs and the other toggles rendered as plain grey text with no button shape until selected. They now sit on a track with the selected option as a raised pill, so they read as buttons.
+
+= 0.3.0 =
+* New: a "What changed" panel that tells you why your traffic moved, instead of leaving you to work it out from five leaderboards. It names the pages and referrers that gained and lost the most, and says which one is actually responsible for the change. It won't guess: if the drop is spread thinly across the whole site, it says so rather than blaming whichever page happens to be top of a list.
+* New: the dashboard now warns you when the data itself is wrong. If tracking stops recording, or every visitor's country comes back unknown, or 404s spike, it says so. A tracker that has stopped working looks exactly like a site with no visitors, and nothing used to tell you which one you were looking at.
+* Changed: browsers, operating systems and device types are now one Technology card with tabs, instead of three near-identical cards taking a full row.
+* Changed: 404s, campaigns and site search moved into a collapsed section at the bottom. They're useful when you want them and noise when you don't.
+* Changed: comparison is no longer a Pro feature. It was already showing everyone the numbers while pretending the toggle was locked.
+* Improved: changing the date range or a filter no longer reloads the whole admin page. It swaps the cards in place, so switching from Last 30 to Last 90 is instant.
+* Improved: every card now expresses change the same way. Percentages on lists, percentage points on shares, so "Chrome -1,568" next to a 58.2% bar no longer reads as a 1,568-point collapse in share.
+* Fixed: Direct traffic was always reported as zero. Direct visits have no referrer, so nothing could ever land in that bucket, even though direct is usually the biggest source on a site.
+* Fixed: the traffic chart can now be read with a keyboard. Arrow keys step through the days and each one is announced, where the values were previously only reachable with a mouse.
+* Fixed: the chart's vertical axis now follows whichever metric you're looking at. Switching to Visitors used to squash the bars against a ceiling that belonged to Pageviews.
+* Fixed: the prior period is now drawn as a thin reference line rather than a solid bar. On any day traffic fell, the old bar stood taller than the real one and dominated the chart.
+* Fixed: a stray PHP notice on every front-end page load, which on sites with debugging switched on could break the login screen.
+
+= 0.2.10 =
+* Fixed: the traffic chart was stretched sideways. It was drawn at a fixed width and then scaled up to fill the card, so on a wide screen everything in it, including the date labels, came out squashed horizontally. It's now drawn at the size it's actually displayed at, and redraws when the window resizes.
+* Fixed: the "Start fresh" link on the welcome banner rendered as a bordered box with underlined link text inside it. It was using two WordPress button classes that undo each other.
+
+= 0.2.9 =
+* Fixed: on sites with full-page caching, traffic could silently stop being counted. Whether a visitor was a bot, or had asked not to be tracked, was decided when the page was built, and that page then got cached and served to everyone else. If a crawler happened to be the request that filled the cache, the tracker was left out of the cached page and every real visitor served it afterwards went uncounted. The page now always carries the tracker and those decisions are made at the point the visit is recorded, which can't be cached. Do Not Track and bot filtering work exactly as before.
+
+= 0.2.8 =
+* Fixed: the dashboard could render as raw, unstyled HTML. Its stylesheet was served from a copy the plugin wrote into your uploads folder, so anything that made that copy unreachable, a host rule, a CDN rewrite, tightened permissions, left the page with no styling at all. The stylesheet now loads from the plugin folder, alongside its JavaScript, where it can't go missing. Old copies in uploads are cleaned up on update.
+* Countries now work without a MaxMind database on most sites. If your host resolves the visitor's country for you (Cloudflare, CloudFront, and hosts running the nginx GeoIP module all do), Vireo uses that and you don't need to download anything. The MaxMind file is now only a fallback for sites whose host doesn't provide one.
+
+= 0.2.7 =
+* No functional changes. The directory listing now says what the plugin actually does, so people searching for privacy-friendly analytics can find it.
+
+= 0.2.6 =
+* Security: the tracking endpoint is now rate limited on every site. The limiter only worked when a persistent object cache (Redis, Memcached) was installed and did nothing otherwise, which is most sites, leaving the public endpoint open to being flooded. It now falls back to APCu, then to lightweight counter files. It still writes nothing to the database on public requests.
+* Fixed: retrying an import chunk could count it twice. Imports are applied additively and the browser retries a chunk when a response is lost, which can happen after the data has already been written. The server now records which chunks it has applied and refuses to apply one twice.
+* Security: the WordPress.com API key used by the Jetpack importer no longer lingers. It was kept in the options table indefinitely if an import failed or was abandoned, it survived uninstalling the plugin, and it was written back into the import form's HTML. It now expires on its own, is cleared when an import fails, is removed on uninstall, and is never rendered into the page.
+
+= 0.2.5 =
+* Fixed: traffic was filed under the wrong day on any site not set to UTC. Days were bucketed in UTC while the dashboard's date ranges were built in your site's timezone, so evening visits could land on tomorrow and "Today" would be missing hours it should have had. The admin bar and the dashboard could also disagree about what "today" was. Everything now uses your site's day, and the visitor salt rotates on the same boundary.
+* Note: the changeover creates a one-off seam. Traffic recorded before this update stays bucketed as it was, so the day either side of the upgrade may look slightly off. It settles immediately after.
+* Changed: the Visitors figure no longer describes itself as "unique this period" for multi-day ranges, because it isn't. Within a day it's a true unique count; across a range it's the sum of the daily counts. See the FAQ for why the privacy model makes a true multi-day unique count impossible.
+* Fixed: a failed database write could silently throw traffic away. The pageview buffer was deleted as soon as it had been read, before the rollups were written, so a deadlock or a dropped connection during the write lost that minute of traffic for good. The buffer is now kept until the database has confirmed the writes, and anything a crashed run left behind is replayed on the next one.
+
+= 0.2.4 =
+* Fixed: unique visitor counts were inflated. The aggregator processes pageviews in batches, and it only recognised a repeat visitor within a single batch, so someone reading several pages was often counted as several visitors. Visitors are now tracked across the whole day, so the count is a real unique count. This affects every visitor figure: site, per-post, per-referrer, country, device, and hourly.
+* Note: your visitor numbers will drop after this update, on some sites by a lot. Nothing has been lost. The old numbers were counting the same people more than once. Pageviews are unchanged and were always correct.
+* Fixed: the per-post referrer table was never covered by the retention setting and grew without limit.
+
+= 0.2.3 =
+* Fixed: the tracker is no longer held back by delay-JavaScript optimisers. Perfmatters, WP Rocket, LiteSpeed Cache, and FlyingPress delay scripts until the visitor interacts with the page, so visits that ended without a click or scroll were never counted. Vireo now excludes its own scripts from those optimisers automatically, no configuration needed. If you run one of them, expect your numbers to rise: that is traffic you always had and were not seeing.
+* Fixed: the dashboard rendered unstyled on Apache. The hashed dashboard stylesheet was written inside the plugin's data directory, which carries a deny-all rule that Apache also applies to everything beneath it, so the stylesheet was blocked. It now lives in its own directory outside the protected one.
+* Fixed: the dashboard overflowed horizontally at 1280px wide, clipping the countries card.
+
+= 0.2.2 =
+* Beacon rate limiter now keeps its per-IP state in a persistent object cache only, so public tracker requests never write to the options table.
+
+= 0.2.1 =
+* Removed third-party favicon requests from the dashboard, no remote calls remain.
+* Tracker reads its runtime config from the database instead of generated PHP files.
+* Added nonce verification to the dashboard view filters.
+* Prefixed all internal identifiers with vireo_.
+
+= 0.2.0 =
+* Initial public release.
+* Self-hosted, cookie-free analytics dashboard.
+* Importers for Koko Analytics and Jetpack Stats.
+* Weekly email digest.
+* Custom events API.
+* 404 tracking.
+* CSV export from any dashboard view.
+* Admin-bar sparkline + per-post analytics columns.

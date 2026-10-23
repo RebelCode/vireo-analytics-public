@@ -1,0 +1,370 @@
+/*
+ * Vireo Analytics — importer pages + onboarding banner.
+ * Matches the .va-card design tokens used in dashboard.css so everything
+ * feels like the same product.
+ */
+
+.va-import {
+	max-width: 820px;
+}
+
+.va-import h1 {
+	font-size: 22px;
+	line-height: 1.2;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	margin: 12px 0 20px;
+}
+
+.va-import-card {
+	background: #fff;
+	border: 1px solid rgba( 15, 23, 42, 0.08 );
+	border-radius: 10px;
+	padding: 24px 28px;
+	box-shadow: 0 1px 2px rgba( 15, 23, 42, 0.04 );
+}
+
+.va-import-summary {
+	display: grid;
+	grid-template-columns: repeat( 2, 1fr );
+	gap: 8px 20px;
+	margin: 0 0 18px;
+	padding: 0 0 18px;
+	border-bottom: 1px solid rgba( 15, 23, 42, 0.06 );
+}
+.va-import-summary-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 12px;
+}
+.va-import-summary-label {
+	color: #64748b;
+	font-size: 13px;
+}
+.va-import-summary-row strong {
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	color: #0f172a;
+}
+
+.va-import-info {
+	margin: 0 0 16px;
+	padding: 10px 14px;
+	border-left: 3px solid #2b7a64;
+	background: rgba( 43, 122, 100, 0.06 );
+	border-radius: 4px;
+	color: #0f172a;
+	font-size: 13.5px;
+	line-height: 1.5;
+}
+
+.va-import-warnings {
+	margin: 16px 0;
+	padding: 12px 14px;
+	background: #fefce8;
+	border-left: 3px solid #eab308;
+	border-radius: 4px;
+	font-size: 13px;
+	line-height: 1.55;
+}
+.va-import-warnings p {
+	margin: 0 0 6px;
+}
+.va-import-warnings p:last-child {
+	margin-bottom: 0;
+}
+
+.va-import-form {
+	margin: 16px 0 0;
+}
+.va-import-field {
+	margin: 0 0 16px;
+}
+.va-import-field label {
+	display: block;
+	margin: 0 0 6px;
+	font-size: 13.5px;
+	color: #0f172a;
+}
+.va-import-field input[type="text"],
+.va-import-field input[type="password"],
+.va-import-field input[type="date"] {
+	width: 100%;
+	max-width: 420px;
+}
+.va-import-field-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+.va-import-field-row .va-import-field {
+	flex: 1 1 180px;
+	min-width: 180px;
+}
+
+.va-import-checkbox {
+	display: inline-flex;
+	/* Top-aligned: centred against a two-line label the box floated mid-text. */
+	align-items: flex-start;
+	gap: 8px;
+	margin: 4px 0 16px;
+	font-size: 13.5px;
+}
+
+.va-import-actions {
+	display: flex;
+	gap: 8px;
+	margin: 20px 0 0;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.va-import-progress {
+	margin: 20px 0 0;
+	padding: 14px 16px;
+	background: #f8fafc;
+	border: 1px solid rgba( 15, 23, 42, 0.06 );
+	border-radius: 8px;
+}
+.va-import-progress-bar {
+	position: relative;
+	height: 8px;
+	background: rgba( 15, 23, 42, 0.08 );
+	border-radius: 999px;
+	overflow: hidden;
+}
+.va-import-progress-fill {
+	height: 100%;
+	width: 0%;
+	background: #2b7a64;
+	transition: width 0.25s ease;
+}
+.va-import-progress-text {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin: 10px 0 0;
+	font-size: 13px;
+	color: #475569;
+	font-variant-numeric: tabular-nums;
+}
+.va-import-progress-text span:last-child {
+	font-weight: 600;
+	color: #0f172a;
+}
+
+.va-import-result {
+	margin: 20px 0 0;
+	padding: 12px 16px;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	font-size: 13.5px;
+	line-height: 1.55;
+}
+.va-import-result p {
+	margin: 0;
+}
+.va-import-result--ok {
+	background: #ecfdf5;
+	border-color: #a7f3d0;
+	color: #065f46;
+}
+.va-import-result--warn {
+	background: #fefce8;
+	border-color: #fde68a;
+	color: #713f12;
+}
+.va-import-result--error {
+	background: #fef2f2;
+	border-color: #fecaca;
+	color: #991b1b;
+}
+
+.va-import-footer {
+	margin: 24px 0 0;
+	padding: 16px;
+	background: #f8fafc;
+	border: 1px dashed rgba( 15, 23, 42, 0.1 );
+	border-radius: 8px;
+}
+.va-import-footer p {
+	margin: 0 0 12px;
+}
+
+/* ---- Already imported ------------------------------------------------- */
+
+/* `hidden` has to win over the display rules on .button and the summary grid.
+   It didn't, so the Cancel button sat on screen before any run had started,
+   and the record count stayed up after the run had finished. */
+.va-import [hidden] {
+	display: none !important;
+}
+
+/* A finished import has to look finished. The page used to show the same
+   warning and "Start import" button after a run as before it. */
+.va-import-done {
+	padding: 18px 20px;
+	background: #ecfdf5;
+	border: 1px solid #a7f3d0;
+	border-radius: 8px;
+	color: #065f46;
+}
+.va-import-done p {
+	margin: 0 0 8px;
+}
+.va-import-done .description {
+	color: #065f46;
+	opacity: 0.85;
+}
+.va-import-done .va-import-actions {
+	margin-top: 14px;
+}
+.va-import-done-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 15px;
+	font-weight: 600;
+}
+.va-import-done-mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #2b7a64;
+	color: #fff;
+	font-size: 13px;
+}
+.va-import-again {
+	margin: 20px 0 0;
+	padding: 12px 16px;
+	border: 1px solid rgba( 15, 23, 42, 0.1 );
+	border-radius: 8px;
+}
+.va-import-again summary {
+	cursor: pointer;
+	color: #475569;
+}
+.va-import-again[open] summary {
+	margin-bottom: 8px;
+}
+.va-import-again .va-import-checkbox {
+	margin-bottom: 0;
+}
+.va-import-again .va-import-actions {
+	margin-top: 12px;
+}
+.va-import-footer .va-import-actions {
+	margin-top: 0;
+}
+
+/* ---- Onboarding banner (shown on Overview) ---------------------------- */
+
+.va-onboarding {
+	position: relative;
+	margin: 0 0 18px;
+	padding: 20px 44px 20px 20px;
+	border-left: 4px solid #2b7a64;
+	background: #fff;
+}
+.va-onboarding-title {
+	margin: 0 0 6px;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: #0f172a;
+}
+.va-onboarding-body {
+	margin: 0 0 14px;
+	color: #475569;
+	font-size: 13.5px;
+	line-height: 1.55;
+}
+.va-onboarding-actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+/* The quiet "no thanks" next to the primary import button. Self-contained, so
+   no core admin button rule can leak a border or a min-height into it. */
+.va-onboarding-actions .va-onboarding-skip {
+	appearance: none;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	padding: 6px 8px;
+	margin-left: 4px;
+	min-height: 0;
+	font-size: 13px;
+	line-height: 1.4;
+	color: #64748b;
+	text-decoration: underline;
+	cursor: pointer;
+	border-radius: 6px;
+}
+.va-onboarding-actions .va-onboarding-skip:hover {
+	color: #0f172a;
+	background: rgba(15, 23, 42, 0.04);
+}
+.va-onboarding-actions .va-onboarding-skip:focus-visible {
+	outline: 2px solid #2b7a64;
+	outline-offset: 1px;
+}
+.va-onboarding-dismiss {
+	position: absolute;
+	top: 10px;
+	right: 12px;
+	width: 24px;
+	height: 24px;
+	border: 0;
+	background: transparent;
+	font-size: 20px;
+	line-height: 1;
+	color: #94a3b8;
+	cursor: pointer;
+	padding: 0;
+}
+.va-onboarding-dismiss:hover {
+	color: #475569;
+}
+
+/* Importer actions in the brand colour, like Settings and the Overview. They
+   inherited the admin blue, so the flow changed colour halfway through. */
+.va-import .button-primary {
+	background: #2b7a64;
+	border-color: #2b7a64;
+	color: #fff;
+}
+.va-import .button-primary:hover,
+.va-import .button-primary:focus {
+	background: #205e4c;
+	border-color: #205e4c;
+	color: #fff;
+}
+.va-import .button-primary:focus {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b7a64;
+}
+.va-import .button:not(.button-primary) {
+	color: #2b7a64;
+	border-color: #2b7a64;
+}
+.va-import .button:not(.button-primary):hover,
+.va-import .button:not(.button-primary):focus {
+	color: #205e4c;
+	border-color: #205e4c;
+	background: rgba(43, 122, 100, 0.08);
+}
+
+.va-import-note {
+	margin: 0 0 16px;
+	max-width: 820px;
+	color: #50575e;
+}
+.va-import-checkbox input[type="checkbox"] {
+	margin-top: 2px;
+	flex: 0 0 auto;
+}

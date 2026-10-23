@@ -1,0 +1,69 @@
+/* In the plain list the count sits on its own line under every title. Inline,
+   it wrapped under long titles and hung off the end of short ones. */
+.vireo-popular-posts:not(.vireo-popular-posts--thumbnails) .vireo-popular-posts__views {
+	display: block;
+}
+
+.vireo-popular-posts__views {
+	opacity: 0.7;
+	font-size: 0.875em;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.vireo-popular-posts--thumbnails .vireo-popular-posts__list {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.vireo-popular-posts--thumbnails .vireo-popular-posts__item {
+	display: flex;
+	align-items: center;
+	gap: 0.75em;
+	margin: 0 0 0.75em;
+}
+
+.vireo-popular-posts--thumbnails .vireo-popular-posts__link {
+	display: flex;
+	align-items: center;
+	gap: 0.75em;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.vireo-popular-posts__thumb {
+	display: block;
+	flex: 0 0 auto;
+	width: 3.5em;
+	height: 3.5em;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+.vireo-popular-posts__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	object-fit: cover;
+}
+
+.vireo-popular-posts__thumb--none {
+	visibility: hidden;
+}
+
+.vireo-popular-posts--thumbnails .vireo-popular-posts__views {
+	flex: 0 0 auto;
+	margin-left: auto;
+}
+
+/* Editor only: why the block is blank. */
+.vireo-popular-posts__empty {
+	margin: 0;
+	padding: 12px 14px;
+	border: 1px dashed currentColor;
+	border-radius: 4px;
+	font-size: 13px;
+	opacity: 0.75;
+}

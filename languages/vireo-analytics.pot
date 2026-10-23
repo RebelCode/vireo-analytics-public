@@ -1,0 +1,6210 @@
+# Copyright (C) 2026 RebelCode
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Vireo Analytics 0.16.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/vireo-analytics\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-18T07:01:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: vireo-analytics\n"
+
+#. Plugin Name of the plugin
+#: vireo-analytics.php
+#: includes/class-abilities.php:84
+#: includes/class-dashboard-widget.php:60
+#: includes/class-dashboard.php:337
+#: includes/class-dashboard.php:338
+#: includes/class-health.php:401
+#: includes/class-mcp.php:174
+msgid "Vireo Analytics"
+msgstr ""
+
+#. Description of the plugin
+#: vireo-analytics.php
+msgid "Privacy-first WordPress analytics. Clean dashboard, no cookies, no consent banners, no third-party tracking."
+msgstr ""
+
+#. Author of the plugin
+#: vireo-analytics.php
+msgid "RebelCode"
+msgstr ""
+
+#. Author URI of the plugin
+#: vireo-analytics.php
+msgid "https://rebelcode.com"
+msgstr ""
+
+#: importers/class-backup-importer.php:49
+msgid "Vireo Analytics backup"
+msgstr ""
+
+#. translators: %s: maximum upload size, e.g. 64 MB
+#: importers/class-backup-importer.php:178
+#, php-format
+msgid "That file is larger than this server accepts (%s). Ask your host to raise the upload limit, or restore in smaller pieces."
+msgstr ""
+
+#: importers/class-backup-importer.php:181
+msgid "The upload did not complete. Try again."
+msgstr ""
+
+#: importers/class-backup-importer.php:187
+msgid "The uploads directory is not writable, so the file cannot be kept while it is read."
+msgstr ""
+
+#: importers/class-backup-importer.php:193
+msgid "The file could not be saved for reading."
+msgstr ""
+
+#: importers/class-backup-importer.php:222
+msgid "The file could not be opened."
+msgstr ""
+
+#: importers/class-backup-importer.php:243
+#: importers/class-backup-importer.php:351
+msgid "The file is damaged: a line could not be read."
+msgstr ""
+
+#: importers/class-backup-importer.php:255
+msgid "The file ends early. It may not have finished downloading; export it again."
+msgstr ""
+
+#: importers/class-backup-importer.php:275
+msgid "That is not a Vireo Analytics backup. Use the file from Settings, Import & export, Download backup."
+msgstr ""
+
+#: importers/class-backup-importer.php:278
+msgid "This backup was made by a newer version of Vireo Analytics. Update the plugin here, then try again."
+msgstr ""
+
+#: importers/class-backup-importer.php:313
+msgid "Upload a backup file first."
+msgstr ""
+
+#: importers/class-backup-importer.php:319
+msgid "The uploaded file is no longer available. Upload it again."
+msgstr ""
+
+#. translators: %d: number of parts of the file that were skipped
+#: importers/class-backup-importer.php:376
+#, php-format
+msgid "Restored. %d part of the file was for a table this version does not have and was skipped."
+msgid_plural "Restored. %d parts of the file were for tables this version does not have and were skipped."
+msgstr[0] ""
+msgstr[1] ""
+
+#: importers/class-backup-importer.php:379
+msgid "Restored."
+msgstr ""
+
+#. translators: %s: name of the table being restored, e.g. post_stats
+#: importers/class-backup-importer.php:390
+#, php-format
+msgid "Restoring %s"
+msgstr ""
+
+#: importers/class-backup-importer.php:401
+msgid "daily totals"
+msgstr ""
+
+#: importers/class-backup-importer.php:402
+msgid "bounce rates"
+msgstr ""
+
+#: importers/class-backup-importer.php:403
+msgid "hourly totals"
+msgstr ""
+
+#: importers/class-backup-importer.php:404
+#: templates/admin/import-plausible.php:23
+msgid "pages"
+msgstr ""
+
+#: importers/class-backup-importer.php:405
+msgid "time on page"
+msgstr ""
+
+#: importers/class-backup-importer.php:406
+#: templates/admin/import-plausible.php:24
+msgid "referrers"
+msgstr ""
+
+#: importers/class-backup-importer.php:407
+msgid "referrers per page"
+msgstr ""
+
+#: importers/class-backup-importer.php:408
+#: templates/admin/import-plausible.php:25
+msgid "countries"
+msgstr ""
+
+#: importers/class-backup-importer.php:409
+msgid "devices"
+msgstr ""
+
+#: importers/class-backup-importer.php:410
+msgid "missing pages"
+msgstr ""
+
+#: importers/class-backup-importer.php:411
+msgid "events"
+msgstr ""
+
+#: importers/class-backup-importer.php:412
+msgid "bot traffic"
+msgstr ""
+
+#: importers/class-backup-importer.php:413
+msgid "Core Web Vitals"
+msgstr ""
+
+#: importers/class-backup-importer.php:414
+msgid "chart notes"
+msgstr ""
+
+#: importers/class-backup-importer.php:415
+msgid "Search Console queries"
+msgstr ""
+
+#: importers/class-backup-importer.php:416
+msgid "Search Console pages"
+msgstr ""
+
+#: importers/class-burst-importer.php:26
+msgid "Burst Statistics"
+msgstr ""
+
+#: importers/class-burst-importer.php:73
+msgid "No Burst Statistics data found."
+msgstr ""
+
+#: importers/class-burst-importer.php:99
+msgid "Burst Statistics import complete."
+msgstr ""
+
+#. translators: 1: days imported, 2: total days.
+#: importers/class-burst-importer.php:177
+#, php-format
+msgid "Imported %1$d of %2$d day from Burst Statistics."
+msgid_plural "Imported %1$d of %2$d days from Burst Statistics."
+msgstr[0] ""
+msgstr[1] ""
+
+#: importers/class-burst-importer.php:182
+msgid "Brings across daily pageviews and visitors, your pages, referrers, which posts each referrer sent readers to, countries, browsers, operating systems, devices and missing pages."
+msgstr ""
+
+#: importers/class-ga4-importer.php:42
+msgid "Google Analytics 4"
+msgstr ""
+
+#: importers/class-ga4-importer.php:140
+msgid "Add the service account key and the GA4 property ID first."
+msgstr ""
+
+#: importers/class-ga4-importer.php:145
+msgid "The date range is not valid."
+msgstr ""
+
+#. translators: 1: start date, 2: end date
+#: importers/class-ga4-importer.php:186
+#: importers/class-plausible-importer.php:359
+#, php-format
+msgid "Imported %1$s to %2$s"
+msgstr ""
+
+#: importers/class-ga4-importer.php:435
+msgid "Google refused the request. Check the service account has Viewer access on this GA4 property."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: importers/class-ga4-importer.php:442
+#, php-format
+msgid "Google Analytics returned an unexpected response (HTTP %d)."
+msgstr ""
+
+#: importers/class-ga4-importer.php:449
+msgid "Google Analytics returned a response we could not read."
+msgstr ""
+
+#: importers/class-ga4-importer.php:564
+#: importers/class-plausible-importer.php:899
+msgid "Import complete"
+msgstr ""
+
+#: importers/class-ga4-importer.php:575
+#: importers/class-plausible-importer.php:910
+msgid "Import stopped"
+msgstr ""
+
+#: importers/class-independent-analytics-importer.php:30
+msgid "Independent Analytics"
+msgstr ""
+
+#: importers/class-independent-analytics-importer.php:67
+msgid "No Independent Analytics data found."
+msgstr ""
+
+#: importers/class-independent-analytics-importer.php:92
+msgid "Independent Analytics import complete."
+msgstr ""
+
+#. translators: 1: days imported, 2: total days.
+#: importers/class-independent-analytics-importer.php:168
+#, php-format
+msgid "Imported %1$d of %2$d day from Independent Analytics."
+msgid_plural "Imported %1$d of %2$d days from Independent Analytics."
+msgstr[0] ""
+msgstr[1] ""
+
+#: importers/class-independent-analytics-importer.php:173
+msgid "Brings across daily pageviews and visitors, your pages, referrers, which posts each referrer sent readers to, countries, browsers, operating systems, devices, missing pages, and tracked link clicks and form submissions as events."
+msgstr ""
+
+#: importers/class-jetpack-importer.php:42
+msgid "Jetpack Stats"
+msgstr ""
+
+#. translators: 1: chunk start date, 2: chunk end date
+#: importers/class-jetpack-importer.php:188
+#: importers/class-koko-importer.php:147
+#, php-format
+msgid "Importing %1$s — %2$s"
+msgstr ""
+
+#: importers/class-jetpack-importer.php:202
+msgid "Missing import parameters. Please submit the form again."
+msgstr ""
+
+#: importers/class-jetpack-importer.php:214
+msgid "Invalid date range — please use YYYY-MM-DD."
+msgstr ""
+
+#: importers/class-jetpack-importer.php:218
+msgid "End date must be on or after start date."
+msgstr ""
+
+#: importers/class-jetpack-importer.php:242
+msgid "Complete"
+msgstr ""
+
+#. translators: %s: HTTP error detail returned by WP_Error.
+#: importers/class-jetpack-importer.php:404
+#, php-format
+msgid "Could not reach Jetpack Stats API: %s"
+msgstr ""
+
+#: importers/class-jetpack-importer.php:423
+msgid "Unexpected (non-JSON) response from Jetpack Stats API."
+msgstr ""
+
+#: importers/class-jetpack-importer.php:439
+msgid "Invalid or unauthorized API key. Copy your WordPress.com API key from Jetpack → Settings → Security → Akismet."
+msgstr ""
+
+#: importers/class-jetpack-importer.php:443
+msgid "Jetpack Stats API is rate-limiting — please wait a minute and try again."
+msgstr ""
+
+#: importers/class-jetpack-importer.php:447
+msgid "Jetpack Stats API is unavailable right now. Please retry in a few minutes."
+msgstr ""
+
+#. translators: %d: HTTP status code returned by the Jetpack API.
+#: importers/class-jetpack-importer.php:454
+#, php-format
+msgid "Jetpack Stats API returned an error (HTTP %d). Check your API key and blog URI."
+msgstr ""
+
+#: importers/class-koko-importer.php:42
+#: templates/admin/import-koko.php:34
+msgid "Koko Analytics"
+msgstr ""
+
+#: importers/class-koko-importer.php:102
+#: importers/class-koko-importer.php:113
+msgid "No Koko Analytics data found."
+msgstr ""
+
+#: importers/class-plausible-importer.php:106
+msgid "Plausible Analytics"
+msgstr ""
+
+#: importers/class-plausible-importer.php:270
+msgid "No Plausible reports were found in that upload. Upload the zip file Plausible emailed you, or the CSV files inside it."
+msgstr ""
+
+#: importers/class-plausible-importer.php:275
+msgid "The export has no traffic in the dates you chose."
+msgstr ""
+
+#: importers/class-plausible-importer.php:318
+msgid "Upload a Plausible export first."
+msgstr ""
+
+#: importers/class-plausible-importer.php:329
+msgid "The uploaded export is no longer available. Upload it again; dates already imported are listed on this screen."
+msgstr ""
+
+#: importers/class-plausible-importer.php:471
+msgid "The file did not upload. It may be larger than this server accepts."
+msgstr ""
+
+#: importers/class-plausible-importer.php:475
+#: importers/class-plausible-importer.php:535
+msgid "That file is too large. Export a shorter date range from Plausible and import it in parts."
+msgstr ""
+
+#: importers/class-plausible-importer.php:486
+msgid "Upload the .zip file Plausible gave you, or the .csv files inside it."
+msgstr ""
+
+#: importers/class-plausible-importer.php:492
+msgid "The uploaded file could not be read."
+msgstr ""
+
+#: importers/class-plausible-importer.php:511
+#: templates/admin/import-plausible.php:108
+msgid "This server cannot open zip files. Unzip the export on your computer and upload the CSV files instead."
+msgstr ""
+
+#: importers/class-plausible-importer.php:516
+msgid "That zip file could not be opened."
+msgstr ""
+
+#: importers/class-plausible-importer.php:522
+msgid "That zip holds more files than a Plausible export does."
+msgstr ""
+
+#: importers/class-plausible-importer.php:540
+msgid "A file inside the zip could not be read."
+msgstr ""
+
+#. translators: 1: Plausible report name, 2: column name
+#: importers/class-plausible-importer.php:616
+#, php-format
+msgid "The %1$s file is missing its %2$s column."
+msgstr ""
+
+#: importers/class-plausible-importer.php:640
+#: importers/class-plausible-importer.php:686
+msgid "That export is too large to import in one go. Choose a shorter date range and import it in parts."
+msgstr ""
+
+#: importers/class-slimstat-importer.php:31
+msgid "SlimStat Analytics"
+msgstr ""
+
+#: importers/class-slimstat-importer.php:77
+msgid "No SlimStat data found."
+msgstr ""
+
+#: importers/class-slimstat-importer.php:102
+msgid "SlimStat import complete."
+msgstr ""
+
+#. translators: 1: days imported, 2: total days.
+#: importers/class-slimstat-importer.php:278
+#, php-format
+msgid "Imported %1$d of %2$d day from SlimStat."
+msgid_plural "Imported %1$d of %2$d days from SlimStat."
+msgstr[0] ""
+msgstr[1] ""
+
+#: importers/class-slimstat-importer.php:283
+msgid "Brings across daily pageviews and visitors, your pages, referrers, which posts each referrer sent readers to, countries, browsers, operating systems, devices, missing pages, downloads and outbound clicks, and the crawlers SlimStat recorded, as filtered bots rather than visits."
+msgstr ""
+
+#: importers/class-statify-importer.php:22
+msgid "Statify"
+msgstr ""
+
+#: importers/class-statify-importer.php:57
+msgid "No Statify data found."
+msgstr ""
+
+#: importers/class-statify-importer.php:81
+msgid "Statify import complete."
+msgstr ""
+
+#. translators: 1: days imported, 2: total days.
+#: importers/class-statify-importer.php:154
+#, php-format
+msgid "Imported %1$d of %2$d day from Statify."
+msgid_plural "Imported %1$d of %2$d days from Statify."
+msgstr[0] ""
+msgstr[1] ""
+
+#: importers/class-statify-importer.php:159
+msgid "Brings across daily pageviews, your pages, referrers and which posts each referrer sent readers to. Statify does not identify visitors, so imported days have no visitor counts."
+msgstr ""
+
+#: importers/class-wp-statistics-importer.php:26
+msgid "WP Statistics"
+msgstr ""
+
+#: importers/class-wp-statistics-importer.php:65
+msgid "No WP Statistics data found."
+msgstr ""
+
+#: importers/class-wp-statistics-importer.php:90
+msgid "WP Statistics import complete."
+msgstr ""
+
+#. translators: 1: days imported, 2: total days.
+#: importers/class-wp-statistics-importer.php:213
+#, php-format
+msgid "Imported %1$d of %2$d day from WP Statistics."
+msgid_plural "Imported %1$d of %2$d days from WP Statistics."
+msgstr[0] ""
+msgstr[1] ""
+
+#: importers/class-wp-statistics-importer.php:233
+msgid "Brings across daily pageviews and visitors, your pages, referrers, which posts each referrer sent readers to, countries, browsers, operating systems, devices, missing pages, link clicks, downloads and custom events, and, if WP Statistics recorded exclusions, the bots it filtered out."
+msgstr ""
+
+#: includes/class-abilities.php:85
+msgid "Read-only site analytics: traffic, pages, referrers, geography, devices, and events."
+msgstr ""
+
+#: includes/class-abilities.php:100
+msgid "Get traffic totals"
+msgstr ""
+
+#: includes/class-abilities.php:101
+msgid "Total pageviews, unique visitors, average daily pageviews, average time on page and bounce rate for a date range (defaults to the last 30 days). Time on page is active time (the tab in front of the reader, at most 30 minutes a view), averaged over the views that reported one. Bounce rate is the percentage of visitors who viewed exactly one page in a day. Both are null until there is data for the range."
+msgstr ""
+
+#: includes/class-abilities.php:122
+msgid "Get daily traffic series"
+msgstr ""
+
+#: includes/class-abilities.php:123
+msgid "Per-day pageviews and visitors over a date range, for charting trends."
+msgstr ""
+
+#: includes/class-abilities.php:132
+msgid "Get top pages"
+msgstr ""
+
+#: includes/class-abilities.php:133
+msgid "Most-viewed pages for a date range, ranked by pageviews, with each page's average active time on page in seconds (null when no view of it reported a time)."
+msgstr ""
+
+#: includes/class-abilities.php:142
+msgid "Get top referrers"
+msgstr ""
+
+#: includes/class-abilities.php:143
+msgid "Top referring sites sending traffic for a date range."
+msgstr ""
+
+#: includes/class-abilities.php:152
+msgid "Get traffic by country"
+msgstr ""
+
+#: includes/class-abilities.php:153
+msgid "Visitor counts broken down by country for a date range."
+msgstr ""
+
+#: includes/class-abilities.php:162
+msgid "Get device breakdown"
+msgstr ""
+
+#: includes/class-abilities.php:163
+msgid "Visitor breakdown by browser, operating system, and device type for a date range."
+msgstr ""
+
+#: includes/class-abilities.php:172
+msgid "Get custom events"
+msgstr ""
+
+#: includes/class-abilities.php:173
+msgid "Top custom events for a date range. Pass a `name` to break a single event down by value."
+msgstr ""
+
+#: includes/class-abilities.php:179
+msgid "Optional event name to break down by value."
+msgstr ""
+
+#: includes/class-abilities.php:189
+msgid "Get stats for a post"
+msgstr ""
+
+#: includes/class-abilities.php:190
+msgid "Lifetime and date-range pageviews/visitors, a daily series, and the top referrers for a single post or page. Use get-top-pages first if you only have a title or path."
+msgstr ""
+
+#: includes/class-abilities.php:196
+msgid "The post or page ID to report on."
+msgstr ""
+
+#: includes/class-abilities.php:207
+msgid "Get hourly traffic series"
+msgstr ""
+
+#: includes/class-abilities.php:208
+msgid "Pageviews and visitors per hour, for \"what time of day do people visit\" and for looking at today or yesterday in detail. Covers at most two days; longer ranges are cut to the last two days. Defaults to today."
+msgstr ""
+
+#: includes/class-abilities.php:217
+msgid "Get what changed"
+msgstr ""
+
+#: includes/class-abilities.php:218
+msgid "What changed against the previous period of the same length: a one-sentence summary, the pages and traffic sources that gained or lost the most, shifts in the traffic mix, and health warnings such as tracking having stopped or a 404 spike. Call this first when asked \"how is the site doing\" or \"why is traffic up/down\"."
+msgstr ""
+
+#: includes/class-abilities.php:227
+msgid "Get weekly highlights"
+msgstr ""
+
+#: includes/class-abilities.php:228
+msgid "Short, ready-to-quote highlights for a finished week: milestones crossed, the biggest gaining page, a new referrer, the best day. Defaults to the last seven full days. Returns an empty list when nothing stood out."
+msgstr ""
+
+#: includes/class-abilities.php:237
+msgid "Get traffic by channel"
+msgstr ""
+
+#: includes/class-abilities.php:238
+msgid "Pageviews and visitors grouped by how people arrived: direct, search engines, AI assistants, social networks, and other referring sites, with each channel's share. Use get-top-referrers for the individual sites inside a channel."
+msgstr ""
+
+#: includes/class-abilities.php:247
+msgid "Get stats for one referrer"
+msgstr ""
+
+#: includes/class-abilities.php:248
+msgid "Everything about traffic from one referring site: pageviews and visitors in the range, a daily series, and which of your pages it sent people to. Pass the host as shown by get-top-referrers, for example \"news.ycombinator.com\"."
+msgstr ""
+
+#: includes/class-abilities.php:254
+msgid "The referring site, as a hostname or URL."
+msgstr ""
+
+#: includes/class-abilities.php:265
+msgid "Get AI assistant traffic"
+msgstr ""
+
+#: includes/class-abilities.php:266
+msgid "What AI assistants take and what they send back: requests made by AI crawlers (GPTBot, ClaudeBot, PerplexityBot and others) against readers (visitors) that ChatGPT, Claude, Perplexity, Gemini and the rest referred to the site, per assistant, with the ratio of crawler requests per reader sent. Everything covers the days crawlers were counted; when that starts later than the requested range, `since` holds that date."
+msgstr ""
+
+#: includes/class-abilities.php:275
+msgid "Get Google Search Console data"
+msgstr ""
+
+#: includes/class-abilities.php:276
+msgid "Google Search performance synced from Search Console: site-wide clicks, impressions, CTR and average position plus the top search queries, or, when post_id or path is given, the queries that brought people to that one page. Returns connected=false with no data when Search Console is not connected under Settings. Google's data lags two to three days behind."
+msgstr ""
+
+#: includes/class-abilities.php:282
+msgid "Optional post or page ID to get the queries for that page only."
+msgstr ""
+
+#: includes/class-abilities.php:286
+msgid "Optional page path (for example /pricing) instead of post_id."
+msgstr ""
+
+#: includes/class-abilities.php:296
+msgid "Get stats for one event"
+msgstr ""
+
+#: includes/class-abilities.php:297
+msgid "One custom event in depth: total and unique counts, a daily series, how many distinct values it carried, and the top values. Use get-events to find event names first."
+msgstr ""
+
+#: includes/class-abilities.php:303
+msgid "The event name, as listed by get-events."
+msgstr ""
+
+#: includes/class-abilities.php:314
+msgid "Get missing pages (404s)"
+msgstr ""
+
+#: includes/class-abilities.php:315
+msgid "Paths that returned 404, ranked by hits. Split into broken links (reached from one of your own pages, with the page that links there, so they can be fixed) and probes (scanners and outside links). Use this for \"do I have broken links\" and for a 404 spike flagged by get-changes."
+msgstr ""
+
+#: includes/class-abilities.php:324
+msgid "Get bot and crawler traffic"
+msgstr ""
+
+#: includes/class-abilities.php:325
+msgid "Requests the bot filter rejected, per category (search engines, AI crawlers, SEO tools, monitors, scrapers and so on), with the share of all requests they made up. None of these are in the pageview totals; use this when numbers look lower than another tool's, or when asked how much AI crawlers read the site."
+msgstr ""
+
+#: includes/class-abilities.php:334
+msgid "Get Core Web Vitals"
+msgstr ""
+
+#: includes/class-abilities.php:335
+msgid "Core Web Vitals (LCP, INP, CLS) measured on real visitors, reported at the 75th percentile the way Google grades them, each with a good/needs-improvement/poor rating and the sample count. Empty when no measurements were recorded in the range."
+msgstr ""
+
+#: includes/class-abilities.php:344
+msgid "Get chart notes"
+msgstr ""
+
+#: includes/class-abilities.php:345
+msgid "Notes the site owner pinned to dates on the traffic chart, such as \"newsletter sent\" or \"redesign launched\". Check these when explaining a spike or a dip, since they often hold the reason."
+msgstr ""
+
+#: includes/class-abilities.php:354
+msgid "Get year in review"
+msgstr ""
+
+#: includes/class-abilities.php:355
+msgid "The year in review for one calendar year: totals against the year before, the busiest month and day, the top pages, posts published that year, top referrers, countries, and AI crawler activity. Includes imported history from a previous analytics tool. Defaults to the current year."
+msgstr ""
+
+#: includes/class-abilities.php:361
+msgid "The calendar year to report on. Defaults to the current year."
+msgstr ""
+
+#: includes/class-abilities.php:372
+msgid "Get goal completions (Pro)"
+msgstr ""
+
+#: includes/class-abilities.php:373
+msgid "Conversion goals with completion counts and total value for a date range. Requires Vireo Analytics Pro."
+msgstr ""
+
+#: includes/class-abilities.php:558
+#: includes/class-abilities.php:842
+#: includes/class-pagespeed.php:218
+#: includes/class-post-detail.php:54
+msgid "Post not found."
+msgstr ""
+
+#: includes/class-abilities.php:582
+#: includes/class-rest-api.php:557
+#: includes/class-rest-api.php:589
+msgid "Goals feature unavailable."
+msgstr ""
+
+#: includes/class-abilities.php:736
+#: templates/admin/dashboard-page.php:140
+#: templates/admin/dashboard-page.php:236
+#: templates/dashboard/top-referrers.php:32
+#: templates/dashboard/year-review.php:69
+msgid "Direct"
+msgstr ""
+
+#: includes/class-abilities.php:737
+#: templates/admin/dashboard-page.php:141
+#: templates/admin/dashboard-page.php:237
+#: templates/dashboard/post-detail.php:265
+#: templates/dashboard/search-console.php:49
+#: templates/dashboard/top-referrers.php:33
+#: templates/dashboard/year-review.php:70
+msgid "Search"
+msgstr ""
+
+#: includes/class-abilities.php:738
+#: templates/admin/dashboard-page.php:142
+#: templates/admin/dashboard-page.php:238
+#: templates/dashboard/ai-sources.php:25
+#: templates/dashboard/top-referrers.php:34
+#: templates/dashboard/year-review.php:71
+#: templates/dashboard/year-review.php:405
+msgid "AI assistants"
+msgstr ""
+
+#: includes/class-abilities.php:739
+#: templates/admin/dashboard-page.php:143
+#: templates/admin/dashboard-page.php:239
+#: templates/dashboard/top-referrers.php:35
+#: templates/dashboard/year-review.php:72
+msgid "Social"
+msgstr ""
+
+#: includes/class-abilities.php:740
+#: templates/admin/dashboard-page.php:144
+#: templates/admin/dashboard-page.php:240
+#: templates/dashboard/top-referrers.php:36
+#: templates/dashboard/year-review.php:73
+msgid "Referral"
+msgstr ""
+
+#: includes/class-abilities.php:773
+msgid "host must be a hostname or URL."
+msgstr ""
+
+#: includes/class-abilities.php:832
+msgid "Google Search Console is not connected. Connect it under Vireo Analytics, Settings, Search Console & API."
+msgstr ""
+
+#: includes/class-abilities.php:884
+msgid "name is required."
+msgstr ""
+
+#: includes/class-abilities.php:1000
+msgid "year must be a calendar year with data, no later than the current year."
+msgstr ""
+
+#: includes/class-abilities.php:1028
+msgid "Unknown ability."
+msgstr ""
+
+#: includes/class-abilities.php:1212
+msgid "Start date (YYYY-MM-DD). Defaults to 30 days ago."
+msgstr ""
+
+#: includes/class-abilities.php:1217
+msgid "End date (YYYY-MM-DD). Defaults to today."
+msgstr ""
+
+#: includes/class-abilities.php:1232
+msgid "Maximum number of rows to return (1-100)."
+msgstr ""
+
+#: includes/class-admin-bar.php:100
+msgid "pageviews today"
+msgstr ""
+
+#: includes/class-admin-bar.php:102
+msgid "Pageviews today (Vireo Analytics)"
+msgstr ""
+
+#: includes/class-aggregator.php:484
+msgid "Vireo Analytics is not recording."
+msgstr ""
+
+#. translators: 1: reason, 2: failure count, 3: human-readable duration
+#: includes/class-aggregator.php:488
+#, php-format
+msgid "%1$s. %2$d attempts have failed over the last %3$s. Visits are still being written to disk and will be counted once this clears."
+msgstr ""
+
+#: includes/class-aggregator.php:489
+#: includes/class-health.php:154
+msgid "Aggregation is failing"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:23
+msgid "AI crawler access"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:24
+msgid "Content AI can read"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:25
+msgid "Structured data"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:26
+msgid "Discovery files"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:40
+msgid "ChatGPT search"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:45
+msgid "ChatGPT browsing"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:50
+msgid "Perplexity"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:55
+msgid "Claude search"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:60
+msgid "Google and AI Overviews"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:65
+msgid "Bing and Copilot"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:70
+msgid "OpenAI training"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:75
+msgid "Anthropic training"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:80
+msgid "Gemini training"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:85
+msgid "Apple Intelligence"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:90
+msgid "Common Crawl"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:133
+#: includes/class-ai-scan-checks.php:149
+msgid "robots.txt lets AI crawlers in"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:136
+msgid "No robots.txt, so every crawler is allowed by default."
+msgstr ""
+
+#. translators: %s: HTTP status code or error
+#: includes/class-ai-scan-checks.php:139
+#, php-format
+msgid "robots.txt didn't load cleanly (%s)."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:140
+#: includes/class-ai-scan-checks.php:435
+#: includes/class-ai-scan.php:187
+msgid "no response"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:142
+msgid "Make /robots.txt return plain text with a 200 status. Crawlers that get errors may back off your whole site."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:151
+msgid "robots.txt is too long or complex to evaluate reliably."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:152
+msgid "Simplify robots.txt: keep rules short, avoid long wildcard patterns, and give each AI crawler a plain Allow or Disallow line."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:168
+msgid "AI search crawlers are allowed"
+msgstr ""
+
+#. translators: %s: list of crawler names
+#: includes/class-ai-scan-checks.php:173
+#, php-format
+msgid "robots.txt blocks %s."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:176
+msgid "ChatGPT search, Perplexity, Claude search, Google and Bing can all read this page."
+msgstr ""
+
+#. translators: %s: comma-separated crawler tokens
+#: includes/class-ai-scan-checks.php:179
+#, php-format
+msgid "Remove the Disallow rules for %s. These crawlers fetch pages to cite in live AI answers, so blocking them keeps you out of those answers."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:187
+msgid "AI training crawlers are allowed"
+msgstr ""
+
+#. translators: %s: list of crawler names
+#: includes/class-ai-scan-checks.php:192
+#, php-format
+msgid "Blocked: %s."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:195
+msgid "Training crawlers (GPTBot, ClaudeBot, Google-Extended and others) can read this page."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:196
+msgid "This is a business choice. Blocking training crawlers keeps your content out of future models, which also means those models know less about you."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:208
+msgid "Settings > Reading has \"Discourage search engines from indexing this site\" turned on."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:210
+msgid "This page carries a noindex instruction."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:212
+msgid "This page carries a \"noai\" instruction."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:214
+msgid "No noindex or noai instructions found."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:220
+msgid "The page is allowed in search results"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:224
+msgid "Remove the noindex robots meta tag or X-Robots-Tag header. Check Settings > Reading and the page's settings in your SEO plugin."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:225
+msgid "Remove \"noai\" from the robots meta tag unless you want AI tools to skip this page."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:234
+msgid "Text is readable without JavaScript"
+msgstr ""
+
+#. translators: %d: word count
+#: includes/class-ai-scan-checks.php:239
+#, php-format
+msgid "Only %d words in the raw HTML. The page builds its content with JavaScript, which most AI crawlers don't run."
+msgstr ""
+
+#. translators: %d: word count
+#: includes/class-ai-scan-checks.php:244
+#, php-format
+msgid "%d word of readable text in the raw HTML."
+msgid_plural "%d words of readable text in the raw HTML."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-scan-checks.php:248
+msgid "Render the content on the server so the text is in the HTML itself."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:249
+msgid "Say more on the page: what you do, who it's for, where you work and what it costs. AI tools can only repeat what you've written down."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:257
+msgid "One clear main heading"
+msgstr ""
+
+#. translators: 1: number of H1 headings, 2: first heading text
+#: includes/class-ai-scan-checks.php:262
+#, php-format
+msgid "%1$d H1 heading: \"%2$s\""
+msgid_plural "%1$d H1 headings, the first is \"%2$s\""
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-scan-checks.php:266
+msgid "No H1 heading."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:267
+msgid "Use exactly one H1 that states what the page is about in plain words."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:275
+msgid "Content is split into sections"
+msgstr ""
+
+#. translators: %d: count
+#: includes/class-ai-scan-checks.php:279
+#, php-format
+msgid "%d H2 subheading."
+msgid_plural "%d H2 subheadings."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-scan-checks.php:282
+msgid "Break the page into sections with descriptive H2 headings. AI tools pull answers section by section."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:298
+msgid "Answers the questions people ask"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:301
+msgid "FAQ content with FAQPage markup found."
+msgstr ""
+
+#. translators: %d: count
+#: includes/class-ai-scan-checks.php:304
+#, php-format
+msgid "%d question-style heading found."
+msgid_plural "%d question-style headings found."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-scan-checks.php:307
+msgid "Add an FAQ with the questions people actually ask, one question per heading with the answer straight under it. AI tools pull answers section by section."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:317
+msgid "Images have alt text"
+msgstr ""
+
+#. translators: 1: images with alt text, 2: total images
+#: includes/class-ai-scan-checks.php:322
+#, php-format
+msgid "%1$d of %2$d images have alt text."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:326
+msgid "No images in the HTML."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:327
+msgid "Describe each image in its alt text. AI tools read alt text instead of looking at the picture."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:335
+msgid "Language is declared"
+msgstr ""
+
+#. translators: %s: language code
+#: includes/class-ai-scan-checks.php:339
+#, php-format
+msgid "lang=\"%s\""
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:340
+msgid "The <html> tag has no lang attribute."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:341
+msgid "Your theme should print language_attributes() on the <html> tag so AI tools answer in the right language."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:351
+msgid "XML sitemap"
+msgstr ""
+
+#. translators: %s: sitemap URL
+#: includes/class-ai-scan-checks.php:355
+#, php-format
+msgid "Found at %s"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:356
+msgid "No sitemap found in robots.txt, at /sitemap.xml, /sitemap_index.xml or /wp-sitemap.xml."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:357
+msgid "Publish an XML sitemap and list it in robots.txt with a \"Sitemap:\" line. WordPress core and most SEO plugins generate one."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:365
+msgid "llms.txt file"
+msgstr ""
+
+#. translators: %s: number of characters
+#: includes/class-ai-scan-checks.php:370
+#, php-format
+msgid "Found /llms.txt (%s characters)."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:373
+msgid "No valid /llms.txt. The URL is missing or returns an HTML page instead of plain text."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:374
+msgid "Optional. Add a plain-text file at /llms.txt that says what your site is and links to your most useful pages. Some SEO plugins can generate one."
+msgstr ""
+
+#. translators: %s: crawler name
+#: includes/class-ai-scan-checks.php:427
+#, php-format
+msgid "%s (got a challenge or a different page)"
+msgstr ""
+
+#. translators: 1: crawler name, 2: HTTP status code
+#: includes/class-ai-scan-checks.php:430
+#, php-format
+msgid "%1$s (HTTP %2$d)"
+msgstr ""
+
+#. translators: %s: list of crawlers with status codes
+#: includes/class-ai-scan-checks.php:443
+#, php-format
+msgid "Requests identifying as %s didn't get your page."
+msgstr ""
+
+#. translators: %s: list of crawlers with errors
+#: includes/class-ai-scan-checks.php:449
+#, php-format
+msgid "Some crawler requests failed: %s."
+msgstr ""
+
+#. translators: %s: list of crawler names
+#: includes/class-ai-scan-checks.php:455
+#, php-format
+msgid "Requests identifying as %s all got the page."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:464
+msgid "Your server answers AI crawlers"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:468
+msgid "A firewall, CDN or security plugin is probably blocking AI crawlers even though robots.txt allows them. Check your CDN's AI bot blocking, your security plugin and your host's bot protection. Some firewalls verify real crawlers by IP address and reject imitations like this test, so if those settings are off this can be a false alarm."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:469
+msgid "Check that your server answers quickly and that loopback requests aren't blocked, then run the scan again."
+msgstr ""
+
+#. translators: 1: schema type, 2: number of linked profiles
+#: includes/class-ai-scan-checks.php:486
+#, php-format
+msgid "%1$s markup found with %2$d linked profile."
+msgid_plural "%1$s markup found with %2$d linked profiles."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: schema type
+#: includes/class-ai-scan-checks.php:492
+#, php-format
+msgid "%s markup found, but no sameAs links to your other profiles."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:496
+msgid "Organization found only as microdata, not JSON-LD."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:498
+msgid "No Organization or LocalBusiness JSON-LD."
+msgstr ""
+
+#. translators: %d: count
+#: includes/class-ai-scan-checks.php:503
+#, php-format
+msgid "%d JSON-LD block failed to parse."
+msgid_plural "%d JSON-LD blocks failed to parse."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-scan-checks.php:511
+msgid "Business identity markup"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:515
+msgid "Add sameAs links to your social profiles, Google Business Profile and directory listings. They tie your site to the same business elsewhere, which is how AI tools confirm who you are."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:516
+msgid "Add Organization or LocalBusiness JSON-LD with your name, logo, address, phone and sameAs links. Most SEO plugins can output it."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:525
+msgid "Contact details are machine-readable"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:528
+msgid "Phone, email or address found as links or markup."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:529
+msgid "No tel: or mailto: links and no address in the markup."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:530
+msgid "Link your phone number with tel: and your email with mailto:, and add your address to your Organization markup, so an AI tool can tell someone how to reach you."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:539
+msgid "Open Graph tags"
+msgstr ""
+
+#. translators: %d: count
+#: includes/class-ai-scan-checks.php:543
+#, php-format
+msgid "%d of 3 core Open Graph tags (title, description, image)."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:546
+msgid "Add og:title, og:description and og:image. Most SEO plugins output them. Chat apps and AI tools use them for link previews and summaries."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:554
+msgid "Canonical URL"
+msgstr ""
+
+#. translators: %s: URL
+#: includes/class-ai-scan-checks.php:558
+#, php-format
+msgid "Points to %s"
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:559
+msgid "No canonical link."
+msgstr ""
+
+#: includes/class-ai-scan-checks.php:560
+msgid "Add <link rel=\"canonical\"> so duplicate versions of the page consolidate into one."
+msgstr ""
+
+#: includes/class-ai-scan.php:96
+#: templates/dashboard/ai-scan.php:50
+msgid "A scan is already running. Wait a minute and try again."
+msgstr ""
+
+#: includes/class-ai-scan.php:140
+#: includes/class-backup.php:131
+#: includes/class-csv-export.php:40
+#: includes/class-dashboard.php:242
+#: includes/class-import-controller.php:592
+#: includes/class-import-controller.php:614
+#: includes/class-import-controller.php:641
+#: includes/class-import-controller.php:666
+#: includes/class-import-controller.php:689
+#: includes/class-import-controller.php:723
+#: includes/class-import-controller.php:750
+#: includes/class-import-controller.php:801
+#: includes/class-import-controller.php:818
+#: includes/class-import-controller.php:904
+#: includes/class-import-controller.php:1008
+#: includes/class-pagespeed.php:713
+#: includes/class-search-console.php:900
+#: includes/class-settings.php:360
+#: includes/class-settings.php:413
+#: includes/class-settings.php:465
+#: includes/class-settings.php:486
+#: includes/class-settings.php:531
+#: includes/class-settings.php:612
+msgid "Forbidden."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/class-ai-scan.php:183
+#, php-format
+msgid "The page answered with HTTP %d, so there was nothing to scan."
+msgstr ""
+
+#. translators: %s: error message
+#: includes/class-ai-scan.php:186
+#, php-format
+msgid "Your server couldn't load its own page (%s). Some hosts block requests a site makes to itself; Tools > Site Health reports this as a loopback problem."
+msgstr ""
+
+#. translators: 1: number of seconds, 2: number of checks
+#: includes/class-ai-scan.php:262
+#, php-format
+msgid "The scan stopped after %1$d seconds so it wouldn't time out, and %2$d check didn't run. It's left out of the score. Run the scan again once your site responds faster."
+msgid_plural "The scan stopped after %1$d seconds so it wouldn't time out, and %2$d checks didn't run. They're left out of the score. Run the scan again once your site responds faster."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-scan.php:284
+msgid "Not run: the scan reached its time limit first."
+msgstr ""
+
+#: includes/class-ai-scan.php:372
+msgid "Not run: the scan reached its time limit."
+msgstr ""
+
+#: includes/class-ai-scan.php:385
+msgid "Too many redirects."
+msgstr ""
+
+#. translators: %s: redirect target URL
+#: includes/class-ai-scan.php:388
+#, php-format
+msgid "Redirect to %s not followed because it leaves this site."
+msgstr ""
+
+#: includes/class-annotations.php:114
+msgid "Pick a real date."
+msgstr ""
+
+#: includes/class-annotations.php:118
+msgid "Add a short note to go with the date."
+msgstr ""
+
+#: includes/class-annotations.php:136
+msgid "Could not save that note."
+msgstr ""
+
+#: includes/class-annotations.php:169
+#: includes/class-pagespeed.php:228
+#: includes/class-settings.php:495
+msgid "That site is no longer connected."
+msgstr ""
+
+#: includes/class-annotations.php:178
+msgid "You are not allowed to add notes."
+msgstr ""
+
+#: includes/class-annotations.php:204
+msgid "You are not allowed to remove notes."
+msgstr ""
+
+#: includes/class-annotations.php:211
+msgid "That note is already gone."
+msgstr ""
+
+#: includes/class-backup.php:157
+#: includes/class-csv-export.php:73
+msgid "Failed to open output stream."
+msgstr ""
+
+#: includes/class-bot-filter.php:211
+msgid "AI crawlers"
+msgstr ""
+
+#: includes/class-bot-filter.php:212
+msgid "Search engines"
+msgstr ""
+
+#: includes/class-bot-filter.php:213
+msgid "SEO tools"
+msgstr ""
+
+#: includes/class-bot-filter.php:214
+msgid "Uptime monitors"
+msgstr ""
+
+#: includes/class-bot-filter.php:215
+msgid "Link previews"
+msgstr ""
+
+#: includes/class-bot-filter.php:216
+msgid "Automated browsers"
+msgstr ""
+
+#: includes/class-bot-filter.php:217
+msgid "Scripts and clients"
+msgstr ""
+
+#: includes/class-bot-filter.php:218
+msgid "Archivers and validators"
+msgstr ""
+
+#: includes/class-bot-filter.php:219
+msgid "Prefetch and prerender"
+msgstr ""
+
+#: includes/class-bot-filter.php:220
+msgid "Repeated views past the daily cap"
+msgstr ""
+
+#: includes/class-bot-filter.php:221
+msgid "Referrer spam"
+msgstr ""
+
+#: includes/class-bot-filter.php:222
+msgid "Other bots"
+msgstr ""
+
+#. translators: %s: number of comments
+#: includes/class-comment-stats.php:131
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: comments per 1,000 pageviews, e.g. 2.4
+#: includes/class-comment-stats.php:139
+#, php-format
+msgid "%s per 1,000 views"
+msgstr ""
+
+#: includes/class-dashboard-sections.php:33
+msgid "Traffic chart"
+msgstr ""
+
+#: includes/class-dashboard-sections.php:38
+#: templates/dashboard/drivers.php:115
+msgid "What changed"
+msgstr ""
+
+#: includes/class-dashboard-sections.php:43
+#: templates/dashboard/top-pages.php:22
+#: templates/dashboard/year-review.php:269
+msgid "Top pages"
+msgstr ""
+
+#: includes/class-dashboard-sections.php:48
+#: templates/dashboard/top-referrers.php:64
+msgid "Top referrers"
+msgstr ""
+
+#: includes/class-dashboard-sections.php:53
+#: templates/dashboard/countries.php:51
+#: templates/dashboard/year-review.php:326
+msgid "Top countries"
+msgstr ""
+
+#: includes/class-dashboard-sections.php:58
+#: templates/dashboard/devices.php:32
+#: templates/dashboard/devices.php:55
+msgid "Technology"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:97
+msgid "Pageviews today"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:104
+msgid "Compared with yesterday up to the same time of day."
+msgstr ""
+
+#: includes/class-dashboard-widget.php:110
+msgid "Visitors today"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:118
+msgid "Right now"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:127
+msgid "Last 14 days"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:129
+#: includes/class-dashboard-widget.php:382
+#: templates/admin/import-koko.php:44
+#: templates/admin/network-page.php:101
+#: templates/dashboard/chart.php:35
+#: templates/dashboard/chart.php:102
+#: templates/dashboard/hero-stats.php:74
+#: templates/dashboard/post-detail.php:121
+#: templates/dashboard/referrer-detail.php:86
+#: templates/dashboard/year-review.php:132
+#: assets/js/world-map.js:173
+msgid "Pageviews"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:130
+#: includes/class-dashboard-widget.php:382
+#: templates/admin/import-koko.php:48
+#: templates/admin/network-page.php:100
+#: templates/dashboard/chart.php:36
+#: templates/dashboard/chart.php:103
+#: templates/dashboard/hero-stats.php:112
+#: templates/dashboard/post-detail.php:122
+#: templates/dashboard/referrer-detail.php:87
+#: templates/dashboard/year-review.php:144
+#: assets/js/world-map.js:172
+msgid "Visitors"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:145
+msgid "Pageviews, compared with the period before"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:147
+msgid "7 days"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:148
+msgid "30 days"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:149
+#: includes/class-retention.php:210
+msgid "90 days"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:155
+msgid "Top pages · last 7 days"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:159
+msgid "Top referrers · last 7 days"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:164
+msgid "View full dashboard →"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:233
+msgid "No data yet."
+msgstr ""
+
+#: includes/class-dashboard-widget.php:243
+#: includes/class-dashboard.php:2246
+#: includes/va-filters.php:235
+msgid "Home"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:278
+msgid "No traffic data yet."
+msgstr ""
+
+#. translators: 1: date, 2: pageviews, 3: visitors
+#: includes/class-dashboard-widget.php:351
+#, php-format
+msgid "%1$s: %2$s pageviews, %3$s visitors"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:381
+msgid "Pageviews and visitors, last 14 days"
+msgstr ""
+
+#: includes/class-dashboard-widget.php:382
+#: templates/admin/settings-page.php:582
+#: templates/dashboard/chart.php:85
+msgid "Day"
+msgstr ""
+
+#: includes/class-dashboard.php:71
+#: includes/class-dashboard.php:348
+#: includes/class-dashboard.php:349
+msgid "Overview"
+msgstr ""
+
+#: includes/class-dashboard.php:72
+msgid "Search & AI"
+msgstr ""
+
+#: includes/class-dashboard.php:73
+msgid "Page speed"
+msgstr ""
+
+#: includes/class-dashboard.php:74
+msgid "Content"
+msgstr ""
+
+#: includes/class-dashboard.php:75
+msgid "Campaigns"
+msgstr ""
+
+#: includes/class-dashboard.php:76
+msgid "Issues"
+msgstr ""
+
+#: includes/class-dashboard.php:465
+#: includes/class-import-controller.php:351
+msgid "Starting…"
+msgstr ""
+
+#: includes/class-dashboard.php:466
+#: includes/class-import-controller.php:352
+msgid "Import complete."
+msgstr ""
+
+#: includes/class-dashboard.php:467
+#: includes/class-import-controller.php:353
+msgid "Something went wrong:"
+msgstr ""
+
+#: includes/class-dashboard.php:468
+#: includes/class-import-controller.php:354
+msgid "Import cancelled."
+msgstr ""
+
+#: includes/class-dashboard.php:907
+msgid "today"
+msgstr ""
+
+#: includes/class-dashboard.php:908
+msgid "yesterday"
+msgstr ""
+
+#: includes/class-dashboard.php:909
+msgid "last 7 days"
+msgstr ""
+
+#: includes/class-dashboard.php:910
+msgid "last 14 days"
+msgstr ""
+
+#: includes/class-dashboard.php:911
+msgid "last 30 days"
+msgstr ""
+
+#: includes/class-dashboard.php:912
+msgid "last 90 days"
+msgstr ""
+
+#: includes/class-dashboard.php:913
+msgid "this month"
+msgstr ""
+
+#: includes/class-dashboard.php:914
+msgid "last month"
+msgstr ""
+
+#: includes/class-dashboard.php:915
+msgid "year to date"
+msgstr ""
+
+#. translators: %s: a date-range label such as "last 7 days" or "this month".
+#: includes/class-dashboard.php:920
+#, php-format
+msgid "Traffic overview · %s"
+msgstr ""
+
+#. translators: 1: start date (short format), 2: end date (short format, with year).
+#: includes/class-dashboard.php:925
+#, php-format
+msgid "Traffic overview · %1$s – %2$s"
+msgstr ""
+
+#: includes/class-dashboard.php:1356
+msgid "(no path)"
+msgstr ""
+
+#: includes/class-dashboard.php:1989
+#: includes/class-dashboard.php:2108
+msgid "Unknown"
+msgstr ""
+
+#: includes/class-dashboard.php:2102
+#: templates/admin/dashboard-page.php:232
+#: templates/dashboard/pagespeed.php:25
+msgid "Desktop"
+msgstr ""
+
+#: includes/class-dashboard.php:2104
+#: templates/admin/dashboard-page.php:231
+#: templates/dashboard/pagespeed.php:24
+msgid "Mobile"
+msgstr ""
+
+#: includes/class-dashboard.php:2106
+#: templates/admin/dashboard-page.php:233
+msgid "Tablet"
+msgstr ""
+
+#. translators: %s: signed change in visitors
+#: includes/class-dashboard.php:2129
+#, php-format
+msgid "%s visitor vs the prior period"
+msgid_plural "%s visitors vs the prior period"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-dashboard.php:2165
+msgid "No prior-period data"
+msgstr ""
+
+#: includes/class-dashboard.php:2165
+msgid "new"
+msgstr ""
+
+#. translators: 1: signed change, 2: prior-period value
+#: includes/class-dashboard.php:2180
+#, php-format
+msgid "%1$s vs %2$s in the prior period"
+msgstr ""
+
+#: includes/class-drivers.php:384
+msgid "No prior period to compare against yet."
+msgstr ""
+
+#: includes/class-drivers.php:391
+msgid "Pageviews are flat on the same period last year."
+msgstr ""
+
+#: includes/class-drivers.php:392
+msgid "Pageviews are flat on the prior period."
+msgstr ""
+
+#. translators: %d: percentage increase
+#: includes/class-drivers.php:397
+#, php-format
+msgid "Pageviews are up %d%%."
+msgstr ""
+
+#. translators: %d: percentage decrease, without the minus sign
+#: includes/class-drivers.php:399
+#, php-format
+msgid "Pageviews are down %d%%."
+msgstr ""
+
+#. translators: %s: referrer host, e.g. google.com
+#: includes/class-drivers.php:435
+#, php-format
+msgid "Most of the drop is traffic that stopped coming from %s."
+msgstr ""
+
+#. translators: %s: page title
+#: includes/class-drivers.php:437
+#, php-format
+msgid "Most of the drop is %s."
+msgstr ""
+
+#. translators: %s: referrer host
+#: includes/class-drivers.php:442
+#, php-format
+msgid "Most of the rise is new traffic from %s."
+msgstr ""
+
+#. translators: %s: page title
+#: includes/class-drivers.php:444
+#, php-format
+msgid "Most of the rise is %s."
+msgstr ""
+
+#. translators: 1: device type e.g. Mobile, 2: percentage points
+#: includes/class-drivers.php:474
+#, php-format
+msgid "%1$s took %2$s more of the mix."
+msgstr ""
+
+#. translators: 1: device type, 2: percentage points
+#: includes/class-drivers.php:476
+#, php-format
+msgid "%1$s lost %2$s of the mix."
+msgstr ""
+
+#: includes/class-drivers.php:559
+msgid "No pageviews were recorded yesterday, but this site was busy the week before. Tracking may have stopped."
+msgstr ""
+
+#: includes/class-drivers.php:587
+msgid "Every visitor is being recorded as Unknown. Countries will stay empty until geo-location is set up."
+msgstr ""
+
+#. translators: 1: percentage increase, 2: the worst-offending path
+#: includes/class-drivers.php:626
+#, php-format
+msgid "404 errors are up %1$d%%, mostly on %2$s."
+msgstr ""
+
+#. translators: %d: percentage drop, without the minus sign
+#: includes/class-drivers.php:648
+#, php-format
+msgid "Traffic is down %d%% on the prior period, well beyond normal variation."
+msgstr ""
+
+#. translators: %d: percentage rise
+#: includes/class-drivers.php:650
+#, php-format
+msgid "Traffic is up %d%% on the prior period, well beyond normal variation."
+msgstr ""
+
+#: includes/class-email-reports.php:56
+msgid "Daily"
+msgstr ""
+
+#: includes/class-email-reports.php:57
+msgid "Weekly"
+msgstr ""
+
+#: includes/class-email-reports.php:58
+msgid "Monthly"
+msgstr ""
+
+#. translators: Month and year. See https://www.php.net/manual/datetime.format.php
+#: includes/class-email-reports.php:138
+msgctxt "month and year"
+msgid "F Y"
+msgstr ""
+
+#. translators: 1: site name, 2: the day covered.
+#: includes/class-email-reports.php:148
+#, php-format
+msgid "[%1$s] Daily Analytics: %2$s"
+msgstr ""
+
+#. translators: 1: site name, 2: the month covered.
+#: includes/class-email-reports.php:152
+#, php-format
+msgid "[%1$s] Monthly Analytics: %2$s"
+msgstr ""
+
+#. translators: 1: site name, 2: period label.
+#: includes/class-email-reports.php:156
+#, php-format
+msgid "[%1$s] Weekly Analytics: %2$s"
+msgstr ""
+
+#: includes/class-engagement-basics.php:250
+msgid "no views timed yet"
+msgstr ""
+
+#: includes/class-engagement-basics.php:251
+msgid "Time on page is recorded from this update on. A view reports its time when the reader leaves the page, and the next run of the collector records it, so the first figure appears within a few minutes of the first visit."
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:260
+#, php-format
+msgid "timed from %s"
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:262
+#, php-format
+msgid "Time on page has been recorded since %s. This range ends before that, so there is nothing to average."
+msgstr ""
+
+#: includes/class-engagement-basics.php:267
+msgid "no views timed in this range"
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:269
+#, php-format
+msgid "Time on page has been recorded since %s, but no view in this range has reported a time yet. Views report when the reader leaves the page."
+msgstr ""
+
+#: includes/class-engagement-basics.php:289
+msgid "not counted yet"
+msgstr ""
+
+#: includes/class-engagement-basics.php:290
+msgid "Bounce rate starts counting once the update has finished setting up, on the next scheduled run or the next visit to wp-admin."
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:299
+#, php-format
+msgid "starts counting %s"
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:301
+#, php-format
+msgid "Visitors who arrived before this update were already counted, so bounce rate starts with the first full day, %s."
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:308
+#, php-format
+msgid "counted from %s"
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:310
+#, php-format
+msgid "Bounce rate has been counted since %s. This range ends before that."
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:316
+#, php-format
+msgid "counted from %s, no visitors yet"
+msgstr ""
+
+#. translators: %s: a date, such as "Oct 15".
+#: includes/class-engagement-basics.php:318
+#, php-format
+msgid "Bounce rate has been counted since %s. It fills in with the first run of the collector after a visit, within a few minutes."
+msgstr ""
+
+#. translators: %d: a number of seconds.
+#: includes/class-engagement-basics.php:327
+#, php-format
+msgid "%ds"
+msgstr ""
+
+#. translators: 1: minutes, 2: seconds, always two digits.
+#: includes/class-engagement-basics.php:330
+#, php-format
+msgid "%1$dm %2$02ds"
+msgstr ""
+
+#: includes/class-event-detail.php:47
+msgid "Event not found."
+msgstr ""
+
+#. translators: %s: event name
+#: includes/class-event-detail.php:66
+#: templates/dashboard/event-detail.php:59
+#: templates/dashboard/events.php:55
+#, php-format
+msgid "Event · %s"
+msgstr ""
+
+#: includes/class-feedback.php:57
+msgid "Support"
+msgstr ""
+
+#: includes/class-feedback.php:62
+msgid "Rate Vireo"
+msgstr ""
+
+#: includes/class-feedback.php:130
+msgid "You do not have permission to do that."
+msgstr ""
+
+#: includes/class-filters.php:241
+msgid "Hourly traffic is stored for the whole site, so the chart shows days while a filter is on."
+msgstr ""
+
+#: includes/class-filters.php:244
+msgid "Referrers are only recorded per page for posts and pages with an ID, so this page can be filtered on its own but not combined with a source or referrer."
+msgstr ""
+
+#: includes/class-filters.php:247
+msgid "device"
+msgstr ""
+
+#: includes/class-filters.php:248
+msgid "country"
+msgstr ""
+
+#: includes/class-filters.php:249
+msgid "source"
+msgstr ""
+
+#: includes/class-filters.php:250
+msgid "referrer"
+msgstr ""
+
+#: includes/class-filters.php:251
+msgid "page"
+msgstr ""
+
+#. translators: used between the filter names in a list, such as "device, country".
+#: includes/class-filters.php:255
+msgid ", "
+msgstr ""
+
+#. translators: %s: a list of filter names, such as "device, country".
+#: includes/class-filters.php:259
+#, php-format
+msgid "Vireo keeps daily totals per dimension, not per visit, so filtering by %s together cannot be answered exactly."
+msgstr ""
+
+#. translators: %s: a filter name, such as "device".
+#: includes/class-filters.php:262
+#, php-format
+msgid "This breakdown is not stored by %s, so it is not shown while that filter is on."
+msgstr ""
+
+#: includes/class-geo-lookup.php:134
+msgid "The uploads directory is not writable, so the database cannot be saved."
+msgstr ""
+
+#. translators: %s: error detail
+#: includes/class-geo-lookup.php:156
+#, php-format
+msgid "Could not download the database: %s"
+msgstr ""
+
+#: includes/class-geo-lookup.php:162
+msgid "The downloaded database was empty."
+msgstr ""
+
+#: includes/class-geo-lookup.php:167
+msgid "The downloaded database could not be unpacked."
+msgstr ""
+
+#: includes/class-geo-lookup.php:172
+msgid "Could not create the database directory."
+msgstr ""
+
+#: includes/class-geo-lookup.php:183
+msgid "Could not write the database file."
+msgstr ""
+
+#: includes/class-google-auth.php:40
+msgid "That does not look like a service account key file. It should contain client_email and private_key."
+msgstr ""
+
+#: includes/class-google-auth.php:73
+msgid "This server is missing the OpenSSL functions needed to authenticate with Google."
+msgstr ""
+
+#: includes/class-google-auth.php:100
+msgid "Could not sign the request with that key. Check the key file was pasted whole."
+msgstr ""
+
+#: includes/class-google-auth.php:129
+msgid "Google would not issue an access token for that key."
+msgstr ""
+
+#: includes/class-health.php:81
+msgid "The job that records visits is not scheduled"
+msgstr ""
+
+#: includes/class-health.php:82
+msgid "Visits are being written to disk but nothing is moving them into your reports. Deactivating and reactivating the plugin will restore it."
+msgstr ""
+
+#: includes/class-health.php:90
+#: includes/class-health.php:95
+msgid "The recording job is scheduled"
+msgstr ""
+
+#: includes/class-health.php:91
+msgid "WordPress cron is disabled on this site, which is normal on managed hosting: the host runs it externally instead. Recording depends on that continuing to run."
+msgstr ""
+
+#: includes/class-health.php:106
+msgid "Visits have not been recorded yet"
+msgstr ""
+
+#: includes/class-health.php:107
+msgid "This is expected on a new install. If it persists for more than a few minutes, the recording job is not running."
+msgstr ""
+
+#: includes/class-health.php:117
+msgid "Visits stopped being recorded"
+msgstr ""
+
+#. translators: %s: human-readable duration, e.g. "3 hours"
+#: includes/class-health.php:120
+#, php-format
+msgid "The last successful run was %s ago, and it should run every minute. Anything since then is still on disk and will be counted once this clears."
+msgstr ""
+
+#: includes/class-health.php:129
+msgid "Visits are being recorded"
+msgstr ""
+
+#. translators: %s: human-readable duration, e.g. "40 seconds"
+#: includes/class-health.php:132
+#, php-format
+msgid "Last run %s ago."
+msgstr ""
+
+#: includes/class-health.php:150
+msgid "The database is refusing writes"
+msgstr ""
+
+#. translators: 1: reason, 2: number of attempts, 3: database error text
+#: includes/class-health.php:153
+#, php-format
+msgid "%1$s. %2$d attempts have failed. The database reported: %3$s"
+msgstr ""
+
+#: includes/class-health.php:156
+msgid "no detail recorded"
+msgstr ""
+
+#: includes/class-health.php:181
+msgid "Some visits could not be saved"
+msgstr ""
+
+#. translators: %d: number of files
+#: includes/class-health.php:184
+#, php-format
+msgid "%d batch was set aside after repeated database errors. The visits are still on disk and can be replayed once the cause is fixed."
+msgid_plural "%d batches were set aside after repeated database errors. The visits are still on disk and can be replayed once the cause is fixed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-health.php:212
+msgid "Visits are piling up without being saved"
+msgstr ""
+
+#. translators: 1: size, 2: human-readable duration
+#: includes/class-health.php:215
+#, php-format
+msgid "%1$s is waiting on disk, the oldest of it from %2$s ago. Visits are being captured but are not reaching your reports."
+msgstr ""
+
+#: includes/class-health.php:233
+msgid "The data folder is missing"
+msgstr ""
+
+#: includes/class-health.php:234
+msgid "Visits cannot be captured at all until it can be created inside wp-content/uploads."
+msgstr ""
+
+#: includes/class-health.php:243
+msgid "The data folder is not writable"
+msgstr ""
+
+#: includes/class-health.php:244
+msgid "Visits are being discarded as they arrive. Check the folder permissions inside wp-content/uploads."
+msgstr ""
+
+#: includes/class-health.php:248
+msgid "The data folder is writable"
+msgstr ""
+
+#: includes/class-health.php:267
+msgid "The reporting tables are missing"
+msgstr ""
+
+#: includes/class-health.php:268
+msgid "Deactivating and reactivating the plugin will create them."
+msgstr ""
+
+#: includes/class-health.php:279
+msgid "No visits recorded yet"
+msgstr ""
+
+#: includes/class-health.php:280
+msgid "Expected on a new install, or on a site with no traffic since the plugin was activated."
+msgstr ""
+
+#: includes/class-health.php:290
+msgid "Nothing has been recorded for a while"
+msgstr ""
+
+#. translators: %s: date, e.g. "2026-08-07"
+#: includes/class-health.php:293
+#, php-format
+msgid "The most recent day with any data is %s. On a site with regular traffic this means recording has stopped."
+msgstr ""
+
+#: includes/class-health.php:302
+msgid "Reports are up to date"
+msgstr ""
+
+#. translators: %s: date
+#: includes/class-health.php:305
+#, php-format
+msgid "Most recent data: %s."
+msgstr ""
+
+#: includes/class-health.php:328
+#: includes/class-health.php:349
+msgid "Vireo Analytics is recording visits"
+msgstr ""
+
+#: includes/class-health.php:352
+#: includes/class-health.php:371
+#: includes/class-network.php:40
+#: includes/class-network.php:41
+msgid "Analytics"
+msgstr ""
+
+#: includes/class-health.php:355
+msgid "The recording job is scheduled, ran recently, and your reports are up to date."
+msgstr ""
+
+#: includes/class-health.php:367
+msgid "Vireo Analytics has stopped recording visits"
+msgstr ""
+
+#: includes/class-health.php:368
+msgid "Vireo Analytics is recording, with something worth checking"
+msgstr ""
+
+#: includes/class-health.php:402
+msgid "Whether visits are currently being captured and written to the database."
+msgstr ""
+
+#. translators: 1: page title, in quotation marks so a title ending in a full stop still reads as one name; use your language's quotation marks. 2: how many more views it had than the week before
+#: includes/class-highlights.php:66
+#, php-format
+msgid "“%1$s” gained the most, %2$s more view than the week before."
+msgid_plural "“%1$s” gained the most, %2$s more views than the week before."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: referring site, 2: number of views
+#: includes/class-highlights.php:79
+#, php-format
+msgid "%1$s sent visitors for the first time: %2$s views."
+msgstr ""
+
+#. translators: 1: pageviews this week, 2: the previous best week's pageviews
+#: includes/class-highlights.php:333
+#, php-format
+msgid "Your best week so far: %1$s pageviews, ahead of the previous best of %2$s."
+msgstr ""
+
+#. translators: %s: a round number of pageviews such as 10,000
+#: includes/class-highlights.php:346
+#, php-format
+msgid "The site passed %s pageviews in total."
+msgstr ""
+
+#. translators: 1: page title, 2: a round number of views such as 1,000
+#: includes/class-highlights.php:358
+#, php-format
+msgid "%1$s passed %2$s views."
+msgstr ""
+
+#. translators: 1: day of the week, 2: number of views
+#: includes/class-highlights.php:394
+#, php-format
+msgid "%1$s was the busiest day, with %2$s view."
+msgid_plural "%1$s was the busiest day, with %2$s views."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-import-controller.php:250
+#: templates/admin/import-koko.php:21
+msgid "Import from Koko Analytics"
+msgstr ""
+
+#: includes/class-import-controller.php:251
+#: templates/admin/import-jetpack.php:32
+msgid "Import from Jetpack Stats"
+msgstr ""
+
+#: includes/class-import-controller.php:252
+#: templates/admin/import-ga4.php:26
+msgid "Import from Google Analytics 4"
+msgstr ""
+
+#: includes/class-import-controller.php:253
+#: templates/admin/import-plausible.php:40
+msgid "Import from Plausible Analytics"
+msgstr ""
+
+#: includes/class-import-controller.php:254
+#: templates/admin/import-backup.php:24
+msgid "Restore a Vireo Analytics backup"
+msgstr ""
+
+#. translators: %s: name of the analytics plugin being imported from.
+#: includes/class-import-controller.php:265
+#: templates/admin/import-generic.php:25
+#: templates/admin/import-onboarding.php:62
+#: templates/admin/settings-page.php:1098
+#, php-format
+msgid "Import from %s"
+msgstr ""
+
+#: includes/class-import-controller.php:623
+msgid "Unknown importer."
+msgstr ""
+
+#: includes/class-import-controller.php:766
+msgid "Replacing deletes everything Vireo Analytics has recorded here before loading the file. Tick the box to confirm, or choose Merge."
+msgstr ""
+
+#: includes/class-import-controller.php:773
+msgid "Choose the backup file to begin."
+msgstr ""
+
+#: includes/class-import-controller.php:807
+msgid "The saved key has been removed."
+msgstr ""
+
+#: includes/class-import-controller.php:843
+msgid "That key file could not be read. Paste the whole JSON file, including the private key."
+msgstr ""
+
+#: includes/class-import-controller.php:848
+#: includes/class-search-console.php:138
+msgid "Paste the service account key file to begin."
+msgstr ""
+
+#: includes/class-import-controller.php:854
+msgid "Enter the numeric GA4 property ID."
+msgstr ""
+
+#: includes/class-import-controller.php:860
+#: includes/class-import-controller.php:923
+msgid "Choose a start date on or before the end date."
+msgstr ""
+
+#. translators: %s: list of date ranges already imported
+#: includes/class-import-controller.php:877
+#, php-format
+msgid "You have already imported Google Analytics data covering %s. Importing it again adds those numbers on top of the ones already stored, and that cannot be undone. Narrow the dates to what is missing, or tick the box to import anyway."
+msgstr ""
+
+#: includes/class-import-controller.php:917
+#: includes/class-import-controller.php:1048
+msgid "Dates must be in YYYY-MM-DD format."
+msgstr ""
+
+#: includes/class-import-controller.php:930
+msgid "Choose the export file from Plausible to begin."
+msgstr ""
+
+#. translators: %s: list of date ranges already imported
+#: includes/class-import-controller.php:955
+#, php-format
+msgid "You have already imported Plausible data covering %s. Importing it again adds those numbers on top of the ones already stored, and that cannot be undone. Narrow the dates to what is missing, or tick the box to import anyway."
+msgstr ""
+
+#: includes/class-import-controller.php:1029
+msgid "All fields are required."
+msgstr ""
+
+#: includes/class-import-controller.php:1040
+msgid "Invalid Blog URI."
+msgstr ""
+
+#. translators: %s: list of date ranges already imported
+#: includes/class-import-controller.php:1067
+#, php-format
+msgid "You have already imported Jetpack Stats covering %s. Importing it again adds those numbers on top of the ones already stored, and that cannot be undone. Narrow the dates to what is missing, or tick the box to import anyway."
+msgstr ""
+
+#: includes/class-import-controller.php:1115
+msgid "This import screen is out of date. Reload it and start the import again."
+msgstr ""
+
+#. translators: %s: name of the analytics plugin
+#: includes/class-import-controller.php:1153
+#, php-format
+msgid "%s has already been imported. Running it again would count the same history twice, so it needs confirming first. Reload the page to see what was imported."
+msgstr ""
+
+#. translators: 1: date, 2: time, 3: number of days, 4: first day, 5: last day, 6: number of pageviews
+#: includes/class-import-history.php:145
+#, php-format
+msgid "Imported on %1$s at %2$s: %3$s day of history, %4$s to %5$s, %6$s pageviews."
+msgid_plural "Imported on %1$s at %2$s: %3$s days of history, %4$s to %5$s, %6$s pageviews."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: date, 2: time, 3: first day of the range, 4: last day of the range
+#: includes/class-import-history.php:163
+#, php-format
+msgid "Imported on %1$s at %2$s, covering %3$s to %4$s."
+msgstr ""
+
+#. translators: 1: date, 2: time
+#: includes/class-import-history.php:172
+#, php-format
+msgid "Imported on %1$s at %2$s."
+msgstr ""
+
+#: includes/class-import-history.php:184
+msgid "everything available"
+msgstr ""
+
+#: includes/class-insights.php:33
+msgid "Collecting data. Your first pageviews appear within a minute; trends need a day to compare against."
+msgstr ""
+
+#. translators: %s: number of pageviews so far
+#: includes/class-insights.php:37
+#, php-format
+msgid "Collecting data, %s view so far. Trends appear once there is a prior day to compare against."
+msgid_plural "Collecting data, %s views so far. Trends appear once there is a prior day to compare against."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: headline such as "Pageviews are up 18%.", 2: the top page or source
+#: includes/class-insights.php:51
+#, php-format
+msgid "%1$s Mostly %2$s."
+msgstr ""
+
+#. translators: 1: pageviews, 2: the top page or source
+#: includes/class-insights.php:62
+#, php-format
+msgid "Steady, %1$s view, in line with the prior period. Top: %2$s."
+msgid_plural "Steady, %1$s views, in line with the prior period. Top: %2$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: pageviews
+#: includes/class-insights.php:66
+#, php-format
+msgid "Steady, %s view, in line with the prior period."
+msgid_plural "Steady, %s views, in line with the prior period."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: WP RSS Aggregator source ID
+#: includes/class-integrations.php:96
+#, php-format
+msgid "Source #%d"
+msgstr ""
+
+#: includes/class-mainwp.php:179
+msgid "That tool cannot be run on a child site."
+msgstr ""
+
+#: includes/class-mainwp.php:182
+msgid "This site does not have that tool."
+msgstr ""
+
+#: includes/class-mainwp.php:187
+msgid "Only read-only tools can be run on a child site."
+msgstr ""
+
+#: includes/class-mainwp.php:198
+msgid "The tool input is too large."
+msgstr ""
+
+#: includes/class-mainwp.php:202
+msgid "The tool input must be a JSON object."
+msgstr ""
+
+#: includes/class-mcp.php:192
+msgid "Read-only site analytics: traffic, top content, where visitors came from, Google searches, AI assistant traffic, broken links, and what changed since the previous period."
+msgstr ""
+
+#: includes/class-mcp.php:199
+msgid "Revenue, which pages and sources drive sales, campaigns, funnels and real-time visitors need Vireo Pro: https://vireowp.com/pricing/"
+msgstr ""
+
+#: includes/class-network.php:166
+#: includes/class-settings.php:190
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/class-pagespeed.php:97
+#: templates/admin/settings-page.php:872
+msgid "That does not look like a Google API key. It is a single line of letters, numbers, dashes and underscores, usually starting with AIza."
+msgstr ""
+
+#: includes/class-pagespeed.php:167
+#: includes/class-pagespeed.php:235
+msgid "That is not a page address PageSpeed can test."
+msgstr ""
+
+#: includes/class-pagespeed.php:171
+msgid "Only pages on this site can be tested."
+msgstr ""
+
+#: includes/class-pagespeed.php:221
+msgid "PageSpeed can only test pages anyone can open. Publish this post first."
+msgstr ""
+
+#: includes/class-pagespeed.php:300
+msgid "PageSpeed tests need a Google API key. An administrator can add one under Settings, Search Console & API."
+msgstr ""
+
+#: includes/class-pagespeed.php:307
+msgid "A test of this page is already running. Its result shows here when it finishes."
+msgstr ""
+
+#: includes/class-pagespeed.php:359
+msgid "Google did not answer within a minute. Slow pages can take that long. Try again."
+msgstr ""
+
+#. translators: %s: the network error, in English, from the server
+#: includes/class-pagespeed.php:366
+#, php-format
+msgid "Could not reach Google: %s"
+msgstr ""
+
+#: includes/class-pagespeed.php:373
+msgid "PageSpeed runs on Google's servers, which cannot reach a site that is only on your computer or private network."
+msgstr ""
+
+#: includes/class-pagespeed.php:404
+msgid "Google's limit for PageSpeed tests on this API key is used up for now. Try again later, or raise the quota in Google Cloud."
+msgstr ""
+
+#: includes/class-pagespeed.php:408
+msgid "Google rejected the API key. Check it under Settings, Search Console & API."
+msgstr ""
+
+#: includes/class-pagespeed.php:412
+msgid "Google refused the request. Check that the PageSpeed Insights API is enabled in the key's Google Cloud project and that the key's restrictions allow it."
+msgstr ""
+
+#: includes/class-pagespeed.php:416
+#: includes/class-pagespeed.php:448
+msgid "Google's test could not load this page. Check that it is public and opens for logged-out visitors."
+msgstr ""
+
+#: includes/class-pagespeed.php:420
+#: includes/class-pagespeed.php:443
+msgid "PageSpeed Insights sent back a result this version of Vireo cannot read."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/class-pagespeed.php:427
+#, php-format
+msgid "PageSpeed Insights returned an error (HTTP %d). Try again in a few minutes."
+msgstr ""
+
+#: includes/class-pagespeed.php:600
+msgid "Blocking time"
+msgstr ""
+
+#: includes/class-pagespeed.php:602
+msgid "First content"
+msgstr ""
+
+#: includes/class-pagespeed.php:611
+msgid "The lab stand-in for response to clicks. A test cannot click, so it measures how long the page was too busy to respond."
+msgstr ""
+
+#: includes/class-pagespeed.php:613
+msgid "How long until anything appeared."
+msgstr ""
+
+#. translators: %s: a duration, e.g. "0.3s" or "150ms"
+#: includes/class-pagespeed.php:624
+#, php-format
+msgid "Up to %s faster"
+msgstr ""
+
+#: includes/class-pagespeed.php:630
+msgid "Less layout shift"
+msgstr ""
+
+#: includes/class-pagespeed.php:677
+msgid "You are not allowed to run page tests."
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:18
+msgid "Popular posts (Vireo)"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:21
+msgid "Your most viewed posts, from Vireo Analytics."
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:74
+msgid "Popular posts"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:78
+#: blocks/popular-posts/index.js:94
+#: blocks/post-views/index.js:32
+msgid "Last 7 days"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:79
+#: blocks/popular-posts/index.js:95
+#: blocks/post-views/index.js:33
+msgid "Last 30 days"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:80
+#: blocks/popular-posts/index.js:96
+#: blocks/post-views/index.js:34
+msgid "Last 90 days"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:81
+#: blocks/popular-posts/index.js:97
+#: blocks/post-views/index.js:31
+msgid "All time"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:85
+msgid "Title:"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:89
+msgid "Number of posts:"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:93
+msgid "Period:"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:101
+msgid "Post types:"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:114
+msgid "Display:"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:116
+#: blocks/popular-posts/index.js:113
+msgid "List"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:117
+#: blocks/popular-posts/index.js:114
+msgid "List with featured images"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:122
+#: blocks/popular-posts/index.js:124
+msgid "Show view counts"
+msgstr ""
+
+#: includes/class-popular-posts-widget.php:125
+#: blocks/popular-posts/index.js:131
+msgid "Leave out the post being viewed"
+msgstr ""
+
+#. translators: %s: number of pageviews
+#: includes/class-popular-posts.php:481
+#, php-format
+msgid "%s view"
+msgid_plural "%s views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-popular-posts.php:510
+msgid "No popular posts yet. They appear here once Vireo has recorded views for published posts in this period."
+msgstr ""
+
+#: includes/class-post-columns.php:123
+msgid "Views (30d)"
+msgstr ""
+
+#. translators: %s: comment count with its noun, e.g. "3 comments"
+#: includes/class-post-columns.php:141
+#, php-format
+msgid "%s in 30 days"
+msgstr ""
+
+#. translators: %s: post title
+#: includes/class-post-detail.php:83
+#, php-format
+msgid "Post stats · %s"
+msgstr ""
+
+#: includes/class-referrer-detail.php:53
+msgid "Referrer not specified."
+msgstr ""
+
+#. translators: %s: referrer hostname
+#: includes/class-referrer-detail.php:67
+#, php-format
+msgid "Referrer · %s"
+msgstr ""
+
+#: includes/class-rest-api.php:384
+msgid "Invalid start or end date."
+msgstr ""
+
+#: includes/class-rest-api.php:387
+msgid "end must be on or after start."
+msgstr ""
+
+#: includes/class-rest-api.php:595
+msgid "Goal not found."
+msgstr ""
+
+#: includes/class-retention.php:211
+msgid "180 days"
+msgstr ""
+
+#: includes/class-retention.php:212
+msgid "1 year"
+msgstr ""
+
+#: includes/class-retention.php:213
+#: templates/admin/settings-page.php:213
+msgid "2 years"
+msgstr ""
+
+#: includes/class-retention.php:214
+msgid "5 years"
+msgstr ""
+
+#: includes/class-retention.php:215
+msgid "Never purge"
+msgstr ""
+
+#: includes/class-saved-views.php:184
+msgid "Give the view a name."
+msgstr ""
+
+#. translators: %d: the most views one user can keep
+#: includes/class-saved-views.php:196
+#, php-format
+msgid "You can keep up to %d saved views. Delete one to save another."
+msgstr ""
+
+#: includes/class-search-console.php:133
+msgid "Enter the property exactly as Search Console shows it, either a URL or sc-domain:example.com."
+msgstr ""
+
+#: includes/class-search-console.php:226
+msgid "Search Console is not connected yet."
+msgstr ""
+
+#. translators: %s: a date
+#: includes/class-search-console.php:363
+#, php-format
+msgid "Could not store the data for %s. Nothing was lost; run the sync again."
+msgstr ""
+
+#: includes/class-search-console.php:717
+msgid "Google refused the request. Check the service account has access to this Search Console property."
+msgstr ""
+
+#: includes/class-search-console.php:719
+msgid "Search Console has no property with that address. Copy it exactly as it appears there."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/class-search-console.php:726
+#, php-format
+msgid "Search Console returned an unexpected response (HTTP %d)."
+msgstr ""
+
+#: includes/class-search-console.php:733
+msgid "Search Console returned a response we could not read."
+msgstr ""
+
+#: includes/class-settings.php:32
+#: templates/admin/settings-page.php:174
+msgid "General"
+msgstr ""
+
+#: includes/class-settings.php:33
+msgid "Tracking"
+msgstr ""
+
+#: includes/class-settings.php:34
+#: templates/admin/settings-page.php:536
+msgid "Email digest"
+msgstr ""
+
+#: includes/class-settings.php:35
+msgid "Search Console & API"
+msgstr ""
+
+#: includes/class-settings.php:36
+msgid "Import & export"
+msgstr ""
+
+#: includes/class-settings.php:134
+#: templates/admin/settings-page.php:46
+msgid "Vireo Analytics Settings"
+msgstr ""
+
+#: includes/class-settings.php:135
+#: blocks/popular-posts/index.js:80
+#: blocks/post-views/index.js:26
+msgid "Settings"
+msgstr ""
+
+#: includes/class-settings.php:309
+msgid "Settings saved."
+msgstr ""
+
+#: includes/class-settings.php:350
+msgid "Vireo Analytics:"
+msgstr ""
+
+#: includes/class-settings.php:351
+msgid "Geo-location database is missing. Countries will show as unknown until you install it."
+msgstr ""
+
+#: includes/class-settings.php:352
+msgid "Setup instructions"
+msgstr ""
+
+#: includes/class-settings.php:498
+msgid "Nothing was removed. Type the site's name exactly as shown to confirm."
+msgstr ""
+
+#: includes/class-settings.php:622
+msgid "Filtered as bot."
+msgstr ""
+
+#: includes/class-settings.php:623
+msgid "Empty User-Agent is treated as a bot by Bot_Filter::is_bot_request."
+msgstr ""
+
+#: includes/class-settings.php:642
+msgid "Filtered as bot. This request would NOT be tracked."
+msgstr ""
+
+#: includes/class-settings.php:643
+msgid "Would be tracked. This request passes the bot filter."
+msgstr ""
+
+#. translators: %s: substring of the User-Agent that matched the bot regex.
+#: includes/class-settings.php:649
+#, php-format
+msgid "Matched the bot-UA pattern: %s"
+msgstr ""
+
+#: includes/class-settings.php:652
+msgid "Matched via heuristic (e.g. empty UA) rather than the UA regex."
+msgstr ""
+
+#: includes/class-settings.php:653
+msgid "No bot-UA pattern matched, and no Cloudflare bot signals would fire for a typical request."
+msgstr ""
+
+#: includes/class-settings.php:689
+msgid "The front-end address was not saved. Enter the full address of the site, starting with http:// or https://, for example https://www.example.com."
+msgstr ""
+
+#: includes/class-sites.php:270
+msgid "Give the site a name."
+msgstr ""
+
+#: includes/class-sites.php:276
+msgid "Enter the full address of the site, starting with http:// or https://, for example https://www.example.com."
+msgstr ""
+
+#: includes/class-sites.php:280
+msgid "This install has reached its number of connected sites."
+msgstr ""
+
+#: includes/class-sites.php:288
+msgid "That address is already connected."
+msgstr ""
+
+#: includes/class-sites.php:292
+msgid "That address is set as the headless front end. A site is either the front end for this WordPress site or a connected site with its own numbers, not both."
+msgstr ""
+
+#: includes/class-sites.php:296
+msgid "That is this site's own address. Its pages are already counted."
+msgstr ""
+
+#. translators: %s: a duration in seconds, e.g. "2.4"
+#: includes/class-vitals.php:141
+#, php-format
+msgid "%ss"
+msgstr ""
+
+#. translators: %s: a duration in milliseconds
+#: includes/class-vitals.php:148
+#, php-format
+msgid "%sms"
+msgstr ""
+
+#: includes/class-vitals.php:156
+msgid "Load time"
+msgstr ""
+
+#: includes/class-vitals.php:158
+msgid "Response to clicks"
+msgstr ""
+
+#: includes/class-vitals.php:160
+msgid "Layout shift"
+msgstr ""
+
+#: includes/class-vitals.php:172
+msgid "Good"
+msgstr ""
+
+#: includes/class-vitals.php:174
+msgid "Needs work"
+msgstr ""
+
+#: includes/class-vitals.php:176
+msgid "Poor"
+msgstr ""
+
+#: includes/class-vitals.php:185
+msgid "How long until the main content appeared."
+msgstr ""
+
+#: includes/class-vitals.php:187
+msgid "How long the page took to respond when someone interacted with it."
+msgstr ""
+
+#: includes/class-vitals.php:189
+msgid "How much the page moved around while it loaded."
+msgstr ""
+
+#. translators: 1: first month, 2: last month, e.g. "January to April"
+#. translators: 1: start date, 2: end date
+#. translators: 1: start, 2: end
+#: includes/class-year-review.php:291
+#: templates/admin/dashboard-page.php:209
+#: templates/dashboard/event-detail.php:69
+#: templates/dashboard/hero-stats.php:52
+#: templates/dashboard/highlights.php:23
+#: templates/dashboard/year-review.php:30
+#, php-format
+msgid "%1$s to %2$s"
+msgstr ""
+
+#. translators: 1: month or span of months, 2: the tool the history was imported from
+#: includes/class-year-review.php:296
+#, php-format
+msgid "%1$s: imported from %2$s."
+msgstr ""
+
+#. translators: 1: month or span of months, 2: the tool the history was imported from
+#: includes/class-year-review.php:299
+#, php-format
+msgid "%1$s: partly imported from %2$s, partly counted by Vireo Analytics."
+msgstr ""
+
+#. translators: %s: month or span of months
+#: includes/class-year-review.php:302
+#, php-format
+msgid "%s: counted by Vireo Analytics."
+msgstr ""
+
+#. translators: 1: site address, 2: year
+#: includes/class-year-review.php:330
+#, php-format
+msgid "%1$s in %2$s so far"
+msgstr ""
+
+#. translators: 1: site address, 2: year
+#: includes/class-year-review.php:332
+#, php-format
+msgid "%1$s in %2$s"
+msgstr ""
+
+#. translators: %s: number of pageviews
+#: includes/class-year-review.php:337
+#, php-format
+msgid "%s pageview."
+msgid_plural "%s pageviews."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of pageviews, 2: signed percentage such as +12%, 3: the previous year
+#: includes/class-year-review.php:340
+#, php-format
+msgid "%1$s pageviews, %2$s on the same stretch of %3$s."
+msgstr ""
+
+#. translators: 1: number of pageviews, 2: signed percentage such as +12%, 3: the previous year
+#: includes/class-year-review.php:343
+#, php-format
+msgid "%1$s pageviews, %2$s on %3$s."
+msgstr ""
+
+#. translators: 1: month name, 2: date such as "Mar 14", 3: pageviews that day
+#: includes/class-year-review.php:349
+#, php-format
+msgid "Busiest month: %1$s. Busiest day: %2$s, with %3$s pageviews."
+msgstr ""
+
+#. translators: 1: page title, 2: number of pageviews
+#: includes/class-year-review.php:358
+#, php-format
+msgid "Top page: %1$s (%2$s pageviews)."
+msgstr ""
+
+#. translators: 1: referrer name, 2: number of pageviews
+#: includes/class-year-review.php:362
+#, php-format
+msgid "Top referrer: %1$s (%2$s pageviews)."
+msgstr ""
+
+#. translators: %s: country name
+#: includes/class-year-review.php:366
+#, php-format
+msgid "Top country: %s."
+msgstr ""
+
+#. translators: %s: the tools the history was imported from
+#: includes/class-year-review.php:370
+#, php-format
+msgid "Includes history imported from %s."
+msgstr ""
+
+#: includes/va-filters.php:238
+msgid "Home page and archives (imported)"
+msgstr ""
+
+#: includes/va-filters.php:254
+msgid "Google app"
+msgstr ""
+
+#. translators: Short date with year. See https://www.php.net/manual/datetime.format.php
+#: includes/va-tz.php:47
+msgctxt "short date with year"
+msgid "M j, Y"
+msgstr ""
+
+#. translators: Short date without year. See https://www.php.net/manual/datetime.format.php
+#: includes/va-tz.php:50
+msgctxt "short date without year"
+msgid "M j"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:21
+#: templates/dashboard/event-detail.php:17
+msgid "Today"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:22
+#: templates/dashboard/event-detail.php:18
+msgid "Yesterday"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:23
+#: templates/dashboard/detail-range.php:13
+#: templates/dashboard/event-detail.php:19
+msgid "Last 7"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:24
+#: templates/dashboard/event-detail.php:20
+msgid "Last 14"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:25
+#: templates/dashboard/detail-range.php:14
+#: templates/dashboard/event-detail.php:21
+msgid "Last 30"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:26
+#: templates/dashboard/detail-range.php:15
+#: templates/dashboard/event-detail.php:22
+msgid "Last 90"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:27
+#: templates/dashboard/detail-range.php:16
+msgid "This month"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:28
+#: templates/dashboard/detail-range.php:17
+msgid "Last month"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:29
+#: templates/dashboard/detail-range.php:18
+msgid "YTD"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:107
+msgid "Not shown with these filters"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:122
+#: templates/dashboard/hero-stats.php:58
+msgid "Previous period"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:123
+#: templates/dashboard/chart.php:56
+#: templates/dashboard/hero-stats.php:57
+msgid "Same period last year"
+msgstr ""
+
+#. translators: %s: a device type, such as Mobile
+#: templates/admin/dashboard-page.php:132
+#, php-format
+msgid "Device is %s"
+msgstr ""
+
+#. translators: %s: a country name
+#: templates/admin/dashboard-page.php:136
+#, php-format
+msgid "Country is %s"
+msgstr ""
+
+#. translators: %s: a source type, such as Search
+#: templates/admin/dashboard-page.php:147
+#, php-format
+msgid "Source is %s"
+msgstr ""
+
+#. translators: %s: a referrer host, such as google.com
+#: templates/admin/dashboard-page.php:151
+#, php-format
+msgid "Referrer is %s"
+msgstr ""
+
+#. translators: %s: a page title or path
+#: templates/admin/dashboard-page.php:157
+#, php-format
+msgid "Page is %s"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:164
+msgid "Vireo keeps daily totals per dimension, so this cannot be combined with the filters already on."
+msgstr ""
+
+#: templates/admin/dashboard-page.php:191
+#: templates/admin/network-page.php:99
+msgid "Site"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:193
+msgid "This site"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:199
+msgid "Switch"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:225
+msgid "This link asked for a view that has expired, so the default range is shown instead. Dashboard links stop working after about a day. Pick a range below to carry on."
+msgstr ""
+
+#: templates/admin/dashboard-page.php:230
+msgid "All devices"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:235
+msgid "All sources"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:243
+msgid "All countries"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:270
+msgid "Filter:"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:273
+msgid "Device"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:282
+msgid "Country"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:291
+msgid "Source"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:299
+#: templates/admin/dashboard-page.php:421
+msgid "Apply"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:309
+msgid "Remove this filter"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:313
+msgid "Clear all"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:322
+msgid "Saved views"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:324
+msgid "Saved views…"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:332
+msgid "Forget view"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:334
+msgid "Save view"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:337
+msgid "View name"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:338
+msgid "Name this view"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:340
+msgid "Save"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:341
+#: templates/admin/import-backup.php:124
+#: templates/admin/import-ga4.php:133
+#: templates/admin/import-generic.php:105
+#: templates/admin/import-generic.php:115
+#: templates/admin/import-jetpack.php:125
+#: templates/admin/import-koko.php:88
+#: templates/admin/import-koko.php:98
+#: templates/admin/import-plausible.php:174
+msgid "Cancel"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:354
+msgid "Clear the filters"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:357
+msgid "Filters apply to the Overview tab."
+msgstr ""
+
+#: templates/admin/dashboard-page.php:364
+#: templates/admin/dashboard-page.php:372
+#: templates/admin/import-koko.php:53
+#: templates/dashboard/detail-range.php:23
+#: templates/dashboard/event-detail.php:81
+msgid "Date range"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:369
+#: templates/admin/dashboard-page.php:380
+msgid "Custom"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:391
+msgid "Year in review"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:393
+#: templates/dashboard/detail-range.php:31
+msgid "Print / Save as PDF"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:396
+msgid "Compare"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:401
+msgid "Compare with"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:417
+#: templates/admin/settings-page.php:1207
+msgid "Start"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:418
+#: templates/admin/settings-page.php:1210
+msgid "End"
+msgstr ""
+
+#. translators: %s: section name, e.g. Top pages
+#: templates/admin/dashboard-page.php:513
+#, php-format
+msgid "Move %s. Drag, or focus and use the arrow keys."
+msgstr ""
+
+#: templates/admin/dashboard-page.php:532
+msgid "Reset layout"
+msgstr ""
+
+#: templates/admin/dashboard-page.php:625
+msgid "Report sections"
+msgstr ""
+
+#. translators: 1: site address the backup came from, 2: first day, 3: last day, 4: number of rows, 5: "merge" or "replace" in words
+#: templates/admin/import-backup.php:36
+#, php-format
+msgid "Loading the backup of %1$s, %2$s to %3$s, %4$s rows. %5$s"
+msgstr ""
+
+#: templates/admin/import-backup.php:42
+msgid "Everything recorded here is deleted first."
+msgstr ""
+
+#: templates/admin/import-backup.php:43
+msgid "Days in the file replace the same days here; everything else is kept."
+msgstr ""
+
+#: templates/admin/import-backup.php:52
+msgid "Loads a file made with Download backup on another install, or on this one. Everything the reports are built from comes across: daily totals, pages, referrers, countries, devices, events, missing pages, bot traffic, Core Web Vitals, chart notes and the Search Console cache. Settings and connected sites are not in the file."
+msgstr ""
+
+#. translators: %s: link to the settings screen, labelled "Settings, Import & export"
+#: templates/admin/import-backup.php:58
+#, php-format
+msgid "To make the file, open %s on the site you are copying from and use Download backup."
+msgstr ""
+
+#: templates/admin/import-backup.php:59
+msgid "Settings, Import & export"
+msgstr ""
+
+#: templates/admin/import-backup.php:69
+msgid "Backup file (.jsonl.gz or .jsonl)"
+msgstr ""
+
+#. translators: %s: maximum upload size, e.g. 64 MB
+#: templates/admin/import-backup.php:75
+#: templates/admin/import-plausible.php:124
+#, php-format
+msgid "Maximum upload size: %s."
+msgstr ""
+
+#: templates/admin/import-backup.php:83
+msgid "What to do with the numbers already here"
+msgstr ""
+
+#: templates/admin/import-backup.php:86
+msgid "Merge: days in the file replace the same days here, everything else is kept."
+msgstr ""
+
+#: templates/admin/import-backup.php:90
+msgid "Replace: delete everything recorded here first, so this site ends up holding exactly what the file holds."
+msgstr ""
+
+#: templates/admin/import-backup.php:96
+msgid "Replace deletes every report table on this site before loading the file, and that cannot be undone. Download a backup of this site first if there is anything here you might want back."
+msgstr ""
+
+#: templates/admin/import-backup.php:100
+msgid "I understand that everything recorded here will be deleted."
+msgstr ""
+
+#: templates/admin/import-backup.php:105
+msgid "Loading the same file twice gives the same numbers, so a restore that stopped partway can simply be run again."
+msgstr ""
+
+#: templates/admin/import-backup.php:110
+msgid "Earlier restores"
+msgstr ""
+
+#: templates/admin/import-backup.php:121
+msgid "Restore"
+msgstr ""
+
+#: templates/admin/import-backup.php:132
+msgid "Restore progress"
+msgstr ""
+
+#: templates/admin/import-backup.php:144
+#: templates/admin/import-done.php:38
+#: templates/admin/import-generic.php:152
+#: templates/admin/import-koko.php:127
+msgid "View your reports"
+msgstr ""
+
+#. translators: %s: name of the analytics plugin that was imported from.
+#: templates/admin/import-done.php:27
+#, php-format
+msgid "%s history imported"
+msgstr ""
+
+#: templates/admin/import-done.php:34
+msgid "It is part of your Vireo Analytics reports now. Imports cannot be undone, and running this one again would add the same history a second time."
+msgstr ""
+
+#: templates/admin/import-done.php:42
+#: templates/admin/import-generic.php:156
+#: templates/admin/import-koko.php:131
+msgid "Go to Plugins"
+msgstr ""
+
+#: templates/admin/import-ga4.php:35
+msgid "This server is missing the OpenSSL functions needed to authenticate with Google. Ask your host to enable the PHP openssl extension."
+msgstr ""
+
+#: templates/admin/import-ga4.php:42
+msgid "Brings across daily pageviews and visitors, your pages, referrers, which pages each referrer sent readers to, countries, devices, outbound clicks, downloads, form submissions and your own custom events. Everything is stored in your own database, the same as traffic recorded from here on."
+msgstr ""
+
+#: templates/admin/import-ga4.php:46
+#: templates/admin/settings-page.php:765
+msgid "How to get the key file"
+msgstr ""
+
+#: templates/admin/import-ga4.php:47
+#: templates/admin/settings-page.php:766
+msgid "In Google Cloud Console"
+msgstr ""
+
+#: templates/admin/import-ga4.php:49
+#: templates/admin/settings-page.php:768
+msgid "Create a project, or open one you already have."
+msgstr ""
+
+#: templates/admin/import-ga4.php:50
+msgid "Under APIs and services, enable the Google Analytics Data API. The plain Analytics API is a different one and will not work."
+msgstr ""
+
+#: templates/admin/import-ga4.php:51
+msgid "Under IAM and admin, then Service accounts, create a service account. Its address ends in .iam.gserviceaccount.com, and you need that address for the next part."
+msgstr ""
+
+#: templates/admin/import-ga4.php:52
+#: templates/admin/settings-page.php:771
+msgid "Open the service account, go to Keys, add a key, and choose JSON. The file downloads once and Google will not give it to you again."
+msgstr ""
+
+#: templates/admin/import-ga4.php:54
+msgid "In Google Analytics"
+msgstr ""
+
+#: templates/admin/import-ga4.php:56
+msgid "Open Admin, then Property access management, and add the service account address with Viewer access. Grant it on the property you want to import, not on the account."
+msgstr ""
+
+#: templates/admin/import-ga4.php:57
+msgid "Your property ID is the number under Admin, then Property details. It is digits only, not the G- measurement ID."
+msgstr ""
+
+#: templates/admin/import-ga4.php:60
+msgid "Then open the downloaded file in a text editor and paste all of it, braces included, into the box below. The key stays in your database and is only used to ask Google for your own data. It is never sent anywhere else."
+msgstr ""
+
+#: templates/admin/import-ga4.php:69
+#: templates/admin/settings-page.php:813
+msgid "Service account key (JSON)"
+msgstr ""
+
+#: templates/admin/import-ga4.php:71
+#: templates/admin/settings-page.php:816
+msgid "A key is saved. Leave this empty to keep it."
+msgstr ""
+
+#. translators: %s: service account email address
+#: templates/admin/import-ga4.php:77
+#, php-format
+msgid "Using %s. Grant that address Viewer access on the property."
+msgstr ""
+
+#: templates/admin/import-ga4.php:86
+msgid "Property ID"
+msgstr ""
+
+#: templates/admin/import-ga4.php:93
+#: templates/admin/import-jetpack.php:82
+#: templates/admin/import-plausible.php:133
+msgid "Start date"
+msgstr ""
+
+#: templates/admin/import-ga4.php:97
+#: templates/admin/import-jetpack.php:86
+#: templates/admin/import-plausible.php:137
+msgid "End date"
+msgstr ""
+
+#: templates/admin/import-ga4.php:103
+msgid "Importing the same dates twice adds the numbers twice, and that cannot be undone. If a run stops partway, narrow the range to what is missing rather than starting again from the beginning."
+msgstr ""
+
+#: templates/admin/import-ga4.php:113
+#: templates/admin/import-jetpack.php:105
+#: templates/admin/import-plausible.php:154
+#: templates/admin/settings-page.php:1123
+msgid "Already imported"
+msgstr ""
+
+#: templates/admin/import-ga4.php:122
+#: templates/admin/import-jetpack.php:114
+#: templates/admin/import-plausible.php:163
+msgid "Import these dates again anyway, adding to what is already stored."
+msgstr ""
+
+#: templates/admin/import-ga4.php:130
+#: templates/admin/import-generic.php:112
+#: templates/admin/import-jetpack.php:122
+#: templates/admin/import-koko.php:95
+#: templates/admin/import-plausible.php:171
+msgid "Start import"
+msgstr ""
+
+#: templates/admin/import-ga4.php:141
+#: templates/admin/import-generic.php:127
+#: templates/admin/import-jetpack.php:136
+#: templates/admin/import-koko.php:110
+#: templates/admin/import-plausible.php:186
+msgid "Import progress"
+msgstr ""
+
+#: templates/admin/import-ga4.php:157
+msgid "Remove the saved key"
+msgstr ""
+
+#: templates/admin/import-ga4.php:160
+msgid "The key is only needed while importing. Removing it does not affect data already brought across."
+msgstr ""
+
+#. translators: %s: name of the analytics plugin being imported from.
+#: templates/admin/import-generic.php:37
+#, php-format
+msgid "No %s data found in this database. The plugin needs to have been installed on this site and collected some data before there is anything to bring across."
+msgstr ""
+
+#: templates/admin/import-generic.php:45
+#: templates/admin/import-generic.php:118
+#: templates/admin/import-jetpack.php:128
+#: templates/admin/import-koko.php:28
+#: templates/admin/import-koko.php:101
+msgid "Back to import & export"
+msgstr ""
+
+#: templates/admin/import-generic.php:55
+msgid "Records found"
+msgstr ""
+
+#: templates/admin/import-generic.php:62
+#: templates/admin/import-koko.php:61
+msgid "What this does:"
+msgstr ""
+
+#. translators: %s: name of the analytics plugin being imported from.
+#: templates/admin/import-generic.php:66
+#, php-format
+msgid "Copies your history from %s into Vireo Analytics. The source data is read only and is never modified."
+msgstr ""
+
+#: templates/admin/import-generic.php:75
+#: templates/admin/import-koko.php:66
+msgid "Run it once."
+msgstr ""
+
+#: templates/admin/import-generic.php:76
+#: templates/admin/import-koko.php:67
+msgid "An import adds what it reads to what Vireo Analytics already holds, so a second run would count the same history twice. Imports cannot be undone."
+msgstr ""
+
+#: templates/admin/import-generic.php:86
+#: templates/admin/import-koko.php:77
+msgid "Import again anyway"
+msgstr ""
+
+#. translators: %s: name of the analytics plugin being imported from.
+#: templates/admin/import-generic.php:91
+#, php-format
+msgid "Only if Vireo Analytics no longer holds the history from %s, for example after its data was reset. Otherwise every day imported above is counted twice, and there is no way to take it back out."
+msgstr ""
+
+#: templates/admin/import-generic.php:98
+#: templates/admin/import-koko.php:81
+msgid "I understand this adds the same history a second time."
+msgstr ""
+
+#: templates/admin/import-generic.php:102
+#: templates/admin/import-koko.php:85
+msgid "Import again"
+msgstr ""
+
+#. translators: %s: name of the analytics plugin being imported from.
+#: templates/admin/import-generic.php:144
+#, php-format
+msgid "You can deactivate %s whenever you are ready. Vireo Analytics is tracking on its own now."
+msgstr ""
+
+#: templates/admin/import-jetpack.php:41
+msgid "Jetpack isn't active here, so the import uses your WordPress.com API key."
+msgstr ""
+
+#: templates/admin/import-jetpack.php:47
+msgid "Pulls daily pageviews and referrers from the Jetpack / WordPress.com stats API. Country and device data isn't available in this API — Vireo Analytics will start tracking those from installation onward."
+msgstr ""
+
+#: templates/admin/import-jetpack.php:48
+msgid "Jetpack Stats has no visitor counts, so imported days show pageviews only."
+msgstr ""
+
+#: templates/admin/import-jetpack.php:57
+msgid "WordPress.com API key"
+msgstr ""
+
+#: templates/admin/import-jetpack.php:60
+msgid "A key is saved for this import — leave blank to reuse it"
+msgstr ""
+
+#: templates/admin/import-jetpack.php:65
+msgid "Find this under <strong>Jetpack → Settings → Security → Akismet</strong>, or in your WordPress.com account under <strong>Security → Application Passwords</strong>."
+msgstr ""
+
+#: templates/admin/import-jetpack.php:74
+msgid "Blog URI"
+msgstr ""
+
+#: templates/admin/import-jetpack.php:77
+msgid "The domain Jetpack is tracking. Usually your site's host."
+msgstr ""
+
+#: templates/admin/import-jetpack.php:93
+msgid "Re-running is additive."
+msgstr ""
+
+#: templates/admin/import-jetpack.php:94
+msgid "Running the import over an overlapping date range will double-count those days."
+msgstr ""
+
+#: templates/admin/import-koko.php:25
+msgid "No Koko Analytics data found in this database. If you just activated Koko Analytics, let it collect some pageviews first and come back."
+msgstr ""
+
+#: templates/admin/import-koko.php:40
+msgid "Days of data"
+msgstr ""
+
+#: templates/admin/import-koko.php:62
+msgid "Copies Koko's daily rollups into Vireo Analytics's tables. Koko's data is not modified."
+msgstr ""
+
+#: templates/admin/import-koko.php:63
+msgid "Pageviews, visitors, pages and referrers come across. Countries, devices and events from Koko Analytics Pro are not imported."
+msgstr ""
+
+#: templates/admin/import-koko.php:78
+msgid "Only if Vireo Analytics no longer holds the history from Koko Analytics, for example after its data was reset. Otherwise every day imported above is counted twice, and there is no way to take it back out."
+msgstr ""
+
+#: templates/admin/import-koko.php:123
+msgid "You can deactivate Koko Analytics from the Plugins screen when you're ready. Vireo Analytics is tracking on its own now."
+msgstr ""
+
+#: templates/admin/import-onboarding.php:27
+#: templates/dashboard/year-review-notice.php:19
+msgid "Dismiss"
+msgstr ""
+
+#: templates/admin/import-onboarding.php:29
+msgid "Welcome to Vireo Analytics."
+msgstr ""
+
+#. translators: %d: number of days of Koko Analytics data available to import.
+#: templates/admin/import-onboarding.php:37
+#, php-format
+msgid "We found Koko Analytics here with %d day of data. Bring it across in one click, rather than starting at zero."
+msgid_plural "We found Koko Analytics here with %d days of data. Bring it across in one click, rather than starting at zero."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: comma-separated list of analytics plugins found on the site.
+#: templates/admin/import-onboarding.php:49
+#, php-format
+msgid "We found %s on this site. Import that history so your numbers do not start at zero. Your existing data is read only and is never changed."
+msgstr ""
+
+#: templates/admin/import-onboarding.php:72
+msgid "Start fresh"
+msgstr ""
+
+#. translators: 1: first day Vireo Analytics recorded, 2: the day before it
+#: templates/admin/import-own-data.php:26
+#, php-format
+msgid "Vireo Analytics has its own data from %1$s, so the import stops on %2$s. Days from %1$s on keep the counts Vireo recorded."
+msgstr ""
+
+#. translators: %s: first day Vireo Analytics recorded
+#: templates/admin/import-own-data.php:37
+#, php-format
+msgid "Also import %s onwards. Those days already hold what Vireo counted, so the imported numbers are added on top and the days are counted twice."
+msgstr ""
+
+#: templates/admin/import-plausible.php:22
+msgid "daily visitors and pageviews"
+msgstr ""
+
+#: templates/admin/import-plausible.php:26
+msgid "device types"
+msgstr ""
+
+#: templates/admin/import-plausible.php:27
+msgid "entry pages"
+msgstr ""
+
+#: templates/admin/import-plausible.php:28
+msgid "exit pages"
+msgstr ""
+
+#: templates/admin/import-plausible.php:29
+msgid "browsers"
+msgstr ""
+
+#: templates/admin/import-plausible.php:30
+msgid "operating systems"
+msgstr ""
+
+#: templates/admin/import-plausible.php:31
+msgid "goals and custom events"
+msgstr ""
+
+#: templates/admin/import-plausible.php:32
+msgid "custom properties"
+msgstr ""
+
+#: templates/admin/import-plausible.php:33
+msgid "referrers, which this export names without their addresses"
+msgstr ""
+
+#. translators: 1: start date, 2: end date, 3: list of reports
+#: templates/admin/import-plausible.php:52
+#, php-format
+msgid "Importing %1$s to %2$s: %3$s."
+msgstr ""
+
+#. translators: %s: list of reports
+#: templates/admin/import-plausible.php:64
+#, php-format
+msgid "Not imported, because Vireo Analytics has nowhere to keep them: %s."
+msgstr ""
+
+#: templates/admin/import-plausible.php:86
+msgid "Import another export"
+msgstr ""
+
+#: templates/admin/import-plausible.php:87
+msgid "For an export covering dates not imported yet. Dates already imported are refused unless you confirm them below."
+msgstr ""
+
+#: templates/admin/import-plausible.php:91
+msgid "Brings across daily pageviews and visitors, your pages, referrers, countries, device types, and goals and custom events from a Plausible export. Outbound link clicks, file downloads and form submissions become the same events Vireo Analytics records itself, and 404 events are listed under missing pages. Browsers and operating systems are not imported: Plausible exports them separately from device type, and Vireo Analytics stores the three together, so for imported days they show as Unknown."
+msgstr ""
+
+#: templates/admin/import-plausible.php:95
+msgid "How to get the export"
+msgstr ""
+
+#: templates/admin/import-plausible.php:97
+msgid "In Plausible, open the site, then Site settings, then Imports & Exports."
+msgstr ""
+
+#: templates/admin/import-plausible.php:98
+msgid "Under Export data, start an export. Plausible emails a link to a zip file when it is ready."
+msgstr ""
+
+#: templates/admin/import-plausible.php:99
+msgid "Download the zip and upload it here as it is. If you have already unzipped it, select the CSV files instead."
+msgstr ""
+
+#: templates/admin/import-plausible.php:102
+msgid "The file is read once and deleted. Nothing is sent to Plausible and no account details are needed."
+msgstr ""
+
+#: templates/admin/import-plausible.php:117
+msgid "Plausible export (.zip or .csv files)"
+msgstr ""
+
+#: templates/admin/import-plausible.php:141
+msgid "Optional. Leave both empty to import every day in the export."
+msgstr ""
+
+#: templates/admin/import-plausible.php:146
+msgid "Importing the same dates twice adds the numbers twice, and that cannot be undone. If a run stops partway, set the dates to what is missing rather than starting again from the beginning."
+msgstr ""
+
+#: templates/admin/network-page.php:25
+msgid "Analytics across the network"
+msgstr ""
+
+#. translators: %d: number of days
+#: templates/admin/network-page.php:34
+#, php-format
+msgid "Last %d day"
+msgid_plural "Last %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/network-page.php:43
+msgid "Refresh"
+msgstr ""
+
+#. translators: 1: sites read, 2: sites on the network
+#: templates/admin/network-page.php:53
+#, php-format
+msgid "This network has more sites than one page can query. Showing the first %1$s of %2$s."
+msgstr ""
+
+#: templates/admin/network-page.php:63
+msgid "No site on the network has recorded anything yet."
+msgstr ""
+
+#. translators: 1: pageview count with its noun, 2: visitor count with its noun, 3: site count with its noun, 4: start date, 5: end date
+#: templates/admin/network-page.php:72
+#, php-format
+msgid "%1$s and %2$s across %3$s, %4$s to %5$s."
+msgstr ""
+
+#. translators: %s: pageview count.
+#. translators: %s: number of pageviews
+#: templates/admin/network-page.php:75
+#: templates/dashboard/year-review.php:159
+#: assets/js/dashboard.js:178
+#, php-format,js-format
+msgid "%s pageview"
+msgid_plural "%s pageviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: visitor count.
+#: templates/admin/network-page.php:80
+#: assets/js/dashboard.js:182
+#: assets/js/dashboard.js:614
+#, php-format,js-format
+msgid "%s visitor"
+msgid_plural "%s visitors"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: site count.
+#: templates/admin/network-page.php:86
+#, php-format
+msgid "%s site"
+msgid_plural "%s sites"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/network-page.php:116
+msgid "Open"
+msgstr ""
+
+#: templates/admin/network-page.php:125
+msgid "Totals are cached for fifteen minutes, since each one is a separate query against that site."
+msgstr ""
+
+#: templates/admin/settings-page.php:22
+msgid "Monday"
+msgstr ""
+
+#: templates/admin/settings-page.php:23
+msgid "Tuesday"
+msgstr ""
+
+#: templates/admin/settings-page.php:24
+msgid "Wednesday"
+msgstr ""
+
+#: templates/admin/settings-page.php:25
+msgid "Thursday"
+msgstr ""
+
+#: templates/admin/settings-page.php:26
+msgid "Friday"
+msgstr ""
+
+#: templates/admin/settings-page.php:27
+msgid "Saturday"
+msgstr ""
+
+#: templates/admin/settings-page.php:28
+msgid "Sunday"
+msgstr ""
+
+#. translators: %s: email address the test was sent to.
+#: templates/admin/settings-page.php:59
+#, php-format
+msgid "WordPress handed the test email for %s to your server's mail system."
+msgstr ""
+
+#: templates/admin/settings-page.php:62
+msgid "If it has not arrived within a few minutes, check your spam folder. If it is not there either, your host is not delivering mail sent from WordPress, which affects password resets and every other email the site sends. An SMTP plugin such as WP Mail SMTP or FluentSMTP usually fixes it."
+msgstr ""
+
+#. translators: %s: email address the test was sent to.
+#: templates/admin/settings-page.php:73
+#, php-format
+msgid "WordPress could not send the test email to %s."
+msgstr ""
+
+#. translators: %s: error message returned by the mail system.
+#: templates/admin/settings-page.php:80
+#, php-format
+msgid "The mail system said: %s"
+msgstr ""
+
+#: templates/admin/settings-page.php:84
+msgid "This is a problem with how the site sends mail, not with the digest. An SMTP plugin such as WP Mail SMTP or FluentSMTP usually fixes it."
+msgstr ""
+
+#: templates/admin/settings-page.php:87
+msgid "Email reports class is not loaded."
+msgstr ""
+
+#: templates/admin/settings-page.php:96
+msgid "Country database installed. Countries will resolve from now on."
+msgstr ""
+
+#: templates/admin/settings-page.php:101
+msgid "The country database could not be installed."
+msgstr ""
+
+#: templates/admin/settings-page.php:110
+msgid "Site connected. Paste its tag into the site and its visits will start showing on the dashboard."
+msgstr ""
+
+#: templates/admin/settings-page.php:112
+msgid "Site removed, along with everything recorded for it."
+msgstr ""
+
+#: templates/admin/settings-page.php:117
+msgid "That did not work."
+msgstr ""
+
+#. translators: %s: number of removed daily country rows.
+#: templates/admin/settings-page.php:131
+#, php-format
+msgid "%s stored day removed from the countries report."
+msgid_plural "%s stored days removed from the countries report."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/settings-page.php:158
+msgid "Settings sections"
+msgstr ""
+
+#: templates/admin/settings-page.php:177
+msgid "Do not count"
+msgstr ""
+
+#: templates/admin/settings-page.php:184
+msgid "Roles whose visits are not counted"
+msgstr ""
+
+#: templates/admin/settings-page.php:196
+msgid "Visits from people logged in with a ticked role are left out of every report. Administrators are ticked by default so your own browsing does not pollute the stats; tick editors, authors or shop managers to leave out the rest of the team."
+msgstr ""
+
+#: templates/admin/settings-page.php:200
+msgid "Toolbar"
+msgstr ""
+
+#: templates/admin/settings-page.php:204
+msgid "Show today's pageviews in the admin toolbar."
+msgstr ""
+
+#: templates/admin/settings-page.php:209
+msgid "Data retention"
+msgstr ""
+
+#. translators: %d: number of days.
+#: templates/admin/settings-page.php:227
+#, php-format
+msgid "Custom (%d day)"
+msgid_plural "Custom (%d days)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/settings-page.php:233
+msgid "Rows in daily rollup tables older than this are purged by a daily cron job."
+msgstr ""
+
+#. translators: 1: disk usage in MB, 2: number of tables.
+#: templates/admin/settings-page.php:237
+#, php-format
+msgid "Current usage: %1$s MB across %2$d analytics table."
+msgid_plural "Current usage: %1$s MB across %2$d analytics tables."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/settings-page.php:244
+msgid "Who can see the numbers"
+msgstr ""
+
+#: templates/admin/settings-page.php:248
+msgid "Roles with access"
+msgstr ""
+
+#: templates/admin/settings-page.php:256
+msgid "Roles that can view analytics"
+msgstr ""
+
+#: templates/admin/settings-page.php:264
+msgid "Administrator"
+msgstr ""
+
+#: templates/admin/settings-page.php:266
+msgid "(always)"
+msgstr ""
+
+#: templates/admin/settings-page.php:267
+msgid "Administrators can always read the dashboard. This cannot be changed."
+msgstr ""
+
+#: templates/admin/settings-page.php:283
+msgid "Lets someone read the dashboard without making them an administrator. Changing settings, running imports and everything destructive still needs full administrator rights."
+msgstr ""
+
+#: templates/admin/settings-page.php:291
+msgid "Headless front end"
+msgstr ""
+
+#: templates/admin/settings-page.php:292
+msgid "If this WordPress site is only the editor and another site (Astro, Next.js, anything else) shows the pages to readers, enter that site's address. Its pages can then send pageviews here, and each one is matched to the WordPress post it shows."
+msgstr ""
+
+#: templates/admin/settings-page.php:300
+msgid "Front-end site address"
+msgstr ""
+
+#: templates/admin/settings-page.php:303
+msgid "The address readers see in their browser, including https://. One site; pageviews sent from any other address are refused. Leave empty if this WordPress site serves its own pages."
+msgstr ""
+
+#: templates/admin/settings-page.php:308
+msgid "Add to the front end"
+msgstr ""
+
+#: templates/admin/settings-page.php:310
+msgid "Paste this before </body> on every page. Pages that know their WordPress post can add <meta name=\"vireo:post-id\" content=\"123\">; for a site that changes pages without reloading, add data-spa=\"history\" to the tag."
+msgstr ""
+
+#. translators: %s: the URL beacons are sent to.
+#: templates/admin/settings-page.php:315
+#, php-format
+msgid "Pageviews are sent to %s. Pages are matched to posts by their path, so a front end that keeps the WordPress permalink structure needs nothing else; the vireo_headless_post_id filter maps anything that differs."
+msgstr ""
+
+#: templates/admin/settings-page.php:321
+msgid "What this cannot see"
+msgstr ""
+
+#: templates/admin/settings-page.php:323
+msgid "Crawlers and AI bots are counted when they request a page from this WordPress site. Requests they make to the front end never reach it, so the crawler figures on the dashboard cover WordPress only; your front-end host's logs have the rest."
+msgstr ""
+
+#: templates/admin/settings-page.php:324
+msgid "Connect Search Console for the front-end address, since that is the site Google indexes. Core Web Vitals are not collected from the front end in this version."
+msgstr ""
+
+#: templates/admin/settings-page.php:330
+msgid "Exclusions"
+msgstr ""
+
+#: templates/admin/settings-page.php:331
+msgid "Skip pageviews from known bots, your own IPs, or internal paths. Bot UAs are filtered automatically; these rules run on top."
+msgstr ""
+
+#: templates/admin/settings-page.php:334
+msgid "Excluded IPs / CIDR"
+msgstr ""
+
+#: templates/admin/settings-page.php:337
+msgid "One entry per line. IPv4, IPv6, and CIDR ranges are supported."
+msgstr ""
+
+#: templates/admin/settings-page.php:341
+msgid "Excluded paths"
+msgstr ""
+
+#: templates/admin/settings-page.php:344
+msgid "One path pattern per line. Use <code>*</code> for any chars except <code>/</code>, <code>**</code> for any chars."
+msgstr ""
+
+#: templates/admin/settings-page.php:349
+msgid "Blocked referrers"
+msgstr ""
+
+#: templates/admin/settings-page.php:350
+msgid "Sites whose visits are filtered like bots and hidden from reports. Known referrer spam is blocked already; these are the ones you added from a referrer row."
+msgstr ""
+
+#: templates/admin/settings-page.php:353
+msgid "Blocked hosts"
+msgstr ""
+
+#: templates/admin/settings-page.php:356
+msgid "One host per line; subdomains are included. Remove a line to unblock it. Blocking stops counting from now on and hides earlier rows; nothing is deleted."
+msgstr ""
+
+#: templates/admin/settings-page.php:361
+msgid "Geo-location"
+msgstr ""
+
+#: templates/admin/settings-page.php:364
+#: templates/admin/settings-page.php:1198
+msgid "Countries"
+msgstr ""
+
+#: templates/admin/settings-page.php:369
+msgid "Resolving"
+msgstr ""
+
+#. translators: %s: the visitor country code the host reported, e.g. US.
+#: templates/admin/settings-page.php:373
+#, php-format
+msgid "Your host or CDN already tells us each visitor's country (it reported %s for this request), so countries resolve automatically. No database needed."
+msgstr ""
+
+#: templates/admin/settings-page.php:379
+msgid "Installed"
+msgstr ""
+
+#: templates/admin/settings-page.php:380
+msgid "Country lookups run against the local database on this server."
+msgstr ""
+
+#: templates/admin/settings-page.php:383
+msgid "Geolocation by <a href=\"https://db-ip.com\" target=\"_blank\" rel=\"noopener\">DB-IP</a>."
+msgstr ""
+
+#: templates/admin/settings-page.php:389
+msgid "Not resolving"
+msgstr ""
+
+#: templates/admin/settings-page.php:390
+msgid "Every visitor is recorded as unknown until a country source is available. The one-click database below fixes it."
+msgstr ""
+
+#: templates/admin/settings-page.php:393
+msgid "Download country database"
+msgstr ""
+
+#: templates/admin/settings-page.php:396
+msgid "Free, no account, installed for you. Data by <a href=\"https://db-ip.com\" target=\"_blank\" rel=\"noopener\">DB-IP</a> (CC BY 4.0)."
+msgstr ""
+
+#: templates/admin/settings-page.php:400
+msgid "Prefer MaxMind GeoLite2? (manual)"
+msgstr ""
+
+#: templates/admin/settings-page.php:402
+msgid "Create a free account at <a href=\"https://www.maxmind.com/en/geolite2/signup\" target=\"_blank\" rel=\"noopener\">maxmind.com</a> and generate a license key."
+msgstr ""
+
+#: templates/admin/settings-page.php:403
+msgid "Download <code>GeoLite2-Country.mmdb</code> (the Country edition is enough)."
+msgstr ""
+
+#. translators: %s: filesystem path.
+#: templates/admin/settings-page.php:407
+#, php-format
+msgid "Upload it to <code>%s/</code> on this server."
+msgstr ""
+
+#: templates/admin/settings-page.php:411
+msgid "MaxMind requires an account and prohibits automatic downloads, which is why it is manual."
+msgstr ""
+
+#: templates/admin/settings-page.php:418
+msgid "Excluded countries"
+msgstr ""
+
+#: templates/admin/settings-page.php:422
+msgid "One two-letter country code per line. Traffic from these countries is discarded instead of counted, the same as an excluded IP. Bots that announce themselves are already filtered; this is for the traffic that does not."
+msgstr ""
+
+#: templates/admin/settings-page.php:425
+msgid "Needs the country to be known, so it requires either a host that resolves it or the database above."
+msgstr ""
+
+#: templates/admin/settings-page.php:428
+msgid "Excluding a country stops it being counted from now on. It does not remove what was counted before, so a report covering earlier dates still shows it."
+msgstr ""
+
+#. translators: %s: comma-separated list of two-letter country codes.
+#: templates/admin/settings-page.php:448
+#, php-format
+msgid "Remove stored data for %s"
+msgstr ""
+
+#: templates/admin/settings-page.php:454
+msgid "Clears them from the countries report. Pageview and visitor totals keep those visits, because nothing else records which country a visit came from."
+msgstr ""
+
+#: templates/admin/settings-page.php:473
+msgid "Auto-events"
+msgstr ""
+
+#: templates/admin/settings-page.php:474
+msgid "Record common clicks and form sends as events, with no code to add. Each one shows up on the Campaigns tab."
+msgstr ""
+
+#: templates/admin/settings-page.php:477
+msgid "File downloads"
+msgstr ""
+
+#: templates/admin/settings-page.php:481
+msgid "Record clicks on links to files (PDF, ZIP, DOC, MP3, MP4, etc.)."
+msgstr ""
+
+#: templates/admin/settings-page.php:483
+msgid "Fires a \"download\" event with the filename as the value."
+msgstr ""
+
+#: templates/admin/settings-page.php:487
+msgid "Form submissions"
+msgstr ""
+
+#: templates/admin/settings-page.php:491
+msgid "Record every form submit."
+msgstr ""
+
+#: templates/admin/settings-page.php:493
+msgid "Fires a \"form_submit\" event with the form id, name, or action URL."
+msgstr ""
+
+#: templates/admin/settings-page.php:497
+msgid "Email links"
+msgstr ""
+
+#: templates/admin/settings-page.php:501
+msgid "Record clicks on mailto: links."
+msgstr ""
+
+#: templates/admin/settings-page.php:503
+msgid "Only the part after the @ is kept, so no email address is stored."
+msgstr ""
+
+#: templates/admin/settings-page.php:507
+msgid "Phone links"
+msgstr ""
+
+#: templates/admin/settings-page.php:511
+msgid "Record clicks on tel: links."
+msgstr ""
+
+#: templates/admin/settings-page.php:516
+msgid "Outbound links"
+msgstr ""
+
+#: templates/admin/settings-page.php:520
+msgid "Record clicks on links to external domains."
+msgstr ""
+
+#: templates/admin/settings-page.php:523
+msgid "Pro records outbound clicks with more detail, so this option is off to avoid counting each click twice."
+msgstr ""
+
+#: templates/admin/settings-page.php:525
+msgid "Fires an \"outbound\" event with the external host as the value."
+msgstr ""
+
+#: templates/admin/settings-page.php:537
+msgid "The last day, week or month in one email: top pages, referrers and countries. It's built on your server and sent with your site's own mail."
+msgstr ""
+
+#: templates/admin/settings-page.php:540
+msgid "Enable"
+msgstr ""
+
+#: templates/admin/settings-page.php:544
+msgid "Send the digest"
+msgstr ""
+
+#: templates/admin/settings-page.php:549
+msgid "Frequency"
+msgstr ""
+
+#: templates/admin/settings-page.php:558
+msgid "Every morning, covering the day before."
+msgstr ""
+
+#: templates/admin/settings-page.php:559
+msgid "Once a week, covering the last seven full days."
+msgstr ""
+
+#: templates/admin/settings-page.php:560
+msgid "On the first of each month, covering the month before."
+msgstr ""
+
+#: templates/admin/settings-page.php:565
+msgid "Recipients"
+msgstr ""
+
+#. translators: %s: site admin email.
+#: templates/admin/settings-page.php:571
+#, php-format
+msgid "One email per line. Leave blank to fall back to the site admin (%s)."
+msgstr ""
+
+#: templates/admin/settings-page.php:577
+msgid "When"
+msgstr ""
+
+#: templates/admin/settings-page.php:590
+#: templates/dashboard/chart.php:88
+msgid "Hour"
+msgstr ""
+
+#. translators: %s: site timezone string.
+#: templates/admin/settings-page.php:601
+#, php-format
+msgid "Site timezone (%s)."
+msgstr ""
+
+#: templates/admin/settings-page.php:610
+msgid "Save settings"
+msgstr ""
+
+#: templates/admin/settings-page.php:615
+msgid "Connected sites"
+msgstr ""
+
+#: templates/admin/settings-page.php:616
+msgid "Count visits to other sites you run, whether or not they use WordPress: a static site, a docs site, a landing page. Each connected site keeps its own numbers, and the dashboard switches between them. Unlike the headless front end above, its pages are not matched to posts here."
+msgstr ""
+
+#: templates/admin/settings-page.php:627
+msgid "Paste this before </body> on every page of the site. The second line collects Core Web Vitals and can be left out. For a site that changes pages without reloading, add data-spa=\"history\" to the first tag."
+msgstr ""
+
+#. translators: %s: the site's address.
+#: templates/admin/settings-page.php:632
+#, php-format
+msgid "Pageviews are accepted only when the browser sends them from %s, so the tag records nothing if it is pasted anywhere else."
+msgstr ""
+
+#: templates/admin/settings-page.php:639
+msgid "Remove this site…"
+msgstr ""
+
+#. translators: %s: the site's name.
+#: templates/admin/settings-page.php:644
+#, php-format
+msgid "This deletes every number recorded for %s. There is no undo. Type the site's name to confirm."
+msgstr ""
+
+#: templates/admin/settings-page.php:648
+#: templates/admin/settings-page.php:664
+msgid "Site name"
+msgstr ""
+
+#: templates/admin/settings-page.php:651
+msgid "Remove site and its data"
+msgstr ""
+
+#: templates/admin/settings-page.php:652
+msgid "Keep it"
+msgstr ""
+
+#: templates/admin/settings-page.php:665
+msgid "Docs site"
+msgstr ""
+
+#: templates/admin/settings-page.php:668
+msgid "Site address"
+msgstr ""
+
+#: templates/admin/settings-page.php:671
+msgid "The address readers see in their browser, including https://. Visits sent from any other address are refused."
+msgstr ""
+
+#: templates/admin/settings-page.php:675
+msgid "Connect site"
+msgstr ""
+
+#. translators: %d: how many connected sites this install allows.
+#: templates/admin/settings-page.php:683
+#, php-format
+msgid "This install allows %d connected site."
+msgid_plural "This install allows %d connected sites."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/settings-page.php:693
+msgid "Bot filter test"
+msgstr ""
+
+#: templates/admin/settings-page.php:695
+msgid "Paste a User-Agent to see whether Vireo Analytics would filter it as a bot. Useful when debugging why a visitor (or monitoring tool) isn't showing up in stats."
+msgstr ""
+
+#: templates/admin/settings-page.php:698
+msgid "User-Agent"
+msgstr ""
+
+#: templates/admin/settings-page.php:701
+msgid "Test User-Agent"
+msgstr ""
+
+#: templates/admin/settings-page.php:711
+msgid "Test email"
+msgstr ""
+
+#. translators: %s: current user email.
+#: templates/admin/settings-page.php:716
+#, php-format
+msgid "Sends the digest for the last finished period to %s right now (bypasses the schedule)."
+msgstr ""
+
+#: templates/admin/settings-page.php:722
+msgid "Send test email"
+msgstr ""
+
+#: templates/admin/settings-page.php:727
+msgid "Search Console"
+msgstr ""
+
+#: templates/admin/settings-page.php:745
+msgid "Search Console connected. The first sync runs shortly."
+msgstr ""
+
+#: templates/admin/settings-page.php:750
+msgid "The last week is in. Older history is loading in the background a couple of weeks at a time, and should be complete in a few minutes."
+msgstr ""
+
+#: templates/admin/settings-page.php:752
+msgid "Search Console data refreshed."
+msgstr ""
+
+#: templates/admin/settings-page.php:757
+msgid "Search Console disconnected."
+msgstr ""
+
+#: templates/admin/settings-page.php:761
+msgid "Brings in the searches people ran before they arrived. Google strips the query from the referrer, so this is the only place it exists. Uses the same kind of service account key as the Analytics importer, with read-only access."
+msgstr ""
+
+#: templates/admin/settings-page.php:769
+msgid "Under APIs and services, enable the Google Search Console API."
+msgstr ""
+
+#: templates/admin/settings-page.php:770
+msgid "Under IAM and admin, then Service accounts, create a service account. Its address ends in .iam.gserviceaccount.com. You need that address for the next part."
+msgstr ""
+
+#: templates/admin/settings-page.php:773
+msgid "In Search Console"
+msgstr ""
+
+#: templates/admin/settings-page.php:775
+msgid "Open Settings, then Users and permissions, and add the service account address with Restricted access."
+msgstr ""
+
+#: templates/admin/settings-page.php:776
+msgid "Copy the property exactly as Search Console lists it. A domain property looks like sc-domain:example.com. A URL-prefix property is the full address including https:// and any trailing slash. The two are different properties and the wrong one returns nothing."
+msgstr ""
+
+#: templates/admin/settings-page.php:778
+msgid "Then open the downloaded file in a text editor and paste all of it, braces included, into the box below."
+msgstr ""
+
+#. translators: %s: error message from Google
+#: templates/admin/settings-page.php:787
+#, php-format
+msgid "The last sync failed: %s"
+msgstr ""
+
+#. translators: 1: human-readable duration, 2: first date, 3: last date
+#: templates/admin/settings-page.php:798
+#, php-format
+msgid "Last refreshed %1$s ago, covering %2$s to %3$s."
+msgstr ""
+
+#. translators: %s: service account email address
+#: templates/admin/settings-page.php:822
+#, php-format
+msgid "Add %s as a user on the property in Search Console, with Restricted access."
+msgstr ""
+
+#: templates/admin/settings-page.php:831
+msgid "Property"
+msgstr ""
+
+#: templates/admin/settings-page.php:837
+msgid "Copy it exactly as Search Console shows it. A domain property looks like sc-domain:example.com."
+msgstr ""
+
+#: templates/admin/settings-page.php:843
+msgid "Save Search Console settings"
+msgstr ""
+
+#: templates/admin/settings-page.php:851
+msgid "Fetch the last 90 days"
+msgstr ""
+
+#: templates/admin/settings-page.php:857
+msgid "Disconnect"
+msgstr ""
+
+#: templates/admin/settings-page.php:861
+msgid "PageSpeed Insights"
+msgstr ""
+
+#: templates/admin/settings-page.php:870
+msgid "API key saved. Tests now run from the dashboard and show their results there."
+msgstr ""
+
+#: templates/admin/settings-page.php:874
+msgid "API key removed."
+msgstr ""
+
+#: templates/admin/settings-page.php:878
+msgid "The Page speed tab and each post's stats have a button for Google's lab test. Without a key it opens the test on the PageSpeed Insights website. With your own free Google API key, the test runs from here and the results show on the dashboard, next to the speed your real visitors got. A test only runs when someone presses the button."
+msgstr ""
+
+#. translators: %s: link to Google Cloud console, text "Create a Google Cloud project"
+#: templates/admin/settings-page.php:891
+#, php-format
+msgid "%s, or pick one you already have. Any name works."
+msgstr ""
+
+#: templates/admin/settings-page.php:892
+msgid "Create a Google Cloud project"
+msgstr ""
+
+#. translators: %s: link to the API's page in Google Cloud console, text "Enable the PageSpeed Insights API"
+#: templates/admin/settings-page.php:900
+#, php-format
+msgid "%s for that project."
+msgstr ""
+
+#: templates/admin/settings-page.php:901
+msgid "Enable the PageSpeed Insights API"
+msgstr ""
+
+#. translators: %s: link to the Credentials page in Google Cloud console, text "Credentials"
+#: templates/admin/settings-page.php:909
+#, php-format
+msgid "On the %s page, choose Create credentials, then API key."
+msgstr ""
+
+#: templates/admin/settings-page.php:910
+msgid "Credentials"
+msgstr ""
+
+#: templates/admin/settings-page.php:914
+msgid "Open the new key. Under API restrictions, choose Restrict key, select PageSpeed Insights API, and save."
+msgstr ""
+
+#: templates/admin/settings-page.php:915
+msgid "Copy the key and paste it below."
+msgstr ""
+
+#: templates/admin/settings-page.php:924
+msgid "Google API key (optional)"
+msgstr ""
+
+#: templates/admin/settings-page.php:927
+msgid "A key is saved."
+msgstr ""
+
+#: templates/admin/settings-page.php:932
+msgid "Save API key"
+msgstr ""
+
+#: templates/admin/settings-page.php:939
+msgid "Remove API key"
+msgstr ""
+
+#: templates/admin/settings-page.php:943
+msgid "REST API"
+msgstr ""
+
+#: templates/admin/settings-page.php:946
+msgid "Endpoints and an example request"
+msgstr ""
+
+#: templates/admin/settings-page.php:948
+msgid "Read-only endpoints under /wp-json/vireo-analytics/v1. Authenticate with WordPress Application Passwords or a logged-in session nonce. Requires the view_vireo_analytics capability."
+msgstr ""
+
+#: templates/admin/settings-page.php:957
+msgid "Base URL"
+msgstr ""
+
+#: templates/admin/settings-page.php:963
+msgid "Endpoints"
+msgstr ""
+
+#: templates/admin/settings-page.php:989
+msgid "Example"
+msgstr ""
+
+#: templates/admin/settings-page.php:998
+msgid "Connect an AI assistant"
+msgstr ""
+
+#: templates/admin/settings-page.php:1000
+msgid "Ask Claude, Cursor or any other MCP client about this site's traffic in plain language: what changed this week, which pages are growing, what people searched for. The assistant signs in as you with an application password and sees exactly what you can see in the dashboard, read-only."
+msgstr ""
+
+#: templates/admin/settings-page.php:1003
+msgid "The bundled MCP adapter is missing from this install, so the endpoint is off. Reinstall the plugin from its release package."
+msgstr ""
+
+#: templates/admin/settings-page.php:1033
+msgid "MCP endpoint"
+msgstr ""
+
+#: templates/admin/settings-page.php:1037
+#: templates/admin/settings-page.php:1056
+#: templates/admin/settings-page.php:1066
+msgid "Copy"
+msgstr ""
+
+#: templates/admin/settings-page.php:1042
+msgid "Application password"
+msgstr ""
+
+#: templates/admin/settings-page.php:1045
+msgid "Create one on your profile"
+msgstr ""
+
+#: templates/admin/settings-page.php:1046
+msgid "and name it after the assistant. Paste it where the snippets below say APP_PASSWORD; the spaces WordPress shows in it can stay. You can revoke it from the same place at any time."
+msgstr ""
+
+#: templates/admin/settings-page.php:1048
+msgid "Only users who can open the Vireo dashboard can connect. A password for anyone else is refused."
+msgstr ""
+
+#: templates/admin/settings-page.php:1052
+msgid "Claude Code"
+msgstr ""
+
+#: templates/admin/settings-page.php:1058
+msgid "Run it in a terminal, then ask Claude Code about your traffic."
+msgstr ""
+
+#: templates/admin/settings-page.php:1062
+msgid "Claude Desktop, Cursor and others"
+msgstr ""
+
+#: templates/admin/settings-page.php:1068
+msgid "Add it to the client's MCP settings file (claude_desktop_config.json, Cursor's mcp.json). Needs Node.js on that computer; the proxy runs locally and talks to this site over HTTPS."
+msgstr ""
+
+#: templates/admin/settings-page.php:1076
+msgid "Import data"
+msgstr ""
+
+#: templates/admin/settings-page.php:1078
+msgid "Bring your history into Vireo Analytics. Your source data is never modified. An import adds to what is already stored and can't be undone, so import any range only once."
+msgstr ""
+
+#: templates/admin/settings-page.php:1090
+msgid "Found on this site"
+msgstr ""
+
+#: templates/admin/settings-page.php:1106
+msgid "A Google Analytics plugin is active on this site."
+msgstr ""
+
+#: templates/admin/settings-page.php:1108
+msgid "Active, with data stored on this site."
+msgstr ""
+
+#: templates/admin/settings-page.php:1110
+msgid "Active on this site."
+msgstr ""
+
+#: templates/admin/settings-page.php:1112
+msgid "No longer active, but its data is still stored on this site."
+msgstr ""
+
+#: templates/admin/settings-page.php:1139
+msgid "None of the analytics plugins Vireo Analytics imports from is active on this site, and none has left data here. If you have used one of these, or still have its data elsewhere:"
+msgstr ""
+
+#: templates/admin/settings-page.php:1141
+msgid "Vireo Analytics can also import from:"
+msgstr ""
+
+#: templates/admin/settings-page.php:1164
+msgid "These import from the data a plugin leaves on this site. None was found yet:"
+msgstr ""
+
+#: templates/admin/settings-page.php:1178
+msgid "Backup and restore"
+msgstr ""
+
+#: templates/admin/settings-page.php:1180
+msgid "Download everything Vireo Analytics has recorded for this site as one file, and load it on another install, or back onto this one. Loading the same file twice gives the same numbers, so a restore can be repeated safely. Settings, connected sites and the live visitor buffer are not included."
+msgstr ""
+
+#: templates/admin/settings-page.php:1183
+msgid "Download backup"
+msgstr ""
+
+#: templates/admin/settings-page.php:1184
+msgid "Restore from a backup"
+msgstr ""
+
+#: templates/admin/settings-page.php:1187
+msgid "Export CSV"
+msgstr ""
+
+#: templates/admin/settings-page.php:1189
+msgid "Download your analytics for the dates below as a CSV file. It's built on your server and goes straight to your browser."
+msgstr ""
+
+#: templates/admin/settings-page.php:1195
+msgid "Site totals"
+msgstr ""
+
+#: templates/admin/settings-page.php:1196
+#: templates/dashboard/drivers.php:133
+msgid "Pages"
+msgstr ""
+
+#: templates/admin/settings-page.php:1197
+msgid "Referrers"
+msgstr ""
+
+#: templates/admin/settings-page.php:1199
+msgid "Devices"
+msgstr ""
+
+#: templates/admin/settings-page.php:1200
+#: templates/dashboard/404-table.php:29
+msgid "Broken links"
+msgstr ""
+
+#: templates/admin/settings-page.php:1201
+msgid "Events"
+msgstr ""
+
+#: templates/admin/settings-page.php:1213
+msgid "Type"
+msgstr ""
+
+#: templates/admin/settings-page.php:1220
+msgid "Download CSV"
+msgstr ""
+
+#. translators: %s: link to the wordpress.org support forum, labelled "Ask in the support forum".
+#: templates/admin/settings-page.php:1228
+#, php-format
+msgid "Questions or a bug? %s."
+msgstr ""
+
+#: templates/admin/settings-page.php:1229
+msgid "Ask in the support forum"
+msgstr ""
+
+#: templates/dashboard/404-table.php:35
+msgid "No 404 errors in this period"
+msgstr ""
+
+#: templates/dashboard/404-table.php:36
+msgid "Broken links and missing pages hit by visitors will appear here."
+msgstr ""
+
+#: templates/dashboard/404-table.php:42
+#: templates/dashboard/404-table.php:142
+msgid "Path"
+msgstr ""
+
+#: templates/dashboard/404-table.php:43
+msgid "Top referrer"
+msgstr ""
+
+#: templates/dashboard/404-table.php:44
+#: templates/dashboard/404-table.php:95
+#: templates/dashboard/404-table.php:144
+msgid "Hits"
+msgstr ""
+
+#: templates/dashboard/404-table.php:81
+msgid "No broken links"
+msgstr ""
+
+#: templates/dashboard/404-table.php:83
+msgid "Nothing on your site links to a page that is missing."
+msgstr ""
+
+#: templates/dashboard/404-table.php:88
+msgid "Pages on your site linking somewhere missing. Fix the linking page."
+msgstr ""
+
+#: templates/dashboard/404-table.php:93
+msgid "Missing page"
+msgstr ""
+
+#: templates/dashboard/404-table.php:94
+msgid "Linked from"
+msgstr ""
+
+#. translators: %s: number of additional pages linking to the missing page
+#: templates/dashboard/404-table.php:117
+#, php-format
+msgid "+%s more page"
+msgid_plural "+%s more pages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/404-table.php:135
+msgid "Requests from elsewhere"
+msgstr ""
+
+#: templates/dashboard/404-table.php:137
+msgid "Nothing on your site links to these. Mostly automated scanners looking for software you do not run; occasionally a stale link elsewhere worth a redirect."
+msgstr ""
+
+#: templates/dashboard/404-table.php:143
+msgid "Referrer"
+msgstr ""
+
+#: templates/dashboard/404-table.php:161
+msgid "no referrer"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:28
+msgid "Fail"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:29
+msgid "Warning"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:30
+msgid "Pass"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:31
+msgid "Not run"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:35
+msgid "AI visibility scan"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:41
+msgid "The card above shows what AI took from your site and what it sent back. This checks what could be getting in the way."
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:42
+msgid "Checks what could stop AI crawlers and assistants from reading and citing your site."
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:48
+msgid "Enter a path like /about/ or a full address on this site."
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:57
+msgid "Page to scan"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:59
+msgid "Run the scan again"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:59
+msgid "Run the scan"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:62
+msgid "Your server fetches the page, robots.txt, llms.txt and your sitemap from your public address, logged out, the way a crawler does. It also requests the page as GPTBot, ClaudeBot and PerplexityBot. The scan takes up to half a minute, and its requests aren't counted in your reports. Hosts that verify real crawlers by IP address may treat these test requests differently from real ones."
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:65
+msgid "An administrator can run the scan from this card."
+msgstr ""
+
+#. translators: 1: how long ago, such as "3 hours", 2: the scanned address
+#: templates/dashboard/ai-scan.php:73
+#, php-format
+msgid "Scanned %1$s ago: %2$s"
+msgstr ""
+
+#: templates/dashboard/ai-scan.php:108
+msgid "out of 100"
+msgstr ""
+
+#: templates/dashboard/ai-sources.php:30
+msgid "requests from their crawlers"
+msgstr ""
+
+#: templates/dashboard/ai-sources.php:34
+msgid "readers they sent back"
+msgstr ""
+
+#: templates/dashboard/ai-sources.php:44
+msgid "crawler requests per reader sent"
+msgstr ""
+
+#. translators: %s: a date such as "15 Sep 2026"
+#: templates/dashboard/ai-sources.php:52
+#, php-format
+msgid "Since %s, when Vireo started counting crawlers. Earlier days in this range have readers but no crawler figures, so this card leaves them out."
+msgstr ""
+
+#: templates/dashboard/ai-sources.php:61
+msgid "Assistant"
+msgstr ""
+
+#: templates/dashboard/ai-sources.php:62
+msgid "Readers sent"
+msgstr ""
+
+#: templates/dashboard/ai-sources.php:76
+msgid "No assistant has sent a reader to this site in this period, though their crawlers have been reading it."
+msgstr ""
+
+#: templates/dashboard/ai-sources.php:81
+msgid "Crawler figures count requests the bot filter held back. Readers sent counts people who arrived by following a link inside an assistant, which is the closest thing there is to being recommended by one."
+msgstr ""
+
+#: templates/dashboard/annotations.php:24
+msgid "Notes"
+msgstr ""
+
+#. translators: %s: the date a note is pinned to.
+#: templates/dashboard/annotations.php:35
+#: assets/js/dashboard.js:1593
+#, php-format,js-format
+msgid "Remove the note for %s"
+msgstr ""
+
+#: templates/dashboard/annotations.php:44
+msgid "Nothing noted in this range yet."
+msgstr ""
+
+#: templates/dashboard/annotations.php:51
+msgid "Date"
+msgstr ""
+
+#: templates/dashboard/annotations.php:59
+msgid "What happened"
+msgstr ""
+
+#: templates/dashboard/annotations.php:62
+msgid "Newsletter went out"
+msgstr ""
+
+#: templates/dashboard/annotations.php:64
+msgid "Add note"
+msgstr ""
+
+#. translators: %s: formatted count of filtered requests.
+#: templates/dashboard/bot-explainer.php:30
+#, php-format
+msgid "%s request kept out of the numbers above."
+msgid_plural "%s requests kept out of the numbers above."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/bot-explainer.php:42
+msgid "That is under 0.1%% of the requests Vireo saw."
+msgstr ""
+
+#. translators: %s: percentage of all requests that were filtered.
+#: templates/dashboard/bot-explainer.php:46
+#, php-format
+msgid "That is %s%% of the requests Vireo saw."
+msgstr ""
+
+#: templates/dashboard/bot-explainer.php:56
+msgid "What was filtered and why"
+msgstr ""
+
+#: templates/dashboard/bot-explainer.php:69
+msgid "None of these reached your visitor or pageview totals. It is also why those totals sit below what a server-log tool reports: log readers count every crawler, monitor and scraper as a visit. Crawlers are counted when they ask WordPress for a page, so on a site with full-page caching the real numbers are higher than these: a cached page is answered before WordPress runs, and nothing inside WordPress can see that request."
+msgstr ""
+
+#: templates/dashboard/bot-explainer.php:75
+msgid "Got it"
+msgstr ""
+
+#: templates/dashboard/chart.php:37
+msgid "Both"
+msgstr ""
+
+#: templates/dashboard/chart.php:57
+#: assets/js/dashboard.js:166
+msgid "Prior period"
+msgstr ""
+
+#: templates/dashboard/chart.php:74
+msgid "Hourly traffic"
+msgstr ""
+
+#: templates/dashboard/chart.php:74
+msgid "Daily traffic"
+msgstr ""
+
+#: templates/dashboard/chart.php:82
+msgid "Chart granularity"
+msgstr ""
+
+#: templates/dashboard/chart.php:91
+msgid "Chart metric"
+msgstr ""
+
+#. translators: %s: the compared period, such as "Prior period"
+#: templates/dashboard/chart.php:110
+#, php-format
+msgid "%s, whole days"
+msgstr ""
+
+#: templates/dashboard/chart.php:140
+msgid "No traffic yet"
+msgstr ""
+
+#: templates/dashboard/chart.php:141
+msgid "Pageviews for the selected range will plot here as they are recorded."
+msgstr ""
+
+#: templates/dashboard/countries.php:54
+msgid "View"
+msgstr ""
+
+#: templates/dashboard/countries.php:55
+msgid "Map"
+msgstr ""
+
+#: templates/dashboard/countries.php:56
+msgid "Table"
+msgstr ""
+
+#: templates/dashboard/countries.php:65
+msgid "Countries are not being resolved"
+msgstr ""
+
+#: templates/dashboard/countries.php:67
+msgid "The geo-location database is not installed, so every visitor is recorded as unknown. Your traffic is still being counted."
+msgstr ""
+
+#: templates/dashboard/countries.php:72
+msgid "Set it up"
+msgstr ""
+
+#: templates/dashboard/countries.php:78
+msgid "No country data yet"
+msgstr ""
+
+#: templates/dashboard/countries.php:79
+msgid "Geo-located pageviews will appear here once visitors arrive."
+msgstr ""
+
+#: templates/dashboard/countries.php:87
+msgid "World map of visitor distribution"
+msgstr ""
+
+#. translators: %s: percentage of visitors whose country is known
+#: templates/dashboard/countries.php:102
+#: templates/dashboard/year-review.php:322
+#, php-format
+msgid "Country known for %s%% of visitors."
+msgstr ""
+
+#. translators: %s: a country name
+#. translators: %s: a device type, such as Mobile
+#. translators: %s: a page title
+#. translators: %s: a referrer name, such as Google
+#: templates/dashboard/countries.php:120
+#: templates/dashboard/devices.php:106
+#: templates/dashboard/top-pages.php:69
+#: templates/dashboard/top-referrers.php:113
+#, php-format
+msgid "Filter by %s"
+msgstr ""
+
+#: templates/dashboard/devices.php:19
+msgid "Device types"
+msgstr ""
+
+#: templates/dashboard/devices.php:20
+msgid "Browsers"
+msgstr ""
+
+#: templates/dashboard/devices.php:21
+msgid "Operating systems"
+msgstr ""
+
+#: templates/dashboard/devices.php:56
+msgid "Technology breakdown"
+msgstr ""
+
+#: templates/dashboard/devices.php:83
+msgid "No data for this period."
+msgstr ""
+
+#: templates/dashboard/devices.php:110
+msgid "visitor"
+msgid_plural "visitors"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/drivers.php:85
+msgid "Gained"
+msgstr ""
+
+#: templates/dashboard/drivers.php:87
+msgid "Nothing grew."
+msgstr ""
+
+#: templates/dashboard/drivers.php:95
+msgid "Lost"
+msgstr ""
+
+#: templates/dashboard/drivers.php:97
+msgid "Nothing fell."
+msgstr ""
+
+#: templates/dashboard/drivers.php:133
+msgid "Show all pages"
+msgstr ""
+
+#: templates/dashboard/drivers.php:136
+msgid "Sources"
+msgstr ""
+
+#: templates/dashboard/drivers.php:136
+msgid "Show all sources"
+msgstr ""
+
+#: templates/dashboard/drivers.php:160
+msgid "Fix this"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:52
+#: templates/dashboard/post-detail.php:32
+#: templates/dashboard/referrer-detail.php:25
+#: templates/dashboard/year-review.php:83
+msgid "&larr; Overview"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:92
+msgid "Total count"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:98
+msgid "times recorded in this range"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:101
+msgid "Unique visitors"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:107
+#: templates/dashboard/post-detail.php:82
+msgid "daily visitors, added up"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:110
+msgid "Distinct values"
+msgstr ""
+
+#. translators: %d: number of values listed below
+#: templates/dashboard/event-detail.php:119
+#, php-format
+msgid "in this range, top %d listed below"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:122
+msgid "in this range"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:131
+msgid "Daily counts"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:133
+#: templates/dashboard/event-detail.php:154
+#: templates/dashboard/events.php:67
+msgid "Count"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:134
+#: templates/dashboard/event-detail.php:155
+#: templates/dashboard/events.php:68
+msgid "Unique"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:142
+msgid "Nothing recorded in this range"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:143
+msgid "Event counts for the selected range will plot here as they are recorded."
+msgstr ""
+
+#: templates/dashboard/event-detail.php:152
+msgid "Top values"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:160
+msgid "No values recorded"
+msgstr ""
+
+#: templates/dashboard/event-detail.php:161
+msgid "Send a value with this event to see a breakdown here."
+msgstr ""
+
+#: templates/dashboard/event-detail.php:169
+#: templates/dashboard/events.php:93
+msgid "(no value)"
+msgstr ""
+
+#: templates/dashboard/events.php:60
+msgid "&larr; back to all events"
+msgstr ""
+
+#: templates/dashboard/events.php:63
+msgid "Top events"
+msgstr ""
+
+#: templates/dashboard/events.php:74
+msgid "No events recorded"
+msgstr ""
+
+#: templates/dashboard/events.php:78
+msgid "Fire events from your site with <code>vireo('event', 'name')</code> and they'll appear here."
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:44
+msgid "not available with these filters"
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:93
+msgid "in the selected range"
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:105
+msgid "daily uniques, summed"
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:106
+msgid "unique today"
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:108
+msgid "Someone who visits on more than one day is counted once per day. Visitors are identified by a hash whose salt is regenerated every night, so the same person cannot be recognised across days. That is deliberate: it is what lets Vireo track visitors without cookies and without consent."
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:109
+msgid "Unique visitors today."
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:135
+msgid "Average daily traffic"
+msgstr ""
+
+#. translators: %d: number of days
+#: templates/dashboard/hero-stats.php:159
+#, php-format
+msgid "over %d day"
+msgid_plural "over %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/hero-stats.php:168
+#: templates/dashboard/hero-stats.php:208
+msgid "not split by filters"
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:169
+msgid "Time on page is measured for the whole site, so it is not shown while a filter is on."
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:180
+msgid "average active time"
+msgstr ""
+
+#. translators: %s: number of page views that reported a time.
+#: templates/dashboard/hero-stats.php:183
+#, php-format
+msgid "The average of the %s view that reported a time. Only time with the tab in front of the reader counts, up to 30 minutes a view, and views closed before they reported are left out."
+msgid_plural "The average of the %s views that reported a time. Only time with the tab in front of the reader counts, up to 30 minutes a view, and views closed before they reported are left out."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/hero-stats.php:194
+msgid "Time on page"
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:209
+msgid "Bounce rate is measured for the whole site, so it is not shown while a filter is on."
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:217
+msgid "visitors who viewed one page"
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:218
+msgid "The share of visitors who viewed exactly one page in a day. A visitor is counted the same way as on the Visitors card, once per day, so someone who comes back on another day counts again."
+msgstr ""
+
+#: templates/dashboard/hero-stats.php:222
+msgid "Bounce rate"
+msgstr ""
+
+#. translators: 1: the compared period's dates, 2: the name of the tool the history was imported from
+#: templates/dashboard/hero-stats.php:241
+#, php-format
+msgid "The %1$s figures come from history imported from %2$s."
+msgstr ""
+
+#: templates/dashboard/highlights.php:17
+msgid "This week"
+msgstr ""
+
+#: templates/dashboard/insight-line.php:50
+msgid "Compared with the same period last year, up to the same time of day."
+msgstr ""
+
+#: templates/dashboard/insight-line.php:51
+msgid "Compared with the same period last year."
+msgstr ""
+
+#: templates/dashboard/insight-line.php:54
+msgid "Compared with the period before, up to the same time of day."
+msgstr ""
+
+#: templates/dashboard/insight-line.php:55
+msgid "Compared with the period before."
+msgstr ""
+
+#: templates/dashboard/pagespeed-result.php:30
+msgid "Performance score"
+msgstr ""
+
+#: templates/dashboard/pagespeed-result.php:55
+msgid "What Google suggests fixing first"
+msgstr ""
+
+#: templates/dashboard/pagespeed-result.php:57
+msgid "Nothing with a measurable saving. This page passed the checks that matter most."
+msgstr ""
+
+#. translators: %s: human-readable time, e.g. "3 hours"
+#: templates/dashboard/pagespeed-result.php:88
+#, php-format
+msgid "Tested as a desktop visitor %s ago."
+msgstr ""
+
+#. translators: %s: human-readable time, e.g. "3 hours"
+#: templates/dashboard/pagespeed-result.php:94
+#, php-format
+msgid "Tested as a phone visitor %s ago."
+msgstr ""
+
+#: templates/dashboard/pagespeed-result.php:100
+msgid "Run again"
+msgstr ""
+
+#: templates/dashboard/pagespeed-result.php:103
+msgid "Full report on PageSpeed Insights"
+msgstr ""
+
+#: templates/dashboard/pagespeed-result.php:103
+#: templates/dashboard/pagespeed.php:72
+#: templates/dashboard/review-prompt.php:39
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:45
+msgid "Lab: one test by Google"
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:50
+msgid "Device to test as"
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:72
+msgid "Test this page on PageSpeed Insights"
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:79
+msgid "Add a free Google API key in Settings to see the results right here instead."
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:81
+msgid "An administrator can add a free Google API key in Settings to show the results right here instead."
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:94
+msgid "Google loads this page once on its own servers, as a desktop visitor, and lists what would make it faster. It takes up to a minute."
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:96
+msgid "Google loads this page once on its own servers, as a phone visitor on a slow connection, and lists what would make it faster. It takes up to a minute."
+msgstr ""
+
+#: templates/dashboard/pagespeed.php:100
+msgid "Run test"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:56
+msgid "Lifetime pageviews"
+msgstr ""
+
+#. translators: %s: first-seen date
+#: templates/dashboard/post-detail.php:67
+#, php-format
+msgid "since %s"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:76
+msgid "Lifetime visitors"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:86
+msgid "Best day"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:101
+msgid "no traffic yet"
+msgstr ""
+
+#. translators: 1: start date, 2: end date
+#: templates/dashboard/post-detail.php:114
+#: templates/dashboard/referrer-detail.php:79
+#, php-format
+msgid "Daily traffic · %1$s &ndash; %2$s"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:136
+msgid "No traffic in this range"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:137
+msgid "Pageviews for this post will plot here as they are recorded."
+msgstr ""
+
+#: templates/dashboard/post-detail.php:145
+msgid "pageviews in range"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:149
+msgid "visitors in range"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:153
+msgid "comment in range"
+msgid_plural "comments in range"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/post-detail.php:158
+msgid "comments per 1,000 views"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:167
+msgid "Page speed for this post"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:169
+msgid "Speed from your real visitors is measured for the whole site, not per post."
+msgstr ""
+
+#: templates/dashboard/post-detail.php:170
+msgid "See it on the Overview"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:173
+msgid "This post, tested by Google"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:174
+msgid "Test this post with Google"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:189
+msgid "Top referrers for this post"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:194
+msgid "No referrers in this range"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:195
+msgid "This post had no inbound referrers during the selected period."
+msgstr ""
+
+#: templates/dashboard/post-detail.php:197
+msgid "Per-post referrer data is being collected"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:199
+msgid "Referrers per individual post started tracking with a recent update. Data will appear here as new visitors arrive."
+msgstr ""
+
+#. translators: %s: date when per-post referrer tracking began
+#: templates/dashboard/post-detail.php:210
+#, php-format
+msgid "Referrer data for this post starts from %s."
+msgstr ""
+
+#: templates/dashboard/post-detail.php:246
+msgid "Searches that found this post"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:250
+msgid "See what people searched for"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:252
+msgid "Only Search Console knows which searches showed this post. Connect it to list them here."
+msgstr ""
+
+#: templates/dashboard/post-detail.php:255
+msgid "Connect Search Console"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:260
+msgid "No searches for this post in this range"
+msgstr ""
+
+#: templates/dashboard/post-detail.php:261
+msgid "Google reports search data about three days late, so the most recent days are always empty."
+msgstr ""
+
+#: templates/dashboard/post-detail.php:266
+msgid "Clicks · position"
+msgstr ""
+
+#. translators: %s: number of impressions
+#: templates/dashboard/post-detail.php:277
+#, php-format
+msgid "Shown %s time"
+msgid_plural "Shown %s times"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: site host name, 2: date and time
+#: templates/dashboard/print-meta.php:15
+#, php-format
+msgid "%1$s. Printed %2$s from Vireo Analytics."
+msgstr ""
+
+#. translators: 1: start date, 2: end date
+#: templates/dashboard/referrer-detail.php:34
+#, php-format
+msgid "Traffic from this referrer · %1$s to %2$s"
+msgstr ""
+
+#: templates/dashboard/referrer-detail.php:53
+msgid "Pageviews in range"
+msgstr ""
+
+#: templates/dashboard/referrer-detail.php:62
+msgid "Visitors in range"
+msgstr ""
+
+#: templates/dashboard/referrer-detail.php:101
+msgid "No traffic from this referrer in this range"
+msgstr ""
+
+#: templates/dashboard/referrer-detail.php:102
+msgid "Pageviews sent by this source will plot here as they are recorded."
+msgstr ""
+
+#: templates/dashboard/referrer-detail.php:112
+msgid "Posts it sent people to"
+msgstr ""
+
+#: templates/dashboard/referrer-detail.php:113
+msgid "Pageviews on each post from this referrer. Home and archive pages aren't broken down this way."
+msgstr ""
+
+#. translators: %s: number of days Vireo has recorded visits on this site.
+#: templates/dashboard/review-prompt.php:23
+#, php-format
+msgid "Vireo has been counting here for %s day. If it has been useful, a review on WordPress.org helps other site owners find it."
+msgid_plural "Vireo has been counting here for %s days. If it has been useful, a review on WordPress.org helps other site owners find it."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/review-prompt.php:38
+msgid "Leave a review"
+msgstr ""
+
+#: templates/dashboard/review-prompt.php:41
+msgid "Not now"
+msgstr ""
+
+#: templates/dashboard/review-prompt.php:42
+msgid "Don't ask again"
+msgstr ""
+
+#: templates/dashboard/search-console.php:24
+msgid "Searches that found you"
+msgstr ""
+
+#: templates/dashboard/search-console.php:29
+msgid "clicks from search"
+msgstr ""
+
+#: templates/dashboard/search-console.php:33
+msgid "times you appeared"
+msgstr ""
+
+#: templates/dashboard/search-console.php:37
+msgid "click-through rate"
+msgstr ""
+
+#: templates/dashboard/search-console.php:41
+msgid "average position"
+msgstr ""
+
+#: templates/dashboard/search-console.php:50
+msgid "Clicks"
+msgstr ""
+
+#: templates/dashboard/search-console.php:51
+msgid "Impressions"
+msgstr ""
+
+#: templates/dashboard/search-console.php:52
+msgid "Position"
+msgstr ""
+
+#: templates/dashboard/search-console.php:64
+msgid "The page Google most often showed for this search"
+msgstr ""
+
+#: templates/dashboard/search-console.php:77
+msgid "From Search Console, which reports a few days behind and leaves out rare searches."
+msgstr ""
+
+#: templates/dashboard/spotlight.php:18
+msgid "posts opened"
+msgstr ""
+
+#: templates/dashboard/spotlight.php:19
+msgid "links followed from a post"
+msgstr ""
+
+#: templates/dashboard/spotlight.php:20
+#: templates/dashboard/spotlight.php:42
+msgid "Follow clicks"
+msgstr ""
+
+#: templates/dashboard/spotlight.php:21
+msgid "Load more clicks"
+msgstr ""
+
+#: templates/dashboard/spotlight.php:25
+msgid "Instagram feeds"
+msgstr ""
+
+#: templates/dashboard/spotlight.php:40
+msgid "Page with a feed"
+msgstr ""
+
+#: templates/dashboard/spotlight.php:41
+msgid "Posts opened"
+msgstr ""
+
+#: templates/dashboard/top-pages.php:27
+msgid "No pages tracked yet"
+msgstr ""
+
+#: templates/dashboard/top-pages.php:28
+msgid "Top posts and pages will appear here after the first few visits."
+msgstr ""
+
+#. translators: %s: a duration such as "1m 05s".
+#: templates/dashboard/top-pages.php:59
+#, php-format
+msgid "Average active time on this page: %s"
+msgstr ""
+
+#: templates/dashboard/top-pages.php:87
+msgid "(unpublished)"
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:40
+msgid "Visitors who arrived with no referrer: typed the URL, used a bookmark, or came from an app or email client."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:41
+msgid "No search traffic in this range."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:42
+msgid "No AI assistant traffic in this range."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:43
+msgid "No social traffic in this range."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:44
+msgid "No referral traffic in this range."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:69
+msgid "No referrers yet"
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:70
+msgid "When someone clicks through from another site, they'll show up here."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:99
+msgid "None of these made the top ten. Filter by this source to list them."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:139
+msgid "Every visit from this site viewed one page and none landed on a post, over a burst of days. That is what a compromised site or a spoofed referrer looks like, not readers. Nothing is removed until you block it."
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:139
+msgid "suspected junk"
+msgstr ""
+
+#: templates/dashboard/top-referrers.php:141
+msgid "Block this referrer"
+msgstr ""
+
+#: templates/dashboard/vitals.php:30
+msgid "Page speed from real visits"
+msgstr ""
+
+#: templates/dashboard/vitals.php:33
+msgid "No speed measurements from real visits in this range yet. They appear as people load your pages."
+msgstr ""
+
+#: templates/dashboard/vitals.php:35
+msgid "75th percentile: three in four visits were at least this fast."
+msgstr ""
+
+#: templates/dashboard/vitals.php:60
+msgid "Google grades pages on this line rather than the average, so the slowest quarter of visits counts against you."
+msgstr ""
+
+#. translators: %s: formatted number of measured visits
+#: templates/dashboard/vitals.php:66
+#, php-format
+msgid "Only %s real visit measured so far, so expect these to move."
+msgid_plural "Only %s real visits measured so far, so expect these to move."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: formatted number of measured visits
+#: templates/dashboard/vitals.php:72
+#, php-format
+msgid "Measured from %s real visit, not a lab test."
+msgid_plural "Measured from %s real visits, not a lab test."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/vitals.php:82
+msgid "Your homepage, tested by Google"
+msgstr ""
+
+#: templates/dashboard/vitals.php:83
+msgid "Test your homepage with Google"
+msgstr ""
+
+#: templates/dashboard/wpra.php:23
+msgid "Aggregated content"
+msgstr ""
+
+#: templates/dashboard/wpra.php:29
+msgid "views of imported posts"
+msgstr ""
+
+#: templates/dashboard/wpra.php:34
+msgid "clicks through to the original articles"
+msgstr ""
+
+#: templates/dashboard/wpra.php:39
+msgid "of all pageviews were imported posts"
+msgstr ""
+
+#: templates/dashboard/wpra.php:48
+msgid "Feed source"
+msgstr ""
+
+#: templates/dashboard/wpra.php:50
+msgid "Views here"
+msgstr ""
+
+#: templates/dashboard/wpra.php:52
+msgid "Clicks out"
+msgstr ""
+
+#: templates/dashboard/wpra.php:70
+msgid "Clicks out count readers who followed an item to the site it came from, recorded from the day this version of Vireo was installed."
+msgstr ""
+
+#: templates/dashboard/wpra.php:72
+msgid "Views here count visits to items imported as posts."
+msgstr ""
+
+#. translators: %d: year
+#: templates/dashboard/year-review-notice.php:15
+#, php-format
+msgid "Your %d in review is ready."
+msgstr ""
+
+#: templates/dashboard/year-review-notice.php:17
+msgid "See it"
+msgstr ""
+
+#. translators: %d: year
+#: templates/dashboard/year-review.php:24
+#, php-format
+msgid "%d so far"
+msgstr ""
+
+#. translators: %d: year
+#: templates/dashboard/year-review.php:26
+#, php-format
+msgid "%d in review"
+msgstr ""
+
+#. translators: %d: the previous year
+#: templates/dashboard/year-review.php:42
+#, php-format
+msgid "vs the same days of %d"
+msgstr ""
+
+#. translators: %d: the previous year
+#: templates/dashboard/year-review.php:44
+#, php-format
+msgid "vs %d"
+msgstr ""
+
+#. translators: %d: the previous year
+#: templates/dashboard/year-review.php:47
+#, php-format
+msgid "No full record of %d to compare with"
+msgstr ""
+
+#: templates/dashboard/year-review.php:92
+msgid "Year"
+msgstr ""
+
+#: templates/dashboard/year-review.php:106
+msgid "Copy summary"
+msgstr ""
+
+#: templates/dashboard/year-review.php:107
+msgid "Print"
+msgstr ""
+
+#. translators: %d: year
+#: templates/dashboard/year-review.php:119
+#, php-format
+msgid "Nothing recorded for %d yet"
+msgstr ""
+
+#: templates/dashboard/year-review.php:123
+msgid "This review fills in on its own as visits are recorded; the first ones show up within a minute. If another analytics tool counted this year, its history can be imported and shows here marked as imported."
+msgstr ""
+
+#: templates/dashboard/year-review.php:124
+msgid "Import history"
+msgstr ""
+
+#: templates/dashboard/year-review.php:139
+msgid "Part of one year was imported from another tool, which counts in its own way, so read the change as a rough guide."
+msgstr ""
+
+#: templates/dashboard/year-review.php:150
+msgid "Daily visitors added up. Someone who came on three different days counts three times, because Vireo can't recognise anyone from one day to the next."
+msgstr ""
+
+#: templates/dashboard/year-review.php:154
+msgid "Busiest month"
+msgstr ""
+
+#. translators: 1: date such as "Mar 14", 2: number of pageviews
+#: templates/dashboard/year-review.php:167
+#, php-format
+msgid "Busiest day: %1$s, with %2$s pageview."
+msgid_plural "Busiest day: %1$s, with %2$s pageviews."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/dashboard/year-review.php:189
+msgid "Pageviews by month"
+msgstr ""
+
+#: templates/dashboard/year-review.php:199
+msgid "still to come"
+msgstr ""
+
+#. translators: %s: number of pageviews
+#: templates/dashboard/year-review.php:202
+#, php-format
+msgid "%s pageviews so far this month"
+msgstr ""
+
+#. translators: %s: number of pageviews
+#: templates/dashboard/year-review.php:205
+#, php-format
+msgid "%s pageviews, imported"
+msgstr ""
+
+#. translators: 1: number of pageviews, 2: how many of them were imported
+#: templates/dashboard/year-review.php:208
+#, php-format
+msgid "%1$s pageviews, %2$s of them imported"
+msgstr ""
+
+#. translators: %s: number of pageviews
+#: templates/dashboard/year-review.php:211
+#, php-format
+msgid "%s pageviews"
+msgstr ""
+
+#: templates/dashboard/year-review.php:230
+msgid "so far"
+msgstr ""
+
+#: templates/dashboard/year-review.php:238
+msgid "Counted by Vireo Analytics"
+msgstr ""
+
+#: templates/dashboard/year-review.php:239
+msgid "Imported"
+msgstr ""
+
+#: templates/dashboard/year-review.php:246
+msgid "Where these numbers come from"
+msgstr ""
+
+#. translators: 1: number of imported pageviews, 2: number counted by Vireo
+#: templates/dashboard/year-review.php:257
+#, php-format
+msgid "%1$s pageviews this year came from imports and %2$s were counted by Vireo. Imported months are as the other tool counted them, which rarely matches Vireo exactly: tools filter bots and count visitors differently."
+msgstr ""
+
+#: templates/dashboard/year-review.php:286
+msgid "No page-level data for this year."
+msgstr ""
+
+#. translators: %d: year
+#: templates/dashboard/year-review.php:294
+#, php-format
+msgid "Published in %d"
+msgstr ""
+
+#: templates/dashboard/year-review.php:310
+msgid "Nothing published this year has been viewed yet."
+msgstr ""
+
+#. translators: %s: a date such as "Aug 1, 2026"
+#: templates/dashboard/year-review.php:319
+#, php-format
+msgid "Countries from %s onward. Earlier history has no country data."
+msgstr ""
+
+#: templates/dashboard/year-review.php:326
+msgid "Visitors, added up day by day."
+msgstr ""
+
+#: templates/dashboard/year-review.php:345
+msgid "No country data for this year."
+msgstr ""
+
+#: templates/dashboard/year-review.php:352
+msgid "How people arrived, in pageviews"
+msgstr ""
+
+#. translators: 1: the biggest referrer in this group, 2: its pageviews
+#: templates/dashboard/year-review.php:363
+#, php-format
+msgid "mostly %1$s (%2$s)"
+msgstr ""
+
+#: templates/dashboard/year-review.php:373
+msgid "No referrer data for this year."
+msgstr ""
+
+#: templates/dashboard/year-review.php:379
+msgid "Top Google searches"
+msgstr ""
+
+#. translators: 1: clicks from Google search, 2: impressions
+#: templates/dashboard/year-review.php:385
+#, php-format
+msgid "%1$s clicks from %2$s appearances in Google results."
+msgstr ""
+
+#: templates/dashboard/year-review.php:409
+msgid "requests from AI crawlers"
+msgstr ""
+
+#: templates/dashboard/year-review.php:413
+msgid "readers sent back"
+msgstr ""
+
+#. translators: %s: date Vireo started counting, such as "Dec 15"
+#: templates/dashboard/year-review.php:420
+#, php-format
+msgid "Since %s, when Vireo started counting. Imported history doesn't record crawlers, so earlier months are left out of both numbers."
+msgstr ""
+
+#. translators: %s: pages crawled per reader referred
+#: templates/dashboard/year-review.php:428
+#, php-format
+msgid "%s crawler requests for every reader sent."
+msgstr ""
+
+#. translators: %s: site name
+#: templates/report-email-plain.php:43
+#, php-format
+msgid "Your day on %s"
+msgstr ""
+
+#. translators: %s: period label, in the hidden inbox preview text
+#: templates/report-email-plain.php:45
+#, php-format
+msgid "Your daily snapshot · %s"
+msgstr ""
+
+#: templates/report-email-plain.php:46
+msgctxt "change against the previous day"
+msgid "DoD"
+msgstr ""
+
+#. translators: %s: site name
+#: templates/report-email-plain.php:50
+#, php-format
+msgid "Your month on %s"
+msgstr ""
+
+#. translators: %s: period label, in the hidden inbox preview text
+#: templates/report-email-plain.php:52
+#, php-format
+msgid "Your monthly snapshot · %s"
+msgstr ""
+
+#: templates/report-email-plain.php:53
+msgctxt "change against the previous month"
+msgid "MoM"
+msgstr ""
+
+#. translators: %s: site name
+#: templates/report-email-plain.php:57
+#, php-format
+msgid "Your week on %s"
+msgstr ""
+
+#. translators: %s: period label, in the hidden inbox preview text
+#: templates/report-email-plain.php:59
+#, php-format
+msgid "Your weekly snapshot · %s"
+msgstr ""
+
+#: templates/report-email-plain.php:60
+msgctxt "change against the previous week"
+msgid "WoW"
+msgstr ""
+
+#: vireo-analytics.php:92
+msgid "Every minute (Vireo Analytics)"
+msgstr ""
+
+#. translators: %s: number of times an event was recorded.
+#: assets/js/dashboard.js:189
+#, js-format
+msgid "%s event"
+msgid_plural "%s events"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/js/dashboard.js:195
+msgid "Daily traffic chart, no data."
+msgstr ""
+
+#. translators: 1: first date in the range, 2: last date, 3: pageview count with its noun, 4: visitor count with its noun.
+#: assets/js/dashboard.js:200
+#, js-format
+msgid "Daily traffic, %1$s to %2$s. %3$s, %4$s. Use arrow keys to step through each day."
+msgstr ""
+
+#. translators: 1: date, 2: pageview count with its noun, 3: visitor count with its noun.
+#: assets/js/dashboard.js:212
+#, js-format
+msgid "%1$s: %2$s, %3$s"
+msgstr ""
+
+#. translators: %s: pageview count in the prior period. Note the leading comma — this continues the previous sentence.
+#: assets/js/dashboard.js:218
+#, js-format
+msgid ", %s pageview in the prior period"
+msgid_plural ", %s pageviews in the prior period"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: the note someone pinned to this day.
+#: assets/js/dashboard.js:227
+#, js-format
+msgid "Note: %s"
+msgstr ""
+
+#. translators: 1: date, 2: the note pinned to it.
+#: assets/js/dashboard.js:398
+#, js-format
+msgid "Note on %1$s: %2$s"
+msgstr ""
+
+#. translators: 1: the compared period, such as "Prior period", 2: its pageview count with its noun.
+#: assets/js/dashboard.js:621
+#, js-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: assets/js/dashboard.js:760
+msgid "Show fewer"
+msgstr ""
+
+#: assets/js/dashboard.js:882
+msgid "Saving…"
+msgstr ""
+
+#: assets/js/dashboard.js:888
+msgid "View saved."
+msgstr ""
+
+#: assets/js/dashboard.js:892
+msgid "The view could not be saved."
+msgstr ""
+
+#: assets/js/dashboard.js:900
+msgid "Forgetting…"
+msgstr ""
+
+#: assets/js/dashboard.js:903
+msgid "View forgotten."
+msgstr ""
+
+#: assets/js/dashboard.js:906
+msgid "The view could not be forgotten."
+msgstr ""
+
+#. translators: %s: a referrer host
+#: assets/js/dashboard.js:1178
+#, js-format
+msgid "Block %s? Its visits will be filtered like bots from now on and hidden from reports."
+msgstr ""
+
+#. translators: 1: section name, 2: new position, 3: total sections
+#: assets/js/dashboard.js:1277
+#, js-format
+msgid "%1$s moved to position %2$d of %3$d."
+msgstr ""
+
+#: assets/js/dashboard.js:1473
+#: assets/js/settings-page.js:25
+msgid "Copied"
+msgstr ""
+
+#: assets/js/dashboard.js:1473
+msgid "Select the text and copy it yourself"
+msgstr ""
+
+#: assets/js/dashboard.js:1625
+msgid "No answer yet. If the test finishes, its result shows here when you reload the page in a minute."
+msgstr ""
+
+#. translators: %d: seconds elapsed
+#: assets/js/dashboard.js:1674
+#, js-format
+msgid "Testing on Google's servers, which takes up to a minute. %ds so far."
+msgstr ""
+
+#: assets/js/dashboard.js:1701
+msgid "Test finished."
+msgstr ""
+
+#: assets/js/settings-page.js:139
+msgid "Request failed."
+msgstr ""
+
+#: assets/js/settings-page.js:147
+msgid "Network error — try again."
+msgstr ""
+
+#: blocks/popular-posts/index.js:30
+msgid "Post types"
+msgstr ""
+
+#: blocks/popular-posts/index.js:45
+msgid "At least one type stays selected."
+msgstr ""
+
+#: blocks/popular-posts/index.js:82
+msgid "Number of posts"
+msgstr ""
+
+#: blocks/popular-posts/index.js:91
+msgid "Period"
+msgstr ""
+
+#: blocks/popular-posts/index.js:110
+msgid "Display"
+msgstr ""
+
+#: blocks/popular-posts/index.js:117
+msgid "Posts without a featured image are listed by title only."
+msgstr ""
+
+#: blocks/popular-posts/index.js:151
+msgid "No posts of the selected types have views in this period yet. Visitors see nothing here until they do."
+msgstr ""
+
+#: blocks/post-views/index.js:28
+msgid "Count views from"
+msgstr ""
+
+#: blocks/post-views/index.js:51
+msgid "Shows this post's view count on the site."
+msgstr ""
+
+#: blocks/popular-posts/block.json
+msgctxt "block title"
+msgid "Popular posts"
+msgstr ""
+
+#: blocks/popular-posts/block.json
+msgctxt "block description"
+msgid "Your most viewed posts, counted by Vireo Analytics."
+msgstr ""
+
+#: blocks/popular-posts/block.json
+msgctxt "block keyword"
+msgid "top posts"
+msgstr ""
+
+#: blocks/popular-posts/block.json
+msgctxt "block keyword"
+msgid "most viewed"
+msgstr ""
+
+#: blocks/popular-posts/block.json
+msgctxt "block keyword"
+msgid "trending"
+msgstr ""
+
+#: blocks/popular-posts/block.json
+#: blocks/post-views/block.json
+msgctxt "block keyword"
+msgid "analytics"
+msgstr ""
+
+#: blocks/post-views/block.json
+msgctxt "block title"
+msgid "Post views"
+msgstr ""
+
+#: blocks/post-views/block.json
+msgctxt "block description"
+msgid "How many times this post has been viewed, counted by Vireo Analytics."
+msgstr ""
+
+#: blocks/post-views/block.json
+msgctxt "block keyword"
+msgid "views"
+msgstr ""
+
+#: blocks/post-views/block.json
+msgctxt "block keyword"
+msgid "pageviews"
+msgstr ""
+
+#: blocks/post-views/block.json
+msgctxt "block keyword"
+msgid "counter"
+msgstr ""

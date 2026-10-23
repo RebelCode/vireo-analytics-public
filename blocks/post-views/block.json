@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "vireo/post-views",
+	"title": "Post views",
+	"category": "widgets",
+	"icon": "visibility",
+	"description": "How many times this post has been viewed, counted by Vireo Analytics.",
+	"keywords": [ "views", "pageviews", "counter", "analytics" ],
+	"textdomain": "vireo-analytics",
+	"usesContext": [ "postId" ],
+	"attributes": {
+		"period": { "type": "string", "enum": [ "7", "30", "90", "all" ], "default": "all" },
+		"postId": { "type": "integer", "default": 0 }
+	},
+	"supports": {
+		"html": false,
+		"spacing": { "margin": true, "padding": true },
+		"typography": { "fontSize": true, "lineHeight": true },
+		"color": { "text": true, "background": true }
+	},
+	"editorScript": "file:./index.js"
+}

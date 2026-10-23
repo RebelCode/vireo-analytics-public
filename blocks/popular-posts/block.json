@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "vireo/popular-posts",
+	"title": "Popular posts",
+	"category": "widgets",
+	"icon": "chart-bar",
+	"description": "Your most viewed posts, counted by Vireo Analytics.",
+	"keywords": [ "top posts", "most viewed", "trending", "analytics" ],
+	"textdomain": "vireo-analytics",
+	"attributes": {
+		"number": { "type": "integer", "default": 5 },
+		"period": { "type": "string", "enum": [ "7", "30", "90", "all" ], "default": "30" },
+		"postTypes": { "type": "array", "items": { "type": "string" }, "default": [ "post" ] },
+		"display": { "type": "string", "enum": [ "list", "thumbnails" ], "default": "list" },
+		"showViews": { "type": "boolean", "default": false },
+		"excludeCurrent": { "type": "boolean", "default": true }
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"spacing": { "margin": true, "padding": true },
+		"typography": { "fontSize": true, "lineHeight": true },
+		"color": { "text": true, "background": true, "link": true }
+	},
+	"editorScript": "file:./index.js",
+	"style": "vireo-popular-posts"
+}

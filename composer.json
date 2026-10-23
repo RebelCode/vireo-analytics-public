@@ -1,0 +1,24 @@
+{
+    "name": "rebelcode/vireo-analytics",
+    "description": "Privacy-first WordPress analytics.",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": ">=7.4",
+        "wordpress/mcp-adapter": "^0.6.1"
+    },
+    "replace": {
+        "automattic/jetpack-autoloader": "*"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "composer/installers": false,
+            "automattic/jetpack-autoloader": false
+        }
+    }
+}

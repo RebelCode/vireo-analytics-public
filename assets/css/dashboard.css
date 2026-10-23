@@ -1,0 +1,3719 @@
+/*
+ * Vireo Analytics — Overview dashboard.
+ *
+ * Scoped to .va-root so nothing leaks into WP admin chrome or other pages.
+ * Tokens defined once at the root; all components reference them.
+ */
+
+.va-wrap {
+	margin: 0;
+	padding: 0;
+	background: #f6f7f9;
+}
+
+.va-root {
+	--va-border: rgba(15, 23, 42, 0.08);
+	--va-border-soft: rgba(15, 23, 42, 0.06);
+	--va-text: #0f172a;
+	--va-sub: #475569;
+	/* Darkest of the greys that still reads as secondary: 4.8:1 on the control
+	   track, the lightest surface it sits on. #94a3b8 was 2.6:1 and failed AA. */
+	--va-muted: #5f6b7c;
+	--va-bg: #ffffff;
+	--va-bg-soft: #fafbfc;
+	--va-bg-hover: rgba(15, 23, 42, 0.025);
+	/* Track behind segmented controls (period tabs, Map/Table, metric, Day/Hour).
+	   The selected segment is a raised white pill against it. */
+	--va-track: #eef1f4;
+	--va-accent: #2b7a64;
+	--va-accent-hover: #205e4c;
+	--va-accent-2: #5fae95;
+	--va-accent-soft: rgba(43, 122, 100, 0.12);
+	/* Text on the pale chip backgrounds below has to clear 4.5:1. */
+	--va-up: #166534;
+	--va-up-bg: rgba(22, 163, 74, 0.12);
+	--va-down: #b91c1c;
+	--va-down-bg: rgba(220, 38, 38, 0.12);
+	--va-neutral: #64748b;
+	--va-neutral-bg: rgba(100, 116, 139, 0.12);
+	--va-radius: 10px;
+	--va-radius-sm: 8px;
+	--va-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+	--va-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+	--va-shadow-lg: 0 4px 10px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.05);
+
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	color: var(--va-text);
+	line-height: 1.5;
+	font-size: 14px;
+	padding: 24px 20px 60px;
+	max-width: 1400px;
+
+	/* Vertical rhythm lives here, not on each child. Spacing used to come from
+	   `.va-row { margin-bottom }`, so a card rendered straight into the page
+	   rather than inside a row got none: the events card, the 404 table and
+	   every Pro card on `vireo_overview_after_core` stacked flush. Anything
+	   added to the page now spaces itself, wrapper or not. */
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.va-root *,
+.va-root *::before,
+.va-root *::after {
+	box-sizing: border-box;
+}
+
+/* ---- Page head -------------------------------------------------------- */
+
+/* Only a marker for where WordPress inserts notices; as a flex child it would
+   add a gap of its own. */
+.va-root > .wp-header-end {
+	display: none;
+}
+
+.va-page-head {
+	margin: 0;
+}
+.va-brand {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 14px;
+}
+.va-brand-mark {
+	display: block;
+	width: 28px;
+	height: 28px;
+	border-radius: 6px;
+}
+.va-brand-name {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--va-text);
+	letter-spacing: -0.01em;
+}
+/* The site selector sits with the brand, since it changes what the whole
+   page is about rather than one section of it. */
+.va-brand-name span {
+	color: var(--va-accent);
+}
+.va-site-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: 10px;
+	padding-left: 12px;
+	border-left: 1px solid var(--va-border, #e2e8f0);
+}
+.va-site-switch select {
+	font-size: 13px;
+	min-height: 28px;
+	line-height: 1.4;
+}
+.va-page-site code {
+	font-size: 12px;
+}
+/* WordPress paints primary buttons in the admin colour scheme. Inside the
+   dashboard they take the brand colour, so the page reads as one product. */
+.va-root .button-primary {
+	background: var(--va-accent);
+	border-color: var(--va-accent);
+	color: #fff;
+}
+.va-root .button-primary:hover,
+.va-root .button-primary:focus {
+	background: var(--va-accent-hover);
+	border-color: var(--va-accent-hover);
+	color: #fff;
+}
+.va-root .button-primary:focus {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--va-accent);
+}
+.va-root .button:not(.button-primary) {
+	color: var(--va-accent);
+	border-color: var(--va-accent);
+}
+.va-root .button:not(.button-primary):hover,
+.va-root .button:not(.button-primary):focus {
+	color: var(--va-accent-hover);
+	border-color: var(--va-accent-hover);
+	background: var(--va-accent-soft);
+}
+.va-stale-view {
+	border: 1px solid rgba(180, 83, 9, 0.22);
+	border-radius: var(--va-radius-sm);
+	background: rgba(251, 191, 36, 0.08);
+	color: #92400e;
+	padding: 10px 14px;
+	font-size: 13px;
+}
+.va-page-title {
+	margin: 0 0 4px;
+	font-size: 22px;
+	line-height: 1.2;
+	font-weight: 600;
+	color: var(--va-text);
+	letter-spacing: -0.01em;
+}
+.va-page-sub {
+	font-size: 13px;
+	color: var(--va-sub);
+}
+
+/* ---- Controls strip --------------------------------------------------- */
+
+.va-controls {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	justify-content: space-between;
+	margin: 0;
+}
+
+.va-preset-bar {
+	display: inline-flex;
+	flex-wrap: wrap;
+	background: var(--va-track);
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius-sm);
+	padding: 3px;
+	box-shadow: var(--va-shadow-sm);
+	gap: 0;
+}
+
+.va-preset-btn {
+	display: inline-block;
+	padding: 6px 12px;
+	font-size: 12.5px;
+	color: var(--va-sub);
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	text-decoration: none;
+	font-weight: 500;
+	transition: background-color 0.1s ease, color 0.1s ease;
+	line-height: 1.4;
+}
+.va-preset-btn:hover,
+.va-preset-btn:focus {
+	background: rgba(255, 255, 255, 0.6);
+	color: var(--va-text);
+}
+.va-preset-btn.is-active {
+	background: #ffffff;
+	color: var(--va-accent);
+	font-weight: 600;
+	box-shadow: var(--va-shadow-sm);
+}
+.va-preset-btn:focus {
+	outline: none;
+}
+/* A solid ring: the 12% tint it replaced was near invisible on the track. */
+.va-preset-btn:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: -2px;
+}
+
+.va-compare-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 7px 12px;
+	font-size: 12.5px;
+	color: var(--va-sub);
+	background: var(--va-bg);
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius-sm);
+	text-decoration: none;
+	box-shadow: var(--va-shadow-sm);
+	cursor: pointer;
+	transition: background-color 0.1s ease, border-color 0.1s ease;
+}
+.va-compare-toggle:hover {
+	border-color: rgba(15, 23, 42, 0.14);
+}
+.va-compare-check {
+	width: 14px;
+	height: 14px;
+	border: 1.5px solid var(--va-border);
+	border-radius: 4px;
+	display: inline-block;
+	position: relative;
+	flex-shrink: 0;
+}
+.va-compare-toggle.is-on {
+	background: var(--va-accent-soft);
+	border-color: var(--va-accent);
+	color: var(--va-accent);
+}
+.va-compare-toggle.is-on .va-compare-check {
+	background: var(--va-accent);
+	border-color: var(--va-accent);
+}
+.va-compare-toggle.is-on .va-compare-check::after {
+	content: "";
+	position: absolute;
+	left: 3px; top: 0;
+	width: 4px; height: 8px;
+	border: solid #fff;
+	border-width: 0 1.75px 1.75px 0;
+	transform: rotate(45deg);
+}
+
+.va-custom-panel {
+	background: var(--va-bg);
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius-sm);
+	box-shadow: var(--va-shadow-sm);
+	padding: 14px 16px;
+	margin: 0;
+}
+.va-custom-panel form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	gap: 12px;
+	margin: 0;
+}
+.va-custom-panel label {
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	color: var(--va-sub);
+	gap: 4px;
+}
+.va-custom-panel input[type="date"] {
+	padding: 6px 8px;
+	border: 1px solid var(--va-border);
+	border-radius: 6px;
+	font: inherit;
+}
+
+/* ---- Rows / grid ------------------------------------------------------ */
+
+.va-row {
+	display: grid;
+	gap: 16px;
+	margin: 0;
+}
+.va-row-1 { grid-template-columns: minmax(0, 1fr); }
+/* minmax(0, 1fr) so a wide card (the countries map) can shrink below its
+   min-content width instead of pushing the row past the viewport. */
+.va-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 1024px) {
+	.va-row-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* The three hero cards are narrow enough to stay side by side on a tablet;
+   two plus an orphan on its own row read as a mistake. Phones stack them. */
+.va-hero.va-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Five cards: the three totals over time on page and bounce rate, on a
+   six-column grid so both rows share their outer edges. One row of five once
+   there is room for it. */
+.va-hero.va-hero-5 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.va-hero.va-hero-5 > .va-hero-card { grid-column: span 2; }
+.va-hero.va-hero-5 > .va-hero-card:nth-child(n+4) { grid-column: span 3; }
+@media (min-width: 1500px) {
+	.va-hero.va-hero-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+	.va-hero.va-hero-5 > .va-hero-card,
+	.va-hero.va-hero-5 > .va-hero-card:nth-child(n+4) { grid-column: auto; }
+}
+
+@media (max-width: 640px) {
+	.va-row-3 { grid-template-columns: 1fr; }
+}
+
+/* ---- Reorderable sections --------------------------------------------- */
+
+/* The user-orderable sections share the `.va-row-3` grid above rather than
+   restating it, so both collapse at the same widths. A `full` section spans
+   whatever the current column count is, which makes consecutive `third`
+   sections a row with no wrapper element — and dragging a single flat list. */
+.va-section {
+	position: relative;
+	display: flex;
+	min-width: 0;
+}
+.va-section > .va-card {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.va-section[data-va-width="full"] { grid-column: 1 / -1; }
+
+/* Handle and reset are inert until the script wires them up, so a no-JS page
+   never offers a control that cannot work. */
+.va-sections:not(.is-va-sortable) .va-section-handle { display: none; }
+
+.va-sections-reset {
+	margin: 0;
+	text-align: right;
+	font-size: 12px;
+}
+.va-sections-reset .button-link {
+	color: var(--va-sub);
+	text-decoration: underline;
+}
+
+/* The handle sits centred on the section's top edge, in the grid gap. Every
+   card keeps its title hard left and its controls hard right, so the top
+   centre is the one spot that collides with nothing. */
+.va-section-handle {
+	position: absolute;
+	top: -9px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 18px;
+	padding: 0;
+	border: 1px solid var(--va-border);
+	border-radius: 9px;
+	background: var(--va-bg);
+	box-shadow: var(--va-shadow-sm);
+	color: var(--va-muted);
+	cursor: grab;
+	opacity: 0;
+	transition: opacity 0.12s ease, color 0.12s ease;
+}
+.va-section:hover > .va-section-handle,
+.va-section-handle:focus-visible {
+	opacity: 1;
+}
+.va-section-handle:hover { color: var(--va-sub); }
+.va-section-handle:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 2px;
+}
+.va-section-handle:active { cursor: grabbing; }
+.va-section-handle svg { pointer-events: none; }
+
+/* Dragged out of flow and moved with a transform, so a pointermove never
+   dirties layout for the hit-test that follows it. */
+.va-section.is-va-dragging {
+	opacity: 0.9;
+	z-index: 3;
+	cursor: grabbing;
+	pointer-events: none;
+}
+.va-section.is-va-dragging > .va-card {
+	border-color: var(--va-accent);
+	box-shadow: var(--va-shadow);
+}
+
+.va-section-placeholder {
+	border: 2px dashed var(--va-border);
+	border-radius: var(--va-radius);
+	background: var(--va-bg-hover);
+	min-height: 60px;
+}
+.va-section-placeholder[data-va-width="full"] { grid-column: 1 / -1; }
+
+@media (prefers-reduced-motion: reduce) {
+	.va-section-handle { transition: none; }
+}
+
+/* ---- Card ------------------------------------------------------------- */
+
+.va-card {
+	background: var(--va-bg);
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius);
+	padding: 20px 22px;
+	box-shadow: var(--va-shadow-sm);
+	transition: box-shadow 0.15s ease, border-color 0.15s ease;
+	min-height: 0;
+}
+.va-card:hover {
+	box-shadow: var(--va-shadow);
+	border-color: rgba(15, 23, 42, 0.12);
+}
+
+/* A period or filter change re-fetches and swaps the cards. Dim them while that
+   is in flight so a slow query reads as "working", not as a frozen page. */
+.va-root.is-loading {
+	opacity: 0.55;
+	transition: opacity 0.12s ease;
+	pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+	.va-root.is-loading { transition: none; }
+}
+
+/* ---- Drivers of change ------------------------------------------------ */
+
+.va-drivers-headline {
+	margin: 0 0 16px;
+	font-size: 16px;
+	line-height: 1.45;
+	color: var(--va-text);
+	max-width: 70ch;
+}
+.va-drivers-detail {
+	color: var(--va-sub);
+}
+/* Pages and Sources are shown as two separate labelled groups so the reader
+   never confuses a content move for a traffic-source move. */
+.va-drivers-group {
+	margin-top: 20px;
+}
+.va-drivers-group:first-of-type {
+	margin-top: 0;
+}
+.va-drivers-group-head {
+	margin: 0 0 12px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--va-text);
+}
+.va-drivers-cols {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px 48px;
+	/* Left to fill a 1400px card the two lists drift to opposite edges and stop
+	   reading as a pair. */
+	max-width: 900px;
+}
+@media (max-width: 640px) {
+	/* minmax(0, …): a bare 1fr track won't shrink below its nowrap labels and
+	   pushed the page 150px wider than a phone. */
+	.va-drivers-cols { grid-template-columns: minmax(0, 1fr); }
+}
+.va-drivers-col-head {
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--va-sub);
+	margin: 0 0 8px;
+}
+.va-drivers-group:not(.is-expanded) .va-driver-row.is-extra { display: none; }
+/* Scoped past core's .wp-core-ui .button-link, which painted it admin blue. */
+.va-root .button-link.va-drivers-more {
+	margin: 10px 0 0;
+	color: var(--va-accent);
+	font-size: 13px;
+	text-decoration: none;
+	min-height: 32px;
+}
+.va-root .button-link.va-drivers-more:hover,
+.va-root .button-link.va-drivers-more:focus { color: var(--va-accent); text-decoration: underline; }
+.va-driver-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.va-driver-row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 6px 0;
+	border-bottom: 1px solid var(--va-border-soft);
+}
+.va-driver-row:last-child { border-bottom: 0; }
+.va-driver-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
+}
+.va-driver-label a {
+	color: var(--va-text);
+	text-decoration: none;
+}
+.va-driver-label a:hover { text-decoration: underline; }
+.va-driver-delta {
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+	white-space: nowrap;
+}
+/* On the number only. The li carries the same class for the bar colour, and a
+   source label with no link inherited it, so source names printed green and red. */
+.va-driver-delta.va-driver-up   { color: var(--va-up); }
+.va-driver-delta.va-driver-down { color: var(--va-down); }
+.va-drivers-none,
+.va-drivers-mix {
+	color: var(--va-sub);
+	font-size: 13px;
+}
+.va-drivers-mix {
+	margin: 16px 0 0;
+}
+
+/* Pro's sentence over the rows. Set apart from the deterministic text above it,
+   because a reader is entitled to know which part a model wrote. */
+.va-drivers-narrative {
+	margin: 16px 0 0;
+	padding: 12px 14px;
+	border-radius: var(--va-radius-sm);
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	color: var(--va-sub);
+	font-size: 13.5px;
+	line-height: 1.5;
+	max-width: 900px;
+}
+
+/* ---- Health strip ------------------------------------------------------ */
+
+.va-health-strip {
+	list-style: none;
+	margin: 16px 0 0;
+	padding: 12px 0 0;
+	border-top: 1px solid var(--va-border-soft);
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.va-health-item {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	font-size: 13px;
+}
+.va-health-warn  { color: #92400e; }
+.va-health-error { color: var(--va-down); }
+.va-health-icon { flex-shrink: 0; }
+.va-health-text { min-width: 0; }
+.va-health-link {
+	color: inherit;
+	white-space: nowrap;
+}
+
+/* ---- Technology card (tabbed) ----------------------------------------- */
+
+.va-tech-panel:focus { outline: none; }
+
+/* ---- Tabs ---------------------------------------------------------------- */
+
+/* The Overview was one long page. The range, filters and compare toggle stay
+   above the bar because they apply to every tab; what they slice sits below
+   it. Drawn as an underline bar rather than another segmented pill, so it
+   doesn't read as a fourth set of filters. */
+.va-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	border-bottom: 1px solid var(--va-border);
+}
+.va-tab {
+	display: inline-block;
+	margin-bottom: -1px;
+	padding: 10px 14px;
+	font-size: 13.5px;
+	font-weight: 500;
+	color: var(--va-sub);
+	text-decoration: none;
+	border-bottom: 2px solid transparent;
+	transition: color 0.1s ease, border-color 0.1s ease;
+}
+.va-tab:hover {
+	color: var(--va-text);
+}
+.va-tab:focus {
+	outline: none;
+	box-shadow: none;
+}
+.va-tab:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: -2px;
+	border-radius: 6px 6px 0 0;
+}
+.va-tab.is-active {
+	color: var(--va-accent);
+	font-weight: 600;
+	border-bottom-color: var(--va-accent);
+}
+@media (prefers-reduced-motion: reduce) {
+	.va-tab { transition: none; }
+}
+.va-tab-panel {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+.va-tab-panel[hidden] {
+	display: none;
+}
+
+.va-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* The chart is the focusable element, not the bars inside it. */
+.va-chart-host:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 3px;
+	border-radius: var(--va-radius-sm);
+}
+
+/* Card titles are real <h2>s now, so a screen reader can navigate the page by
+   its cards. wp-admin styles bare h2s, hence the explicit reset. */
+.va-card-title {
+	/* Sentence case at reading size. The 11px uppercase labels read as
+	   eyebrows and were the hardest text on the page to scan. */
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-transform: none;
+	letter-spacing: 0;
+	color: var(--va-text);
+	padding: 0 0 10px;
+	margin: 0 0 14px;
+	border-bottom: 1px solid var(--va-border-soft);
+}
+
+.va-card-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 12px;
+	border-bottom: 1px solid var(--va-border-soft);
+	margin: 0 0 14px;
+	padding: 0 0 10px;
+}
+.va-card-head .va-card-title {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+/* ---- Insight line ----------------------------------------------------- */
+
+/* The one-sentence lede above the hero. Reads as a statement, not a caption:
+   larger than body text, full-strength colour, generous space below. */
+.va-insight-line {
+	margin: 4px 0 16px;
+	font-size: 17px;
+	line-height: 1.45;
+	font-weight: 500;
+	color: var(--va-text);
+}
+
+
+/* ---- Lede ------------------------------------------------------------- */
+.va-lede {
+	padding: 24px 26px;
+}
+.va-lede-range {
+	font-size: 13px;
+	color: var(--va-sub);
+	margin: 6px 0 0;
+}
+.va-lede-head {
+	font-size: 27px;
+	line-height: 1.25;
+	font-weight: 650;
+	letter-spacing: -0.02em;
+	color: var(--va-text);
+	margin: 0 0 7px;
+}
+.va-lede-quiet .va-lede-head {
+	font-size: 17px;
+	font-weight: 600;
+	letter-spacing: 0;
+	margin: 0;
+}
+.va-lede-detail {
+	font-size: 16px;
+	line-height: 1.5;
+	color: var(--va-sub);
+	max-width: 76ch;
+	margin: 0;
+}
+
+/* ---- Driver rows ------------------------------------------------------ */
+/* A column of raw numbers makes +778 and +24 look equally important. The bar
+   is the magnitude, so the shape of a month reads without arithmetic. */
+.va-driver-track {
+	/* A span is inline, so height and background compute but paint nothing and
+	   the element measures 0x0. */
+	display: block;
+	height: 6px;
+	border-radius: 3px;
+	background: var(--va-track);
+	margin-top: 6px;
+	overflow: hidden;
+}
+.va-driver-fill {
+	display: block;
+	height: 100%;
+	border-radius: 3px;
+}
+.va-driver-row.has-bar {
+	display: block;
+	padding: 9px 0;
+	border-bottom: 0;
+}
+.va-driver-row.has-bar .va-driver-top {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+}
+.va-driver-up   .va-driver-fill { background: var(--va-accent); }
+.va-driver-down .va-driver-fill { background: #f0a3a3; }
+
+/* ---- Bot-filtering note ----------------------------------------------- */
+
+/* A quiet aside, not an alert: it explains the numbers, it isn't a warning. */
+.va-bot-explainer {
+	/* One line: the count, the disclosure, and Got it at the far end. */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 6px 14px;
+	margin: 0 0 16px;
+	padding: 12px 14px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	border-radius: 8px;
+}
+.va-bot-explainer-text {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: var(--va-sub);
+}
+/* Scoped past core's `.wp-core-ui .button-link`, which otherwise wins and
+   paints this the default admin blue, underlined. */
+.va-bot-explainer .button-link.va-bot-explainer-dismiss {
+	flex: none;
+	align-self: flex-start;
+	margin-top: 1px;
+	font-size: 12.5px;
+	font-weight: 500;
+	color: var(--va-accent);
+	text-decoration: none;
+	cursor: pointer;
+}
+.va-bot-explainer .button-link.va-bot-explainer-dismiss:hover,
+.va-bot-explainer .button-link.va-bot-explainer-dismiss:focus {
+	color: var(--va-accent);
+	text-decoration: underline;
+}
+
+.va-bot-explainer-headline {
+	margin: 0;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: var(--va-text);
+}
+.va-bot-explainer-breakdown {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.va-bot-explainer-breakdown li {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 6px;
+	margin: 0;
+	padding: 3px 9px;
+	background: var(--va-bg);
+	border: 1px solid var(--va-border-soft);
+	border-radius: 999px;
+	font-size: 12.5px;
+}
+.va-bot-cat {
+	color: var(--va-sub);
+}
+.va-bot-hits {
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+	color: var(--va-text);
+}
+.va-bot-explainer .va-bot-explainer-dismiss {
+	align-self: baseline;
+	margin-left: auto;
+}
+.va-bot-explainer-more > summary {
+	cursor: pointer;
+	font-size: 12.5px;
+	font-weight: 500;
+	color: var(--va-accent);
+}
+.va-bot-explainer-more > summary:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+.va-bot-explainer-more[open] {
+	flex-basis: 100%;
+	order: 3;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+
+/* ---- Review request --------------------------------------------------- */
+
+/* Same quiet aside as the bot note: a request, not an alert. */
+.va-review-prompt {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 16px;
+	margin: 0 0 16px;
+	padding: 12px 14px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	border-radius: 8px;
+}
+.va-review-prompt-text {
+	flex: 1 1 320px;
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: var(--va-sub);
+}
+.va-review-prompt-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 8px;
+	margin: 0;
+}
+.va-review-prompt-actions .va-review-prompt-quiet {
+	appearance: none;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	padding: 6px 8px;
+	min-height: 0;
+	font-size: 12.5px;
+	color: var(--va-sub);
+	border-radius: 4px;
+	cursor: pointer;
+}
+.va-review-prompt-actions .va-review-prompt-quiet:hover {
+	color: var(--va-text);
+	background: rgba(15, 23, 42, 0.04);
+}
+.va-review-prompt-actions .va-review-prompt-quiet:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 1px;
+}
+
+/* ---- Hero stats ------------------------------------------------------- */
+
+.va-hero-card {
+	display: flex;
+	flex-direction: column;
+}
+.va-hero-body {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin: 0 0 4px;
+}
+.va-hero-num {
+	font-size: 44px;
+	line-height: 1;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	/* The accent reached the chart but never the figure people actually came
+	   for, so the brand sat on the supporting element and the headline number
+	   read as plain body text. */
+	color: var(--va-accent);
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: "tnum";
+}
+/* An empty figure is a placeholder, not a number: the accent made the dash
+   read as a result of zero. */
+.va-hero-num-empty { color: var(--va-muted); }
+.va-hero-chip { margin-left: 0; }
+.va-hero-sub {
+	font-size: 12.5px;
+	color: var(--va-sub);
+	margin-top: 6px;
+}
+/* The figure being compared with, and when: a chip's percentage alone hides
+   whether "up 40%" is 10 views or 10,000. */
+.va-hero-prior {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 0 6px;
+	margin-block-start: 2px;
+	font-size: 12.5px;
+	color: var(--va-muted);
+	font-variant-numeric: tabular-nums;
+}
+.va-hero-prior-num {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--va-sub);
+}
+.va-hero.is-unavailable .va-hero-num { color: var(--va-muted); }
+/* Where last year's numbers came from, under the row. */
+.va-hero-note {
+	margin: -8px 0 0;
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+
+.va-hero-card-spark { position: relative; }
+.va-hero-spark {
+	margin-top: 12px;
+	height: 40px;
+	width: 100%;
+	min-height: 40px;
+}
+.va-hero-spark svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.va-hero-spark .va-spark-line {
+	fill: none;
+	stroke: var(--va-accent);
+	stroke-width: 1.75;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.va-hero-spark .va-spark-area {
+	fill: var(--va-accent-soft);
+	stroke: none;
+}
+.va-hero-spark .va-spark-avg {
+	stroke: var(--va-muted);
+	stroke-width: 1;
+	stroke-dasharray: 3 3;
+}
+/* One day, or no data: nothing to draw, so no empty band either. */
+.va-hero-spark:empty { display: none; }
+
+/* ---- Chart ------------------------------------------------------------ */
+
+.va-chart-card { padding-bottom: 26px; }
+.va-chart-host {
+	position: relative;
+	min-height: 280px;
+	width: 100%;
+}
+.va-chart-host .va-chart-svg {
+	display: block;
+	width: 100%;
+	height: 280px;
+	overflow: visible;
+}
+
+.va-chart-bar {
+	transition: opacity 0.12s ease;
+}
+/* Pageviews bar — lighter, rendered behind. */
+.va-chart-bar-pv {
+	fill: #9fd0bf;
+	opacity: 0.75;
+}
+/* Visitors bar — darker, overlayed on top. */
+.va-chart-bar-vis {
+	fill: var(--va-accent);
+	opacity: 1;
+}
+.va-chart-prev-line {
+	fill: none;
+	stroke: var(--va-neutral);
+	stroke-width: 2;
+	stroke-linecap: round;
+	opacity: 0.65;
+}
+.va-chart-bar.is-hover {
+	opacity: 1;
+}
+/* A pin over each day that has a note. */
+.va-chart-note-line {
+	stroke: var(--va-sub);
+	stroke-width: 1;
+	stroke-dasharray: 2 3;
+	opacity: 0.45;
+}
+.va-chart-note-dot {
+	fill: #ffffff;
+	stroke: var(--va-text);
+	stroke-width: 2;
+	cursor: default;
+}
+.va-chart-note-dot:hover {
+	fill: var(--va-text);
+}
+.va-chart-bar-pv.is-hover { opacity: 0.92; }
+
+/* Chart legend dots for the two series. */
+.va-chart-legend .va-legend-pv   { background: #9fd0bf; }
+.va-chart-legend .va-legend-vis  { background: var(--va-accent); }
+.va-chart-gridline {
+	stroke: var(--va-border-soft);
+	stroke-width: 1;
+	shape-rendering: crispEdges;
+}
+.va-chart-axis-label {
+	font-size: 10.5px;
+	fill: var(--va-muted);
+	font-family: inherit;
+}
+
+.va-chart-tooltip {
+	position: absolute;
+	background: var(--va-text);
+	color: #fff;
+	padding: 7px 10px;
+	border-radius: 6px;
+	font-size: 12px;
+	line-height: 1.35;
+	pointer-events: none;
+	transform: translate(-50%, calc(-100% - 8px));
+	white-space: nowrap;
+	box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+	opacity: 0;
+	transition: opacity 0.12s ease;
+}
+.va-chart-tooltip.is-visible { opacity: 1; }
+.va-chart-tooltip::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: -4px;
+	width: 8px; height: 8px;
+	background: var(--va-text);
+	transform: translateX(-50%) rotate(45deg);
+}
+.va-chart-tooltip-date {
+	font-weight: 600;
+	margin-bottom: 2px;
+	color: #fff;
+}
+.va-chart-tooltip-row {
+	font-variant-numeric: tabular-nums;
+	color: rgba(255, 255, 255, 0.85);
+}
+.va-chart-tooltip-row .va-dot {
+	display: inline-block;
+	width: 7px; height: 7px;
+	border-radius: 50%;
+	margin-right: 6px;
+	vertical-align: baseline;
+}
+/* Same identities as the bars and legend: pale for pageviews, the brand green
+   for visitors (lifted a step so it shows on the dark tooltip). */
+.va-chart-tooltip-row .va-dot.pv  { background: #9fd0bf; }
+.va-chart-tooltip-row .va-dot.uv  { background: var(--va-accent-2); }
+.va-chart-tooltip-row .va-dot.prv { background: var(--va-neutral); opacity: 0.6; }
+
+.va-chart-legend {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	font-size: 12px;
+	color: var(--va-sub);
+}
+.va-legend-dot {
+	display: inline-block;
+	width: 9px; height: 9px;
+	border-radius: 2px;
+	margin-right: 6px;
+	vertical-align: baseline;
+}
+.va-legend-current { background: var(--va-accent); }
+/* Prior period is drawn as a hairline, so its swatch is one too. */
+.va-legend-prior {
+	background: var(--va-neutral);
+	opacity: 0.65;
+	height: 2px;
+	border-radius: 1px;
+	vertical-align: middle;
+}
+
+/* ---- Leaderboards ---------------------------------------------------- */
+
+.va-board-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.va-board-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 9px 0;
+	border-bottom: 1px solid var(--va-border-soft);
+	min-width: 0;
+}
+.va-board-row:last-child { border-bottom: 0; }
+.va-board-lead {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+	flex: 1 1 auto;
+}
+/* Scoped past .va-table span[title], which sets inline-block and would
+   otherwise pull the path up beside the query on a long one. */
+.va-gsc .va-table span.va-gsc-landing {
+	display: block;
+	font-size: 12px;
+	color: var(--va-muted);
+	margin-top: 2px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Searches that found a post: the column labels say what the two numbers are,
+   since a bare position next to a click count reads as a second count. */
+.va-board-colhead {
+	display: flex;
+	justify-content: space-between;
+	font-size: 11px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--va-muted);
+	padding: 0 0 6px;
+	border-bottom: 1px solid var(--va-border-soft);
+	margin-bottom: 4px;
+}
+.va-board-pos {
+	min-width: 30px;
+	text-align: right;
+	font-size: 12px;
+	color: var(--va-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.va-board-tail {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	flex: 0 0 auto;
+}
+.va-board-label {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	gap: 1px;
+}
+.va-board-label-main {
+	font-size: 13.5px;
+	color: var(--va-text);
+	font-weight: 500;
+	max-width: 100%;
+	/* Two lines before the ellipsis: similar titles differ at the end, and a
+	   hover tooltip was the only way to read them on a phone. */
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow-wrap: anywhere;
+}
+.va-board-label-main a {
+	color: var(--va-text);
+	text-decoration: none;
+}
+.va-board-label-main a:hover {
+	color: var(--va-accent);
+	text-decoration: underline;
+}
+.va-board-label-sub {
+	font-size: 11.5px;
+	color: var(--va-muted);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+.va-board-comments {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	font-size: 12px;
+	color: var(--va-muted);
+	font-variant-numeric: tabular-nums;
+}
+.va-board-comments svg {
+	flex: 0 0 auto;
+}
+.va-board-time {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	font-size: 12px;
+	color: var(--va-muted);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+.va-board-time svg {
+	flex: 0 0 auto;
+}
+.va-board-count {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--va-text);
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: "tnum";
+}
+.va-board-icon-path {
+	width: 22px; height: 22px;
+	border-radius: 5px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	color: var(--va-muted);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	font-weight: 600;
+	flex-shrink: 0;
+}
+.va-favicon {
+	width: 16px;
+	height: 16px;
+	border-radius: 3px;
+	flex-shrink: 0;
+	display: inline-block;
+}
+
+/* ---- Flags ----------------------------------------------------------- */
+
+.va-flag-wrap {
+	position: relative;
+	width: 20px;
+	height: 15px;
+	border-radius: 2px;
+	overflow: hidden;
+	background: var(--va-bg-soft);
+	flex-shrink: 0;
+	display: inline-block;
+}
+.va-flag-fallback {
+	position: absolute;
+	inset: 0;
+	font-size: 8px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	color: var(--va-muted);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--va-bg-soft);
+}
+.va-flag.fi {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.va-flag-emoji {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	line-height: 1;
+	/* Ensure emoji renders as flag glyphs, not text + selector */
+	font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", "EmojiOne Color", sans-serif;
+}
+.va-flag.va-flag-emoji {
+	font-size: 15px;
+}
+.va-flag-xs.va-flag-emoji {
+	font-size: 12px;
+}
+
+/* ---- Delta chip ------------------------------------------------------ */
+
+.va-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	padding: 2px 6px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1.35;
+	font-variant-numeric: tabular-nums;
+}
+.va-chip-up {
+	color: var(--va-up);
+	background: var(--va-up-bg);
+}
+.va-chip-down {
+	color: var(--va-down);
+	background: var(--va-down-bg);
+}
+.va-chip-neutral {
+	color: var(--va-neutral);
+	background: var(--va-neutral-bg);
+}
+.va-chip-new {
+	color: var(--va-accent);
+	background: var(--va-accent-soft);
+}
+.va-arrow {
+	display: inline-block;
+	font-size: 10px;
+	line-height: 1;
+	font-weight: 700;
+}
+
+/* ---- Device bars ---------------------------------------------------- */
+
+.va-bars-card { min-height: 220px; }
+.va-bars {
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+}
+.va-bar-row {
+	display: grid;
+	grid-template-columns: 22px 1fr 44px;
+	align-items: center;
+	gap: 10px;
+}
+.va-bar-icon {
+	color: var(--va-sub);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.va-bar-body {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	min-width: 0;
+}
+.va-bar-label {
+	font-size: 13px;
+	color: var(--va-text);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.va-bar-track {
+	display: block;
+	width: 100%;
+	height: 6px;
+	border-radius: 999px;
+	background: var(--va-bg-soft);
+	overflow: hidden;
+}
+.va-bar-fill {
+	display: block;
+	height: 100%;
+	background: var(--va-accent);
+	border-radius: inherit;
+}
+.va-bar-value {
+	font-size: 12px;
+	color: var(--va-sub);
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+}
+
+/* One quiet line above a list: what the list leaves out, and why. */
+.va-board-note {
+	margin: 0 0 8px;
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+
+/* A referrer whose visits show no engagement, and the one action on it. */
+.va-ref-suspect {
+	font-size: 11px;
+	font-weight: 600;
+	padding: 1px 6px;
+	border-radius: 999px;
+	color: oklch(45% 0.12 60);
+	background: oklch(96% 0.04 85);
+	white-space: nowrap;
+}
+.va-root .button-link.va-ref-block {
+	font-size: 11.5px;
+	color: var(--va-accent);
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.va-root .button-link.va-ref-block:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 1px;
+}
+.va-root .button-link.va-ref-block:active { opacity: 0.7; }
+@media (hover: hover) and (pointer: fine) {
+	.va-root .button-link.va-ref-block:hover { text-decoration: underline; }
+}
+
+/* ---- Empty states --------------------------------------------------- */
+
+.va-empty {
+	text-align: center;
+	padding: 22px 12px;
+	color: var(--va-sub);
+}
+.va-empty-inline {
+	padding: 12px 0 8px;
+	text-align: left;
+}
+.va-empty-art {
+	color: var(--va-muted);
+	margin: 0 0 10px;
+}
+.va-empty-title {
+	font-size: 13.5px;
+	font-weight: 600;
+	color: var(--va-text);
+	margin: 0 0 4px;
+}
+.va-empty-sub {
+	font-size: 12.5px;
+	color: var(--va-sub);
+	max-width: 340px;
+	margin: 0 auto;
+	line-height: 1.45;
+}
+.va-empty-inline .va-empty-sub { margin: 0; }
+
+/* ---- Responsive ------------------------------------------------------ */
+
+@media (max-width: 768px) {
+	.va-root {
+		padding: 16px 12px 48px;
+	}
+	.va-hero-num { font-size: 34px; }
+	.va-card { padding: 16px; }
+	.va-chart-card { padding: 16px 12px 22px; }
+	.va-chart-host .va-chart-svg { height: 220px; }
+	.va-chart-host { min-height: 220px; }
+}
+@media (max-width: 640px) {
+	/* Report tables scroll inside their card on a phone rather than pushing the
+	   page sideways. A display:block table is its own scroll box while its rows
+	   still lay out as a table, so the Search Console, 404 and add-on tables are
+	   covered without each template opting in. */
+	.va-root .va-table {
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	.va-root .va-table-scroll > .va-table {
+		display: table;
+	}
+}
+@media (max-width: 640px) {
+	/* 44px touch targets for every segmented control on a phone. */
+	.va-root .va-preset-btn,
+	.va-root .va-view-btn,
+	.va-root .va-chart-metric-btn,
+	.va-root .va-chart-mode-btn,
+	.va-root .va-psi-strategy-btn,
+	.va-root .va-tab {
+		min-height: 44px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+	/* Everything else a thumb presses on the dashboard, at 44px. */
+	.va-root .va-filter-chip select,
+	.va-root .va-compare-toggle,
+	.va-root .va-yir-link,
+	.va-root .va-back-link,
+	.va-root .button-link.va-drivers-more,
+	.va-root .va-bot-explainer .button-link.va-bot-explainer-dismiss,
+	.va-root .va-card-action {
+		min-height: 44px;
+		display: inline-flex;
+		align-items: center;
+	}
+	/* Padding, not flex: a flex summary loses its disclosure triangle. */
+	.va-root .va-bot-explainer-more > summary { padding: 12px 0; }
+	/* Reordering is a pointer-and-keyboard job; the handle took a row of
+	   space on a phone and was too small to drag anyway. */
+	.va-root .va-section-handle { display: none; }
+	/* One row of report tabs that scrolls, rather than Issues & campaigns
+	   dropping to a line of its own under the active underline. */
+	.va-tabs {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+	.va-root .va-tab {
+		flex: 0 0 auto;
+		white-space: nowrap;
+	}
+	/* Title on its own row, controls full width beneath it. Side by side, the
+	   chart and technology headers ran past the card in longer languages and
+	   squeezed "Daily traffic" onto two lines. */
+	.va-root .va-card .va-card-head {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	/* Except where the right side is column headings for the rows below:
+	   stacked, Count and Unique no longer sat over their numbers. */
+	.va-root .va-card .va-card-head:has(.va-event-head-meta) {
+		flex-direction: row;
+		align-items: flex-end;
+	}
+	/* The event screen forced three hero columns even at 390px. */
+	.va-wrap .va-event-detail .va-hero { grid-template-columns: minmax(0, 1fr); }
+	/* Three hero cards stacked to 600px on a phone before the chart came into
+	   view. Each becomes one compact band: the figure beside its sparkline,
+	   the title above and the note below, so all three fit in one screen. */
+	.va-root .va-hero.va-row-3 {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 8px;
+	}
+	.va-root .va-hero.va-hero-5 > .va-hero-card,
+	.va-root .va-hero.va-hero-5 > .va-hero-card:nth-child(n+4) { grid-column: auto; }
+	.va-root .va-hero-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 112px;
+		grid-template-areas:
+			"title title"
+			"body  spark"
+			"sub   spark";
+		align-items: center;
+		column-gap: 12px;
+		padding: 12px 14px;
+	}
+	.va-root .va-hero-card .va-card-title {
+		grid-area: title;
+		margin-bottom: 4px;
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+	.va-root .va-hero-body { grid-area: body; margin: 0; }
+	.va-root .va-hero-num { font-size: 30px; }
+	.va-root .va-hero-spark {
+		grid-area: spark;
+		margin: 0;
+		height: 36px;
+		min-height: 36px;
+		align-self: center;
+	}
+	.va-root .va-hero-sub { grid-area: sub; margin-top: 2px; }
+	/* Filter chips wrapped into two ragged rows of unequal width. One chip per
+	   row, each the full width, with the select taking the rest of the row. */
+	.va-root .va-filter-bar {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 8px;
+	}
+	.va-root .va-filter-label { margin-bottom: -2px; }
+	.va-root .va-filter-chip {
+		display: flex;
+		width: 100%;
+		min-height: 44px;
+		padding: 0 10px 0 14px;
+		border-radius: 10px;
+	}
+	.va-root .va-filter-chip-label { flex: 0 0 auto; }
+	.va-root .va-filter-chip select {
+		flex: 1 1 auto;
+		min-width: 0;
+		width: 100%;
+	}
+	.va-root .va-filter-active { margin-left: 0; }
+	.va-root .va-views { margin-inline-start: 0; width: 100%; }
+	.va-root .va-views-pick { flex: 1 1 auto; }
+	.va-root .va-views-form input[type="text"] { width: 100%; }
+	.va-root .va-compare-mode { width: 100%; }
+	.va-root .va-compare-mode select { width: 100%; }
+	.va-chart-head-right {
+		display: flex;
+		width: 100%;
+		gap: 10px;
+	}
+	.va-view-toggle,
+	.va-chart-metric,
+	.va-chart-mode {
+		display: flex;
+		width: 100%;
+	}
+	.va-root .va-view-btn,
+	.va-root .va-chart-metric-btn,
+	.va-root .va-chart-mode-btn {
+		flex: 1 1 0;
+		min-width: 0;
+		white-space: normal;
+		text-align: center;
+	}
+}
+.va-range-select { display: none; }
+@media (max-width: 640px) {
+	.va-range-select { display: block; flex: 1 1 auto; }
+	.va-range-select select {
+		width: 100%;
+		max-width: none;
+		min-height: 44px;
+		padding: 0 32px 0 12px;
+		font-size: 15px;
+		border-color: var(--va-border);
+		border-radius: var(--va-radius-sm);
+	}
+	.va-controls .va-preset-bar { display: none; }
+}
+@media (max-width: 480px) {
+	.va-preset-bar { width: 100%; }
+	.va-controls { flex-direction: column; align-items: stretch; }
+	.va-compare-toggle { justify-content: center; }
+	.va-preset-btn { flex: 1 1 auto; text-align: center; }
+}
+
+/* ---- Pro tables (UTM / search / outbound / 404) ---------------------- */
+
+.va-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13px;
+	color: var(--va-sub);
+}
+.va-table th,
+.va-table td {
+	padding: 8px 10px;
+	text-align: left;
+	vertical-align: middle;
+	border-bottom: 1px solid var(--va-border-soft);
+}
+.va-table thead th {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--va-muted);
+	border-bottom: 1px solid var(--va-border);
+}
+.va-table tbody tr:last-child td {
+	border-bottom: 0;
+}
+.va-table tbody tr:hover {
+	background: var(--va-bg-hover);
+}
+.va-table .va-num {
+	text-align: right;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+.va-table .va-muted {
+	color: var(--va-muted);
+}
+.va-table span[title] {
+	display: inline-block;
+	max-width: 320px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: bottom;
+}
+.va-badge {
+	display: inline-block;
+	font-size: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	padding: 1px 6px;
+	border-radius: 4px;
+	margin-left: 6px;
+	vertical-align: middle;
+}
+.va-badge-warn {
+	background: rgba(234, 88, 12, 0.12);
+	color: #c2410c;
+}
+.va-outbound-host td {
+	font-weight: 500;
+	color: var(--va-sub);
+}
+.va-outbound-path td:first-child {
+	padding-left: 34px;
+	color: var(--va-muted);
+	font-size: 12px;
+}
+.va-outbound-subtitle {
+	margin: 18px 0 8px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--va-muted);
+}
+.va-outbound-table .va-favicon,
+.va-outbound-host .va-favicon {
+	width: 16px;
+	height: 16px;
+	margin-right: 8px;
+	vertical-align: text-bottom;
+}
+
+/* ---- Pro: Top downloads --------------------------------------------- */
+
+.va-download-ext {
+	width: 28px;
+	min-width: 28px;
+	height: 22px;
+	border-radius: 5px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	color: var(--va-sub);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	margin-right: 8px;
+	vertical-align: text-bottom;
+	font-variant-numeric: tabular-nums;
+}
+.va-download-label {
+	display: inline-flex;
+	flex-direction: column;
+	gap: 1px;
+	min-width: 0;
+	max-width: 360px;
+	vertical-align: middle;
+}
+.va-download-label a {
+	color: var(--va-text);
+	text-decoration: none;
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+}
+.va-download-label a:hover {
+	color: var(--va-accent);
+	text-decoration: underline;
+}
+.va-download-host {
+	font-size: 11.5px;
+	color: var(--va-muted);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ---- Pro: Authors --------------------------------------------------- */
+
+.va-authors-table .va-author-cell {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 0;
+}
+.va-authors-table .va-avatar {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	display: block;
+}
+.va-authors-table .va-author-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 220px;
+}
+.va-authors-table .va-author-name a {
+	color: var(--va-text);
+	text-decoration: none;
+	font-weight: 500;
+}
+.va-authors-table .va-author-name a:hover {
+	color: var(--va-accent);
+	text-decoration: underline;
+}
+
+/* ---- Pro: Post-type bars ------------------------------------------- */
+
+.va-bars-card .va-bar-meta {
+	margin-left: 8px;
+	font-size: 11.5px;
+	color: var(--va-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---- Pro: Taxonomies row ------------------------------------------- */
+
+.va-row-tax {
+	display: grid;
+	gap: 16px;
+	margin: 0 0 16px;
+	grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 768px) {
+	.va-row-tax { grid-template-columns: 1fr; }
+}
+
+/* ---- Pro: Entry / exit pages --------------------------------------- */
+
+.va-row-entry-exit {
+	display: grid;
+	gap: 16px;
+	margin: 0 0 16px;
+	grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 768px) {
+	.va-row-entry-exit { grid-template-columns: 1fr; }
+}
+
+/* ---- Events card ---------------------------------------------------- */
+
+.va-events-card .va-card-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 12px;
+	margin-bottom: 8px;
+}
+.va-events-card .va-card-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+.va-events-card .va-card-title code {
+	font-size: 13px;
+	background: var(--va-accent-soft);
+	color: var(--va-accent);
+	padding: 2px 6px;
+	border-radius: 4px;
+}
+.va-event-clear {
+	font-size: 12px;
+	color: var(--va-sub);
+	text-decoration: none;
+}
+.va-event-clear:hover { color: var(--va-text); }
+
+.va-event-head-meta {
+	display: flex;
+	gap: 48px;
+}
+.va-event-col-head {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--va-muted);
+	width: 56px;
+	text-align: right;
+}
+
+.va-event-row .va-event-icon {
+	color: var(--va-accent);
+	font-size: 18px;
+	line-height: 1;
+	width: 18px;
+	text-align: center;
+}
+.va-event-row .va-board-label-main code {
+	font-size: 12.5px;
+	background: var(--va-bg-soft);
+	padding: 1px 6px;
+	border-radius: 4px;
+}
+.va-event-row .va-board-label-main a {
+	text-decoration: none;
+	color: var(--va-text);
+}
+.va-event-row .va-board-label-main a:hover { color: var(--va-accent); }
+.va-event-tail {
+	display: inline-flex;
+	gap: 48px;
+	align-items: center;
+	font-variant-numeric: tabular-nums;
+}
+.va-event-count {
+	width: 56px;
+	text-align: right;
+	font-weight: 600;
+	color: var(--va-text);
+}
+.va-event-unique {
+	width: 56px;
+	text-align: right;
+	color: var(--va-sub);
+}
+
+/* ---- World map / Countries toggle ---------------------------------- */
+
+.va-countries-card .va-card-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 10px;
+}
+
+.va-view-toggle {
+	display: inline-flex;
+	background: var(--va-track);
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius-sm);
+	padding: 2px;
+}
+.va-view-btn {
+	background: transparent;
+	border: 0;
+	padding: 4px 10px;
+	font-size: 11.5px;
+	color: var(--va-sub);
+	font-weight: 500;
+	border-radius: 5px;
+	cursor: pointer;
+	line-height: 1.4;
+}
+.va-view-btn:hover {
+	background: rgba(255, 255, 255, 0.6);
+	color: var(--va-text);
+}
+.va-view-btn.is-active {
+	background: #ffffff;
+	color: var(--va-accent);
+	font-weight: 600;
+	box-shadow: var(--va-shadow-sm);
+}
+
+.va-world-map {
+	position: relative;
+	width: 100%;
+	/* The SVG is 2:1. A fixed min-height left a blank band under it in a
+	   narrow column; reserving the ratio keeps the box the map's size. */
+	box-sizing: border-box;
+	aspect-ratio: 2 / 1;
+	background: var(--va-bg-soft);
+	border-radius: var(--va-radius-sm);
+	overflow: hidden;
+	padding: 8px;
+}
+.va-world-map[hidden] { display: none; }
+.va-world-map-svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 340px;
+}
+.va-country {
+	transition: fill 0.15s ease, opacity 0.15s ease;
+}
+.va-country.is-active {
+	cursor: default;
+}
+.va-country.is-active:hover {
+	opacity: 0.85;
+	stroke: var(--va-accent);
+	stroke-width: 1;
+}
+
+.va-world-tip {
+	position: absolute;
+	pointer-events: none;
+	background: #0f172a;
+	color: #f8fafc;
+	padding: 8px 10px;
+	border-radius: 6px;
+	font-size: 12px;
+	min-width: 160px;
+	box-shadow: var(--va-shadow-lg);
+	z-index: 5;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.va-world-tip[hidden] { display: none; }
+.va-world-tip-head {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-weight: 600;
+	margin-bottom: 2px;
+}
+.va-world-tip-flag {
+	width: 18px;
+	height: 13px;
+	background-size: cover;
+	border-radius: 2px;
+	flex-shrink: 0;
+}
+.va-world-tip-name { flex: 1; }
+.va-world-tip-rank {
+	font-size: 11px;
+	color: #94a3b8;
+	font-weight: 500;
+}
+.va-world-tip-row {
+	display: flex;
+	justify-content: space-between;
+	color: #cbd5e1;
+	font-size: 11.5px;
+	font-variant-numeric: tabular-nums;
+}
+.va-world-tip-row b {
+	color: #f8fafc;
+	font-weight: 600;
+}
+
+.va-countries-table[hidden] { display: none; }
+.va-world-map:not([hidden]) + .va-countries-table { margin-top: 6px; }
+
+/* ---- Post detail --------------------------------------------------- */
+
+.va-post-detail .va-post-head-row {
+	margin-bottom: 4px;
+}
+.va-back-link {
+	font-size: 12.5px;
+	color: var(--va-sub);
+	text-decoration: none;
+}
+.va-back-link:hover { color: var(--va-accent); }
+
+.va-post-period {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 32px;
+	padding: 12px 0 0;
+	border-top: 1px solid var(--va-border-soft);
+	margin-top: 16px;
+	font-size: 13px;
+	color: var(--va-sub);
+	font-variant-numeric: tabular-nums;
+}
+.va-post-period strong {
+	color: var(--va-text);
+	font-weight: 600;
+	margin-right: 4px;
+}
+
+/* ---- Top-pages link affordance ------------------------------------ */
+
+.va-board-path-link {
+	text-decoration: none;
+	color: inherit;
+}
+.va-board-path-link:hover { color: var(--va-accent); }
+
+/* ---- Chart metric toggle ------------------------------------------ */
+
+.va-chart-head-right {
+	display: inline-flex;
+	align-items: center;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+.va-chart-metric {
+	display: inline-flex;
+	align-items: stretch;
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius-sm);
+	background: var(--va-track);
+	padding: 2px;
+	gap: 0;
+}
+.va-chart-metric-btn {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 10px;
+	font-size: 11.5px;
+	font-weight: 500;
+	color: var(--va-sub);
+	text-decoration: none;
+	border-radius: 6px;
+	background: transparent;
+	transition: background 0.12s ease, color 0.12s ease;
+}
+.va-chart-metric-btn:hover { background: rgba(255, 255, 255, 0.6); color: var(--va-text); }
+.va-chart-metric-btn.is-active {
+	background: #ffffff;
+	color: var(--va-accent);
+	font-weight: 600;
+	box-shadow: var(--va-shadow-sm);
+}
+.va-chart-metric-btn:focus { outline: 2px solid var(--va-accent); outline-offset: -2px; }
+
+/* Hidden series bars should not occupy space or catch hover. */
+.va-chart-bar.is-hidden { display: none; }
+
+/* ---- Referrer sections (grouped by source type) -------------------- */
+
+.va-board-referrers .va-card-title { margin-bottom: 8px; }
+.va-ref-section {
+	border-top: 1px solid var(--va-border-soft);
+	padding: 6px 0;
+}
+.va-ref-section:first-of-type { border-top: 0; padding-top: 0; }
+.va-ref-section > summary {
+	list-style: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 6px 0;
+	user-select: none;
+}
+.va-ref-section > summary::-webkit-details-marker { display: none; }
+/* Direct's header carries a change chip. With space-between it floated in
+   the middle of the row; pin it beside the count, as in the rows below. */
+.va-ref-section > summary { gap: 8px; }
+.va-ref-section > summary .va-chip { margin-left: auto; }
+.va-ref-section-label {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--va-sub);
+}
+.va-ref-section-count {
+	font-size: 12px;
+	color: var(--va-muted);
+	font-variant-numeric: tabular-nums;
+}
+.va-ref-section[open] > summary .va-ref-section-label { color: var(--va-text); }
+.va-ref-section-empty {
+	color: var(--va-muted);
+	font-size: 12px;
+	padding: 4px 0 8px;
+}
+.va-board-icon-globe {
+	width: 22px; height: 22px;
+	border-radius: 5px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	color: var(--va-muted);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+.va-board-icon-globe .va-globe-icon { width: 14px; height: 14px; }
+.va-board-row .va-board-label-main a { color: inherit; text-decoration: none; }
+.va-board-row .va-board-label-main a:hover { color: var(--va-accent); }
+
+/* ---- Deleted/unpublished post fallback (Top Pages) ----------------- */
+
+.va-board-row-unpublished .va-board-label-main { color: var(--va-muted); }
+.va-board-unpublished-path {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12px;
+	color: var(--va-muted);
+}
+.va-board-unpublished-tag {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 1px 6px;
+	font-size: 10.5px;
+	font-weight: 600;
+	color: var(--va-muted);
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	border-radius: 999px;
+}
+
+/* ---- Referrer detail supporting style ------------------------------ */
+
+.va-referrer-detail .va-board-sub {
+	color: var(--va-muted);
+	font-size: 12px;
+	margin: 0 0 8px;
+}
+.va-referrer-detail .va-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* ---- Filter chip bar ----------------------------------------------- */
+
+.va-filter-bar {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0;
+}
+.va-filter-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--va-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+.va-filter-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 8px 4px 10px;
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 999px;
+	font-size: 13px;
+}
+.va-filter-chip-label {
+	color: var(--va-muted);
+	font-size: 12px;
+}
+.va-filter-chip select {
+	border: 0;
+	background: transparent;
+	font-size: 13px;
+	padding: 0 20px 0 2px;
+	margin: 0;
+	min-height: 0;
+	height: auto;
+	box-shadow: none;
+	cursor: pointer;
+}
+.va-filter-chip select:focus {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+.va-filter-active {
+	display: inline-flex;
+	gap: 6px;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-left: 6px;
+}
+.va-filter-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 3px 8px;
+	background: #ecfeff;
+	border: 1px solid #a5f3fc;
+	color: #0e7490;
+	border-radius: 999px;
+	font-size: 12px;
+	text-decoration: none;
+}
+.va-filter-tag:hover { background: #cffafe; color: #0e7490; }
+.va-filter-clear {
+	font-size: 12px;
+	color: var(--va-muted);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.va-filter-tag-x {
+	font-size: 14px;
+	line-height: 1;
+}
+/* A select that cannot be combined with what is already on. It stays in the
+   bar, greyed, so the bar keeps its shape and the title says why. */
+.va-filter-chip.is-locked {
+	color: var(--va-muted);
+	background: var(--va-bg-soft);
+	opacity: 0.7;
+}
+/* Core paints a disabled select with its own arrow, repeated edge to edge
+   once the chip's background shorthand is overridden; the chip shows none. */
+.va-filter-chip select:disabled,
+.va-filter-chip.is-locked select {
+	background: transparent;
+	color: var(--va-muted);
+	cursor: not-allowed;
+	opacity: 1;
+}
+
+/* The one line under the bar: what the filters do, or why they cannot. */
+.va-filter-note {
+	margin: -6px 0 0;
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+.va-filter-note a {
+	color: var(--va-accent);
+	margin-inline-start: 4px;
+}
+.va-filter-note-blocked {
+	margin: 0;
+	padding: 10px 14px;
+	border: 1px solid oklch(85% 0.12 80);
+	border-inline-start: 3px solid oklch(72% 0.16 70);
+	border-radius: var(--va-radius-sm);
+	background: oklch(97% 0.03 85);
+	color: var(--va-text);
+}
+
+/* ---- Saved views ---------------------------------------------------- */
+
+.va-views {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-inline-start: auto;
+}
+.va-views-btn {
+	appearance: none;
+	border: 1px solid var(--va-border);
+	border-radius: 999px;
+	background: var(--va-bg);
+	color: var(--va-accent);
+	font: inherit;
+	font-size: 12.5px;
+	font-weight: 500;
+	line-height: 1.4;
+	padding: 4px 12px;
+	cursor: pointer;
+}
+@media (hover: hover) and (pointer: fine) {
+	.va-views-btn:hover {
+		border-color: var(--va-accent);
+		background: var(--va-accent-soft);
+	}
+}
+.va-views-btn:active { transform: scale(0.97); }
+.va-views-btn:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 2px;
+}
+.va-views-form {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.va-views-form[hidden] { display: none; }
+.va-views-form input[type="text"] {
+	min-height: 30px;
+	font-size: 13px;
+	width: 14em;
+	max-width: 100%;
+}
+.va-views-form .button.button-small {
+	min-height: 30px;
+	line-height: 2.1;
+}
+.va-views-status {
+	font-size: 12px;
+	color: var(--va-muted);
+}
+.va-views-status:empty { display: none; }
+
+/* ---- Compare mode ---------------------------------------------------- */
+
+.va-compare-mode select {
+	font-size: 12.5px;
+	min-height: 34px;
+	max-width: 100%;
+	border-color: var(--va-border);
+	border-radius: var(--va-radius-sm);
+	color: var(--va-sub);
+}
+
+/* ---- Row filters ----------------------------------------------------- */
+
+/* The funnel on a row. Hidden until the row is hovered or something in it
+   has focus, so ten rows don't show ten icons; a touch screen has no hover,
+   so there it is always there. */
+.va-row-filter {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 6px;
+	color: var(--va-muted);
+	text-decoration: none;
+	opacity: 0;
+}
+.va-row-filter::after {
+	content: "";
+	position: absolute;
+	inset: min(0px, (100% - 44px) / 2);
+}
+@media (hover: hover) and (pointer: fine) {
+	.va-board-row:hover .va-row-filter,
+	.va-bar-row:hover .va-row-filter { opacity: 1; }
+	.va-row-filter:hover {
+		color: var(--va-accent);
+		background: var(--va-accent-soft);
+	}
+}
+@media (hover: none), (pointer: coarse) {
+	.va-row-filter { opacity: 1; }
+}
+.va-board-row:focus-within .va-row-filter,
+.va-bar-row:focus-within .va-row-filter { opacity: 1; }
+.va-row-filter:active { transform: scale(0.95); }
+.va-row-filter:focus-visible {
+	opacity: 1;
+	outline: 2px solid var(--va-accent);
+	outline-offset: 1px;
+}
+.va-bar-row {
+	grid-template-columns: 22px 1fr 44px auto;
+}
+
+/* A card whose table cannot answer the filters on. */
+.va-empty-unavailable .va-empty-title { color: var(--va-sub); }
+
+/* ---- Chart granularity toggle -------------------------------------- */
+
+.va-chart-mode {
+	display: inline-flex;
+	gap: 2px;
+	padding: 2px;
+	background: var(--va-track);
+	/* Same track as the metric switch beside it. */
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius-sm);
+}
+.va-chart-mode-btn {
+	display: inline-block;
+	padding: 4px 10px;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--va-muted);
+	text-decoration: none;
+	border-radius: 4px;
+	line-height: 1.4;
+}
+.va-chart-mode-btn:hover { color: #0f172a; background: #fff; }
+.va-chart-mode-btn.is-active {
+	background: #fff;
+	color: #0f172a;
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+.va-chart-mode-btn.is-disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+	background: transparent;
+	box-shadow: none;
+}
+
+/* ---- Event detail page --------------------------------------------- */
+
+.va-event-detail .va-hero { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ---- Board note (used by post-detail referrer card) ---------------- */
+
+.va-board-note {
+	color: var(--va-muted);
+	font-size: 12px;
+	/* Flush with the rows under it; the 14px inset made it look misplaced. */
+	margin: 0 0 8px;
+	padding: 0;
+}
+
+/* Wide tables scroll inside their card rather than pushing the page sideways.
+   The revenue tables carry six columns, which cannot fit a phone, and a page
+   that scrolls horizontally is worse than a table that does. */
+.va-table-scroll {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	/* A grid or flex child defaults to min-width:auto, meaning it refuses to
+	   shrink below its content — so without this the wrapper grows to the
+	   table's width and takes the page with it, and the overflow-x above never
+	   gets a chance to do anything. */
+	min-width: 0;
+}
+/* Same reason, one level up: the card is a grid item. */
+.va-root .va-table-card,
+.va-root .va-card {
+	min-width: 0;
+}
+.va-table-scroll > .va-table {
+	min-width: 480px;
+}
+
+.va-ai-exchange {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0 0 14px;
+}
+.va-ai-stat {
+	flex: 1 1 150px;
+	padding: 12px 14px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	border-radius: 8px;
+}
+.va-ai-rate {
+	background: var(--va-bg);
+	border-color: var(--va-border);
+}
+.va-ai-num {
+	display: block;
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 1.15;
+	font-variant-numeric: tabular-nums;
+	color: var(--va-text);
+}
+.va-ai-label {
+	display: block;
+	margin-top: 3px;
+	font-size: 12.5px;
+	line-height: 1.35;
+	color: var(--va-sub);
+}
+.va-ai-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13.5px;
+}
+.va-ai-table th,
+.va-ai-table td {
+	padding: 7px 4px;
+	text-align: left;
+	border-bottom: 1px solid var(--va-border-soft);
+}
+/* Header cells read like every other table on the dashboard. */
+.va-ai-table thead th {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--va-muted);
+	border-bottom-color: var(--va-border);
+}
+.va-ai-table .va-num {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+.va-ai-since {
+	margin: -6px 0 12px;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--va-muted);
+}
+.va-ai-note,
+.va-ai-none {
+	margin: 10px 0 0;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--va-muted);
+}
+
+/* AI visibility scan ----------------------------------------------------- */
+.va-ai-scan-intro {
+	margin: 0 0 12px;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: var(--va-sub);
+}
+.va-ai-scan-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 10px;
+	margin: 0 0 8px;
+}
+.va-ai-scan-form label {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--va-text);
+}
+.va-ai-scan-form .regular-text {
+	flex: 1 1 240px;
+	max-width: 420px;
+	min-width: 0;
+}
+.va-ai-scan-note,
+.va-ai-scan-when {
+	margin: 0 0 12px;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--va-muted);
+}
+.va-ai-scan-when {
+	color: var(--va-sub);
+}
+.va-ai-scan-error {
+	margin: 0 0 12px;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: var(--va-down);
+}
+.va-ai-scan-summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: 10px;
+	margin: 14px 0 6px;
+}
+.va-ai-scan-score {
+	flex: 0 0 150px;
+	padding: 12px 14px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	border-left-width: 3px;
+	border-radius: 8px;
+}
+.va-ai-scan-score-good { border-left-color: #0a7c42; }
+.va-ai-scan-score-mid { border-left-color: #b26a00; }
+.va-ai-scan-score-poor { border-left-color: #b32d2e; }
+.va-ai-scan-score-num {
+	display: block;
+	font-size: 34px;
+	font-weight: 600;
+	line-height: 1.1;
+	font-variant-numeric: tabular-nums;
+	color: var(--va-text);
+}
+.va-ai-scan-score-label {
+	display: block;
+	margin-top: 3px;
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+.va-ai-scan-cats {
+	flex: 1 1 260px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 13.5px;
+}
+.va-ai-scan-cats li {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 7px 4px;
+	border-bottom: 1px solid var(--va-border-soft);
+}
+.va-ai-scan-cats .va-num {
+	font-variant-numeric: tabular-nums;
+}
+.va-ai-scan-heading {
+	margin: 18px 0 6px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--va-muted);
+}
+.va-ai-scan-checks {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.va-ai-scan-check {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 9px 4px;
+	border-bottom: 1px solid var(--va-border-soft);
+}
+.va-ai-scan-dot {
+	flex: 0 0 auto;
+	width: 9px;
+	height: 9px;
+	margin-top: 5px;
+	border-radius: 50%;
+	background: var(--va-neutral);
+}
+.va-ai-scan-check-pass .va-ai-scan-dot { background: #0a7c42; }
+.va-ai-scan-check-warn .va-ai-scan-dot { background: #b26a00; }
+.va-ai-scan-check-fail .va-ai-scan-dot { background: #b32d2e; }
+.va-ai-scan-body {
+	min-width: 0;
+	flex: 1 1 auto;
+}
+.va-ai-scan-title {
+	display: block;
+	font-size: 13.5px;
+	font-weight: 600;
+	color: var(--va-text);
+}
+.va-ai-scan-status {
+	margin-left: 6px;
+	font-size: 12px;
+	font-weight: 600;
+}
+.va-ai-scan-check-pass .va-ai-scan-status { color: #0a7c42; }
+.va-ai-scan-check-warn .va-ai-scan-status { color: #b26a00; }
+.va-ai-scan-check-fail .va-ai-scan-status { color: #b32d2e; }
+.va-ai-scan-text,
+.va-ai-scan-fix {
+	display: block;
+	margin-top: 2px;
+	font-size: 13px;
+	line-height: 1.5;
+	color: var(--va-sub);
+	overflow-wrap: anywhere;
+}
+.va-ai-scan-fix {
+	margin-top: 4px;
+	color: var(--va-text);
+}
+
+/* Core Web Vitals -------------------------------------------------------- */
+.va-vitals-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 4px;
+}
+.va-vitals-metric {
+	flex: 1 1 170px;
+	padding: 12px 14px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	border-left-width: 3px;
+	border-radius: 8px;
+}
+.va-vitals-value {
+	display: block;
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--va-text);
+}
+.va-vitals-grade {
+	margin-left: 6px;
+	font-size: 12px;
+	font-weight: 600;
+	vertical-align: middle;
+}
+.va-vitals-good .va-vitals-grade {
+	color: #0a7c42;
+}
+.va-vitals-needs-improvement .va-vitals-grade {
+	color: #b26a00;
+}
+.va-vitals-poor .va-vitals-grade {
+	color: #b32d2e;
+}
+.va-vitals-label {
+	display: block;
+	margin-top: 2px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--va-sub);
+}
+.va-vitals-note {
+	display: block;
+	margin-top: 4px;
+	font-size: 11px;
+	line-height: 1.4;
+	color: var(--va-muted);
+}
+/* Google's own grading, so the colours mean the same thing here as in
+   PageSpeed Insights rather than inventing a second scale. */
+.va-vitals-good {
+	border-left-color: #0a7c42;
+}
+.va-vitals-needs-improvement {
+	border-left-color: #b26a00;
+}
+.va-vitals-poor {
+	border-left-color: #b32d2e;
+}
+.va-vitals-footnote {
+	margin: 10px 0 0;
+	font-size: 11px;
+	color: var(--va-muted);
+}
+
+/* Field versus lab --------------------------------------------------------
+   Real-visitor numbers and Google's one-off test sit side by side and often
+   disagree. The pill says which is which wherever either appears. */
+.va-speed-source {
+	display: inline-block;
+	margin-left: 8px;
+	padding: 1px 8px;
+	border-radius: 999px;
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	vertical-align: 1px;
+}
+.va-speed-source-field {
+	color: var(--va-accent);
+	background: var(--va-accent-soft);
+}
+.va-speed-source-lab {
+	color: #4f46e5;
+	background: rgba(79, 70, 229, 0.1);
+}
+
+/* PageSpeed lab test ------------------------------------------------------ */
+.va-psi {
+	margin-top: 18px;
+	padding-top: 16px;
+	border-top: 1px solid var(--va-border-soft);
+}
+.va-post-speed .va-psi {
+	margin-top: 10px;
+}
+.va-psi-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	/* The device switch follows the title, so it sits over the button it
+	   changes rather than at the far side of the card from it. */
+	justify-content: flex-start;
+	gap: 8px 16px;
+	margin-bottom: 12px;
+}
+.va-psi-title {
+	margin: 0;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--va-text);
+}
+.va-psi-strategy {
+	display: inline-flex;
+	border: 1px solid var(--va-border);
+	border-radius: 6px;
+	overflow: hidden;
+}
+.va-psi-strategy-btn {
+	padding: 4px 12px;
+	border: 0;
+	background: var(--va-bg);
+	color: var(--va-sub);
+	font-size: 12px;
+	cursor: pointer;
+}
+.va-psi-strategy-btn + .va-psi-strategy-btn {
+	border-left: 1px solid var(--va-border);
+}
+.va-psi-strategy-btn[aria-pressed="true"] {
+	background: var(--va-accent-soft);
+	color: var(--va-accent);
+	font-weight: 600;
+}
+.va-psi-strategy-btn:disabled {
+	cursor: default;
+	opacity: 0.6;
+}
+.va-psi-empty p,
+.va-psi-note {
+	margin: 0 0 10px;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--va-sub);
+}
+.va-psi-summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: 10px;
+}
+.va-psi-summary .va-psi-metrics {
+	flex: 1 1 520px;
+	margin-top: 0;
+}
+.va-psi-score {
+	flex: 0 0 120px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 10px;
+	border-radius: 8px;
+	border: 1px solid var(--va-border-soft);
+	background: var(--va-bg-soft);
+	text-align: center;
+}
+.va-psi-score-num {
+	font-size: 34px;
+	font-weight: 700;
+	line-height: 1;
+}
+.va-psi-score-label {
+	margin-top: 6px;
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--va-sub);
+}
+/* Lighthouse's own score bands, same colours as the metric grades. */
+.va-psi-score-good .va-psi-score-num {
+	color: #0a7c42;
+}
+.va-psi-score-needs-improvement .va-psi-score-num {
+	color: #b26a00;
+}
+.va-psi-score-poor .va-psi-score-num {
+	color: #b32d2e;
+}
+.va-psi-abbr {
+	margin-left: 2px;
+	font-weight: 500;
+	color: var(--va-muted);
+	text-decoration: none;
+}
+.va-psi-subtitle {
+	margin: 16px 0 6px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--va-sub);
+}
+.va-psi-opps {
+	margin: 0;
+	padding-left: 20px;
+}
+.va-psi-opps li {
+	margin: 0;
+	padding: 6px 0;
+	border-bottom: 1px solid var(--va-border-soft);
+	font-size: 13px;
+	line-height: 1.4;
+}
+.va-psi-opps li:last-child {
+	border-bottom: 0;
+}
+.va-psi-opp-title {
+	color: var(--va-text);
+}
+.va-psi-opp-saving {
+	display: block;
+	font-size: 11.5px;
+	color: var(--va-muted);
+}
+.va-psi-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 14px;
+	margin: 12px 0 0;
+	font-size: 11.5px;
+	color: var(--va-muted);
+}
+.va-psi-meta .button-link {
+	font-size: 11.5px;
+}
+.va-psi-keynote {
+	margin: 10px 0 0;
+	font-size: 12px;
+	color: var(--va-muted);
+}
+.va-psi-status {
+	margin: 8px 0 0;
+	font-size: 12px;
+	color: var(--va-sub);
+}
+.va-psi-status:empty {
+	display: none;
+}
+.va-psi[aria-busy="true"] .va-psi-panel {
+	opacity: 0.55;
+}
+
+/* Slowest pages (Pro) ----------------------------------------------------- */
+.va-pv-path {
+	max-width: 34ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.va-pv-value {
+	font-weight: 600;
+}
+/* On a table cell the grading has to be the text itself; the left-border
+   treatment the metric tiles use has nothing to sit on here. */
+.va-pv-value.va-vitals-good {
+	color: #0a7c42;
+}
+.va-pv-value.va-vitals-needs-improvement {
+	color: #b26a00;
+}
+.va-pv-value.va-vitals-poor {
+	color: #b32d2e;
+}
+
+/* Chart notes ------------------------------------------------------------- */
+.va-annotations {
+	margin: 10px 0 0;
+	padding: 12px 14px;
+	background: var(--va-bg-soft);
+	border: 1px solid var(--va-border-soft);
+	border-radius: 8px;
+}
+.va-annotations-title {
+	margin: 0 0 8px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--va-text);
+}
+.va-annotations-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.va-annotations-list li {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	padding: 3px 0;
+	font-size: 12px;
+}
+.va-annotation-date {
+	flex: 0 0 auto;
+	font-variant-numeric: tabular-nums;
+	color: var(--va-muted);
+}
+.va-annotation-label {
+	flex: 1 1 auto;
+	color: var(--va-text);
+	/* User text: keep it from pushing the row wider than the card. */
+	overflow-wrap: anywhere;
+}
+.va-annotation-remove {
+	flex: 0 0 auto;
+	/* A delete control needs a target a thumb can find: 32px, growing to 44px
+	   on phones below, with the glyph centred inside it. */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 32px;
+	min-height: 32px;
+	margin: -8px -8px -8px 0;
+	padding: 0;
+	border: 0;
+	border-radius: var(--va-radius-sm);
+	background: none;
+	font-size: 16px;
+	line-height: 1;
+	color: var(--va-muted);
+	cursor: pointer;
+}
+.va-annotation-remove:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 0;
+}
+@media (max-width: 640px) {
+	.va-annotation-remove { min-width: 44px; min-height: 44px; margin: -12px -8px -12px 0; }
+}
+.va-annotation-remove:hover {
+	color: var(--va-down);
+}
+.va-annotations-empty {
+	margin: 0;
+	font-size: 12px;
+	color: var(--va-muted);
+}
+.va-annotation-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-top: 10px;
+}
+.va-annotation-form input[type="text"] {
+	flex: 1 1 200px;
+	min-width: 0;
+}
+.va-annotation-error {
+	flex: 1 1 100%;
+	font-size: 12px;
+	color: var(--va-down);
+}
+.va-chart-tooltip-note {
+	margin-top: 4px;
+	padding-top: 4px;
+	border-top: 1px solid var(--va-border-soft);
+	font-style: italic;
+	overflow-wrap: anywhere;
+}
+
+/* Search Console ---------------------------------------------------------- */
+.va-gsc-query {
+	max-width: 38ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ---- Year in review ---------------------------------------------------- */
+
+.va-controls-end {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+}
+.va-yir-link {
+	font-size: 12.5px;
+	color: var(--va-accent);
+	text-decoration: none;
+	font-weight: 500;
+}
+.va-yir-link:hover,
+.va-yir-link:focus {
+	color: var(--va-accent-hover);
+	text-decoration: underline;
+}
+/* Same look as the year-in-review link: a quiet action beside the controls. */
+.va-root .va-print-btn {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-size: 12.5px;
+	font-weight: 500;
+	color: var(--va-accent);
+	cursor: pointer;
+}
+.va-root .va-print-btn:hover,
+.va-root .va-print-btn:focus {
+	color: var(--va-accent-hover);
+	text-decoration: underline;
+}
+.va-root .va-print-btn:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 2px;
+}
+/* Paper only; print.css shows it. */
+.va-print-meta {
+	display: none;
+}
+
+.va-yir-notice {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	border: 1px solid var(--va-accent-soft);
+	border-left: 3px solid var(--va-accent);
+	border-radius: var(--va-radius-sm);
+	background: var(--va-bg);
+	padding: 10px 14px;
+	font-size: 13.5px;
+}
+.va-yir-notice p {
+	margin: 0;
+}
+.va-yir-notice a {
+	color: var(--va-accent);
+	font-weight: 600;
+	margin-left: 4px;
+}
+.va-yir-notice-dismiss {
+	background: none;
+	border: 0;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 1;
+	color: var(--va-muted);
+	padding: 2px 6px;
+}
+.va-yir-notice-dismiss:hover,
+.va-yir-notice-dismiss:focus {
+	color: var(--va-text);
+}
+
+.va-yir-head-row {
+	margin-bottom: 4px;
+}
+.va-yir-actions {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+.va-yir-copied {
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+
+.va-yir-title,
+.va-yir-stat-label {
+	margin: 0 0 12px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--va-text);
+}
+.va-yir-stat-label {
+	margin-bottom: 6px;
+	color: var(--va-sub);
+	font-weight: 500;
+}
+.va-yir-stat-num {
+	font-size: 30px;
+	font-weight: 650;
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+	font-variant-numeric: tabular-nums;
+}
+.va-yir-stat-sub {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-top: 6px;
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+.va-yir-note {
+	margin: 10px 0 0;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--va-sub);
+}
+.va-yir-note-top {
+	margin: 0 0 10px;
+}
+.va-yir-none {
+	margin: 0;
+	font-size: 13px;
+	color: var(--va-sub);
+}
+
+.va-yir-chart {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	gap: 8px;
+	height: 220px;
+}
+.va-yir-col {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.va-yir-val {
+	height: 18px;
+	font-size: 11px;
+	text-align: center;
+	color: var(--va-sub);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+.va-yir-track {
+	flex: 1 1 auto;
+	display: flex;
+	align-items: flex-end;
+	border-bottom: 1px solid var(--va-border);
+}
+.va-yir-barcol {
+	width: 100%;
+	height: var(--va-yir-h, 0%);
+	min-height: 2px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 4px 4px 0 0;
+	overflow: hidden;
+}
+.va-yir-col.is-future .va-yir-barcol {
+	min-height: 0;
+}
+.va-yir-bar-own {
+	flex: 1 1 auto;
+	background: var(--va-accent);
+}
+.va-yir-bar-imported {
+	flex: 0 0 auto;
+	background: #a8d1c3;
+}
+.va-yir-month {
+	margin-top: 6px;
+	font-size: 11.5px;
+	text-align: center;
+	color: var(--va-sub);
+}
+.va-yir-col.is-future .va-yir-month {
+	color: var(--va-muted);
+}
+.va-yir-col.is-future .va-yir-track {
+	border-bottom-style: dashed;
+}
+/* The month in progress is lighter and labelled "so far". */
+.va-yir-col.is-partial .va-yir-bar-own {
+	background: #86c3ad;
+}
+.va-yir-sofar {
+	display: block;
+	font-size: 10.5px;
+	color: var(--va-muted);
+}
+.va-yir-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 14px;
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+.va-yir-legend span {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.va-yir-swatch {
+	flex: none;
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 3px;
+}
+
+.va-yir-origins {
+	margin: 0;
+	padding-left: 18px;
+	list-style: disc;
+	font-size: 13.5px;
+	line-height: 1.6;
+}
+
+.va-yir-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.va-yir-list li {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 7px 0;
+	border-bottom: 1px solid var(--va-border-soft);
+	font-size: 13.5px;
+}
+.va-yir-list li:last-child {
+	border-bottom: 0;
+}
+.va-yir-list-label {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+.va-yir-list-label a {
+	color: var(--va-text);
+	text-decoration: none;
+}
+.va-yir-list-label a:hover {
+	color: var(--va-accent);
+	text-decoration: underline;
+}
+.va-yir-list-meta {
+	display: block;
+	font-size: 12px;
+	color: var(--va-muted);
+}
+.va-yir-list-num {
+	flex-shrink: 0;
+	font-variant-numeric: tabular-nums;
+	color: var(--va-sub);
+}
+
+.va-yir-ai {
+	/* Stacked: side by side in a third-width card, the two figures left most
+	   of the card empty next to the lists beside it. */
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 20px;
+}
+
+@media (max-width: 640px) {
+	/* Twelve columns squeezed labels to 9.5px on a phone. Each month becomes a
+	   row instead: name, bar, value. */
+	.va-yir-chart {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 6px;
+		height: auto;
+	}
+	.va-yir-col {
+		flex-direction: row;
+		align-items: center;
+		gap: 10px;
+	}
+	.va-yir-month {
+		order: 1;
+		flex: 0 0 5.4em;
+		white-space: nowrap;
+		margin: 0;
+		font-size: 12.5px;
+		text-align: left;
+	}
+	.va-yir-track {
+		order: 2;
+		height: 14px;
+		align-items: stretch;
+		border-bottom: 0;
+		border-left: 1px solid var(--va-border);
+	}
+	.va-yir-barcol {
+		height: 100%;
+		width: var(--va-yir-h, 0%);
+		min-height: 0;
+		min-width: 2px;
+		flex-direction: row;
+		border-radius: 0 3px 3px 0;
+	}
+	.va-yir-col.is-future .va-yir-barcol { min-width: 0; }
+	.va-yir-val {
+		order: 3;
+		flex: 0 0 3.2em;
+		height: auto;
+		font-size: 12.5px;
+		text-align: right;
+	}
+	.va-yir-sofar { display: inline; margin-left: 2px; }
+	.va-yir-stat-num {
+		font-size: 26px;
+	}
+}
+
+@media print {
+	#adminmenumain,
+	#wpadminbar,
+	#wpfooter,
+	#screen-meta-links,
+	.notice,
+	.va-yir-controls,
+	.va-yir-head-row {
+		display: none !important;
+	}
+	/* The map loads when it scrolls into view. Printed before that, it was an
+	   empty grey box; the table under it carries the same numbers. */
+	.va-world-map:not(:has(svg)) {
+		display: none !important;
+	}
+	html.wp-toolbar {
+		padding-top: 0;
+	}
+	body,
+	#wpwrap {
+		background: #fff;
+	}
+	#wpcontent,
+	#wpbody-content {
+		margin-left: 0 !important;
+		padding: 0 !important;
+	}
+	.va-wrap {
+		background: #fff;
+	}
+	.va-root {
+		padding: 0;
+		max-width: none;
+	}
+	.va-yir .va-card {
+		box-shadow: none;
+		break-inside: avoid;
+	}
+	.va-yir .va-row-3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.va-yir-bar-own,
+	.va-yir-bar-imported,
+	.va-yir-swatch,
+	.va-chip {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+}
+
+/* ---- Weekly highlights ------------------------------------------------- */
+
+.va-highlights-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 10px;
+	margin-bottom: 10px;
+}
+.va-highlights-head .va-yir-title {
+	margin: 0;
+}
+.va-highlights-range {
+	font-size: 12.5px;
+	color: var(--va-sub);
+}
+.va-highlights-list {
+	margin: 0;
+	padding-left: 18px;
+	list-style: disc;
+	font-size: 14px;
+	line-height: 1.55;
+}
+.va-highlights-list li {
+	margin: 0 0 4px;
+}
+.va-highlights-list li:last-child {
+	margin-bottom: 0;
+}
+
+/* Page speed: the basis up front, Google's metric names beside the plain ones. */
+.va-vitals-basis {
+	margin: -6px 0 12px;
+	font-size: 13px;
+	color: var(--va-sub);
+}
+.va-vitals-abbr {
+	margin-left: 4px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	color: var(--va-muted);
+}
+
+.va-empty-action {
+	margin: 10px 0 0;
+}
+
+/* ---- Pages tab ------------------------------------------------------- */
+
+.va-board-more {
+	display: inline-block;
+	margin-block-start: 8px;
+	padding-block: 4px;
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--va-accent);
+	text-decoration: none;
+}
+.va-board-more:active { color: var(--va-accent-hover); }
+.va-board-more:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+	.va-board-more:hover { color: var(--va-accent-hover); text-decoration: underline; }
+}
+
+.va-pages-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px 16px;
+	margin-block-end: 12px;
+}
+.va-pages-head .va-card-title { margin: 0; }
+.va-pages-search {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	flex: 1 1 18rem;
+	justify-content: flex-end;
+}
+.va-pages-search input[type="search"] {
+	flex: 1 1 12rem;
+	max-inline-size: 22rem;
+	min-inline-size: 0;
+	min-block-size: 32px;
+}
+.va-pages-clear { font-size: 13px; }
+.va-pages-note {
+	margin: 0 0 12px;
+	font-size: 13px;
+	color: var(--va-muted);
+}
+.va-pages-scroll { overflow-x: auto; }
+.va-root .va-pages-table { display: table; table-layout: auto; }
+.va-pages-table th.va-num { text-align: end; }
+.va-pages-table td.va-pages-page {
+	min-inline-size: 12rem;
+	max-inline-size: 36rem;
+}
+.va-root .va-pages-table span.va-pages-title,
+.va-root .va-pages-table span.va-pages-path,
+.va-root .va-pages-table a.va-pages-title {
+	display: block;
+	max-width: 20rem;
+}
+.va-pages-title {
+	font-weight: 500;
+	color: var(--va-text);
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+a.va-pages-title:active { color: var(--va-accent-hover); }
+a.va-pages-title:focus-visible,
+.va-sort:focus-visible,
+.va-pages-step:focus-visible {
+	outline: 2px solid var(--va-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+.va-pages-path {
+	display: block;
+	font-size: 12px;
+	color: var(--va-muted);
+	overflow-wrap: anywhere;
+}
+.va-sort {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	color: inherit;
+	text-decoration: none;
+	white-space: nowrap;
+}
+.va-sort.is-active { color: var(--va-text); }
+.va-sort-arrow { font-size: 8px; min-inline-size: 8px; }
+.va-sort:active,
+.va-pages-step:active { color: var(--va-accent-hover); }
+@media (hover: hover) and (pointer: fine) {
+	.va-sort:hover,
+	a.va-pages-title:hover,
+	.va-pages-step:hover { color: var(--va-accent); }
+}
+.va-pages-pager {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px 16px;
+	margin-block-start: 12px;
+	font-size: 13px;
+	color: var(--va-muted);
+}
+.va-pages-steps {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.va-pages-step {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: 32px;
+	padding-inline: 12px;
+	border: 1px solid var(--va-border);
+	border-radius: var(--va-radius-sm);
+	color: var(--va-text);
+	text-decoration: none;
+}
+@media (max-width: 640px) {
+	.va-root .va-pages-table { table-layout: fixed; }
+	.va-root .va-pages-table th,
+	.va-root .va-pages-table td { padding-inline: 3px; }
+	.va-root .va-pages-table th { letter-spacing: 0; font-size: 10px; }
+	.va-root .va-pages-table .va-sort { gap: 2px; }
+	.va-root .va-pages-table .va-sort-arrow { min-inline-size: 0; }
+	.va-root .va-pages-table th.va-num:nth-child(2) { inline-size: 5.2rem; }
+	.va-root .va-pages-table th.va-num:nth-child(3),
+	.va-root .va-pages-table th.va-num:nth-child(4) { inline-size: 3.7rem; }
+	.va-root .va-pages-table td.va-pages-page { min-inline-size: 0; }
+	.va-root .va-pages-table span.va-pages-title,
+	.va-root .va-pages-table span.va-pages-path,
+	.va-root .va-pages-table a.va-pages-title {
+		max-width: none;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.va-root .va-pages-search { justify-content: stretch; }
+	.va-root .va-pages-search input[type="search"] { max-inline-size: none; }
+	.va-root .va-pages-step { min-block-size: 44px; }
+}
+.va-pages-clear { color: var(--va-accent); }

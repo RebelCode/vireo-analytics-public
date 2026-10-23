@@ -1,0 +1,35 @@
+name: Deploy to WordPress.org
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    name: Deploy to wp.org
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # vendor/ is committed, but a fresh production install here means the
+      # deployed copy can never be a dev install someone forgot to switch back.
+      - name: Install the bundled MCP adapter
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Guard against shipping Pro code
+        run: |
+          for path in pro build dist tests; do
+            if [ -e "$path" ] && ! grep -qx "/$path" .distignore; then
+              echo "::error::$path exists but is not excluded in .distignore"
+              exit 1
+            fi
+          done
+
+      - name: WordPress Plugin Deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: vireo-analytics
+          ASSETS_DIR: .wordpress-org

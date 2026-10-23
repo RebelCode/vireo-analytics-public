@@ -1,0 +1,145 @@
+/*
+ * Vireo Analytics — printed reports.
+ *
+ * Loaded with media="print" on every dashboard screen: the overview and its
+ * tabs, the per-post, referrer and event views, and the year in review. The
+ * browser's own "Save as PDF" is the PDF export, so there is no library and
+ * nothing to render twice. The year-in-review rules in dashboard.css stay
+ * there; these cover what every screen shares.
+ */
+
+@page {
+	margin: 12mm;
+}
+
+/* WordPress chrome, and every control that only makes sense with a mouse. */
+#adminmenumain,
+#adminmenuback,
+#adminmenuwrap,
+#wpadminbar,
+#wpfooter,
+#screen-meta,
+#screen-meta-links,
+.notice,
+.update-nag,
+.va-filter-bar,
+.va-controls,
+.va-custom-panel,
+.va-tabs,
+.va-sections-reset,
+.va-stale-view,
+.va-site-switch,
+.va-back-link,
+.va-post-head-row,
+.va-print-btn,
+.va-chart-tooltip,
+.va-section-handle,
+.va-card-more,
+.va-card-link,
+.va-yir-actions,
+[data-va-onboarding],
+.va-review-prompt,
+.va-yir-notice,
+.va-bot-explainer,
+.va-empty-action,
+.va-note-add,
+.va-note-remove,
+.va-psi-run,
+.va-psi-strategy,
+.va-annotation-form,
+.va-chart-metric,
+.va-view-toggle,
+.va-root button,
+.va-root select,
+.va-root input,
+.va-root textarea {
+	display: none !important;
+}
+
+html.wp-toolbar {
+	padding-top: 0;
+}
+
+html,
+body,
+#wpwrap,
+#wpcontent,
+#wpbody,
+#wpbody-content,
+.va-wrap {
+	background: #fff !important;
+	color: #0f172a;
+}
+
+#wpcontent,
+#wpbody-content {
+	margin-left: 0 !important;
+	padding: 0 !important;
+}
+
+.va-root {
+	padding: 0;
+	max-width: none;
+	gap: 12px;
+	font-size: 12px;
+}
+
+.va-page-head {
+	border-bottom: 1px solid #cbd5e1;
+	padding-bottom: 8px;
+}
+
+.va-print-meta {
+	display: block;
+	margin: 4px 0 0;
+	font-size: 11px;
+	color: #475569;
+}
+
+/* Cards as boxes: no shadows on paper, and never split across pages. */
+.va-card,
+.va-hero-card {
+	box-shadow: none !important;
+	border: 1px solid #cbd5e1;
+	break-inside: avoid;
+	page-break-inside: avoid;
+}
+
+.va-row {
+	break-inside: avoid;
+	page-break-inside: avoid;
+}
+
+h1,
+h2,
+h3 {
+	break-after: avoid;
+	page-break-after: avoid;
+}
+
+/* Bars, chips and swatches carry their meaning in colour. */
+* {
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+
+a,
+a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* The tab that was open is the report; the others stay hidden as on screen. */
+.va-tab-panel[hidden] {
+	display: none !important;
+}
+
+/* Long tables: repeat the header when a table runs over a page. */
+thead {
+	display: table-header-group;
+}
+
+tr {
+	break-inside: avoid;
+	page-break-inside: avoid;
+}

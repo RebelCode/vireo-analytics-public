@@ -1,0 +1,154 @@
+/*
+ * Vireo Analytics — WP admin dashboard widget styles.
+ *
+ * Three widths, read off the widget itself rather than the screen, because a
+ * dashboard column can be narrow on a wide monitor:
+ *   under 440px  phone, or a squeezed column
+ *   440–879px    the default two-column dashboard and tablets
+ *   880px and up the widget has the whole width: summary across the top,
+ *                thirty-day chart beside the top lists
+ */
+#vireo_analytics_overview .inside { padding: 0; margin: 0; }
+.va-dw {
+	--va-dw-ink: oklch(0.21 0.03 265);
+	--va-dw-muted: oklch(0.5 0.01 250);
+	--va-dw-rule: oklch(0.95 0 none);
+	--va-dw-bar: oklch(0.7 0.09 168);
+	--va-dw-bar-hover: oklch(0.55 0.09 168);
+	--va-dw-line: oklch(0.36 0.04 260);
+	--va-dw-zero: oklch(0.84 0 none);
+	padding: 14px 16px 12px;
+	container-type: inline-size;
+}
+.va-dw-body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-areas: "hero" "trend" "periods" "tops";
+}
+.va-dw-hero { grid-area: hero; }
+.va-dw-trend { grid-area: trend; }
+.va-dw-periods-block { grid-area: periods; }
+.va-dw-tops { grid-area: tops; }
+
+/* Shared small-caps label used by every section. */
+.va-dw-stat-label,
+.va-dw-chart-title,
+.va-dw-period-label,
+.va-dw-top-title { font-size: 11px; color: var(--va-dw-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+
+/* Hero stats. */
+.va-dw-hero { display: grid; gap: 16px; padding-block-end: 12px; margin-block-end: 12px; border-block-end: 1px solid var(--va-dw-rule); }
+.va-dw-hero-2 { grid-template-columns: 1fr 1fr; }
+.va-dw-hero-3 { grid-template-columns: 1fr 1fr 1fr; }
+.va-dw-stat { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.va-dw-stat-label { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.va-dw-stat-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.va-dw-stat-value { font-size: 22px; font-weight: 700; color: var(--va-dw-ink); font-variant-numeric: tabular-nums; line-height: 1; }
+.va-dw-stat-live .va-dw-stat-value { color: oklch(0.6 0.15 150); }
+.va-dw-live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: oklch(0.72 0.18 150); }
+@media (prefers-reduced-motion: no-preference) {
+	.va-dw-live-dot { box-shadow: 0 0 0 0 oklch(0.72 0.18 150 / 0.55); animation: va-dw-pulse 2s infinite; }
+}
+@keyframes va-dw-pulse { 0% { box-shadow: 0 0 0 0 oklch(0.72 0.18 150 / 0.55); } 70% { box-shadow: 0 0 0 6px oklch(0.72 0.18 150 / 0); } 100% { box-shadow: 0 0 0 0 oklch(0.72 0.18 150 / 0); } }
+@container (max-width: 439px) { .va-dw-hero-3 { grid-template-columns: 1fr 1fr; } .va-dw-hero-3 > :nth-child(3) { grid-column: span 2; } }
+
+/* Change badges, and the quiet note shown when there is nothing fair to compare. */
+.va-dw-delta { font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.va-dw-up   { background: #dcfce7; color: #15803d; }
+.va-dw-down { background: #fee2e2; color: #b91c1c; }
+.va-dw-flat { background: rgba(100,116,139,0.1); color: #64748b; }
+.va-dw-note { font-size: 11px; line-height: 1.35; color: var(--va-dw-muted); cursor: help; }
+
+/* Chart. Only one of the two ranges shows at a time. */
+.va-dw-trend { display: flex; flex-direction: column; min-width: 0; margin-block-end: 12px; }
+.va-dw-trend > div { flex: 1; display: flex; flex-direction: column; }
+.va-dw-trend > .va-dw-trend-30 { display: none; }
+.va-dw-chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-block-end: 8px; flex-wrap: wrap; }
+.va-dw-chart-legend { display: inline-flex; align-items: center; gap: 14px; font-size: 11px; color: oklch(0.42 0.01 250); }
+.va-dw-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.va-dw-legend-key { display: inline-block; }
+.va-dw-legend-pv  { width: 9px; height: 9px; border-radius: 2px; background: var(--va-dw-bar); }
+.va-dw-legend-vis { width: 14px; height: 2px; border-radius: 1px; background: var(--va-dw-line); }
+
+.va-dw-chart-wrap { flex: 1; display: flex; flex-direction: column; }
+.va-dw-plot { position: relative; flex: 1; min-block-size: 150px; }
+.va-dw-ylabels { position: absolute; inset-block: 0; inset-inline-start: 0; width: 30px; }
+.va-dw-ylabel { position: absolute; inset-inline-end: 0; transform: translateY(-50%); font-size: 11px; line-height: 1; color: var(--va-dw-muted); font-variant-numeric: tabular-nums; }
+.va-dw-chart { position: absolute; inset-block: 0; inset-inline: 34px 0; width: calc(100% - 34px); height: 100%; display: block; overflow: visible; }
+.va-dw-chart .va-dw-grid { stroke: var(--va-dw-rule); stroke-width: 1; shape-rendering: crispEdges; }
+.va-dw-chart .va-dw-grid-base { stroke: oklch(0.88 0 none); }
+.va-dw-chart .va-dw-bar { fill: var(--va-dw-bar); }
+.va-dw-chart .va-dw-bar-zero { fill: var(--va-dw-zero); }
+.va-dw-chart .va-dw-line { fill: none; stroke: var(--va-dw-line); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; pointer-events: none; }
+.va-dw-chart .va-dw-hit { fill: transparent; }
+@media (hover: hover) and (pointer: fine) {
+	.va-dw-day:hover .va-dw-bar { fill: var(--va-dw-bar-hover); }
+	.va-dw-day:hover .va-dw-hit { fill: oklch(0.21 0.03 265 / 0.04); }
+}
+
+/* Date ticks sit under the middle of their bar; the first and last are pinned
+   to the edges so they never hang past the plot. */
+.va-dw-xlabels { position: relative; block-size: 14px; margin-block-start: 6px; margin-inline-start: 34px; font-size: 11px; line-height: 14px; color: var(--va-dw-muted); white-space: nowrap; }
+.va-dw-xlabels span { position: absolute; inset-block-start: 0; transform: translateX(-50%); display: none; }
+.va-dw-xlabels .is-start { transform: none; left: 0 !important; }
+.va-dw-xlabels .is-end { transform: translateX(-100%); left: 100% !important; }
+/* Narrow: the first day and one tick a week. */
+.va-dw-trend-14 .va-dw-xlabels .is-week,
+.va-dw-trend-14 .va-dw-xlabels .is-first { display: block; }
+/* Wider: every other day instead. */
+@container (min-width: 520px) {
+	.va-dw-trend-14 .va-dw-xlabels span:not(.is-alt) { display: none; }
+	.va-dw-trend-14 .va-dw-xlabels .is-alt { display: block; }
+}
+.va-dw-trend-30 .va-dw-xlabels .is-week { display: block; }
+
+/* Periods. */
+.va-dw-periods-block { padding-block-start: 12px; border-block-start: 1px solid var(--va-dw-rule); }
+.va-dw-periods-title { line-height: 16px; margin-block-end: 8px; }
+/* The note takes its own line under the figure, so the three tiles match. */
+.va-dw-period .va-dw-note { flex-basis: 100%; }
+.va-dw-periods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding-block-end: 12px; margin-block-end: 12px; border-block-end: 1px solid var(--va-dw-rule); }
+.va-dw-period { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.va-dw-period-value { font-size: 18px; font-weight: 700; color: var(--va-dw-ink); font-variant-numeric: tabular-nums; line-height: 1; }
+@container (max-width: 439px) {
+	.va-dw-periods { gap: 10px; }
+	.va-dw-period-value { font-size: 16px; }
+	.va-dw-period .va-dw-stat-row { gap: 4px 6px; }
+}
+
+/* Top lists. */
+.va-dw-tops { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-block-end: 10px; }
+@container (max-width: 439px) { .va-dw-tops { grid-template-columns: minmax(0, 1fr); gap: 12px; } }
+.va-dw-top-title { margin-block-end: 6px; }
+.va-dw-list { list-style: none; margin: 0; padding: 0; font-size: 12.5px; }
+.va-dw-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 5px; border-block-end: 1px solid oklch(0.965 0 none); }
+.va-dw-list li:last-child { border-block-end: none; }
+.va-dw-li-label { overflow: clip; text-overflow: ellipsis; white-space: nowrap; color: #1d2327; flex: 1; min-width: 0; }
+.va-dw-li-count { color: #50575e; font-variant-numeric: tabular-nums; font-weight: 600; flex: none; }
+.va-dw-no-data { color: var(--va-dw-muted); font-style: italic; font-size: 12px; margin: 6px 0; }
+
+.va-dw-link { margin: 2px 0 0; text-align: end; font-size: 12px; }
+.va-dw-link a { text-decoration: none; color: #2b7a64; font-weight: 500; }
+@media (hover: hover) and (pointer: fine) { .va-dw-link a:hover { color: #205e4c; text-decoration: underline; } }
+.va-dw-link a:active { color: #174a3c; }
+
+/* Full width: today and the period totals share the top row, so every figure
+   lines up; the thirty-day chart sits beside the top lists and stretches to
+   their height. */
+@container (min-width: 880px) {
+	.va-dw-body {
+		grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+		grid-template-areas: "hero periods" "trend tops";
+		column-gap: 40px;
+	}
+	/* Room for the periods title, so both rows of labels and figures line up. */
+	.va-dw-hero { align-content: start; padding-block: 24px 14px; margin-block-end: 16px; }
+	.va-dw-periods-block { padding-block: 0 14px; margin-block-end: 16px; border-block-start: 0; border-block-end: 1px solid var(--va-dw-rule); }
+	.va-dw-periods { padding: 0; margin: 0; border: 0; }
+	.va-dw-period-value { font-size: 22px; }
+	.va-dw-trend { margin-block-end: 10px; }
+	.va-dw-trend > .va-dw-trend-14 { display: none; }
+	.va-dw-trend > .va-dw-trend-30 { display: flex; }
+	.va-dw-plot { min-block-size: 190px; }
+	.va-dw-tops { grid-template-columns: minmax(0, 1fr); gap: 18px; align-content: start; }
+}

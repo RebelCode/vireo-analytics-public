@@ -1,0 +1,35 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: none
+      - name: PHP lint
+        run: |
+          git ls-files '*.php' | grep -vE '^(vendor|freemius)/' | xargs -n 50 -P 4 php -l -n > /dev/null
+      - name: Tests
+        run: |
+          failed=0
+          for t in tests/test-*.php; do
+            if ! out=$(php "$t" 2>&1); then
+              echo "::error file=$t::$t failed"
+              echo "$out" | tail -20
+              failed=$((failed + 1))
+            fi
+          done
+          count=$(ls tests/test-*.php | wc -l)
+          echo "$count test files, $failed failed" >> "$GITHUB_STEP_SUMMARY"
+          [ "$count" -gt 0 ] && [ "$failed" -eq 0 ]
