@@ -11,11 +11,11 @@
 ## What it does
 
 - Records visits on your own server, with no cookies and no third-party tracker.
-- Imports your history from Google Analytics and other tools, so switching doesn't reset your numbers.
-- Shows the Google searches behind each post when Search Console is connected.
-- Filters out bots and referrer spam.
+- Imports your history from [Google Analytics](https://vireowp.com/docs/import-google-analytics/) and [other tools](https://vireowp.com/docs/importing/), so switching doesn't reset your numbers.
+- Shows the [Google searches behind each post](https://vireowp.com/docs/search-console/) when Search Console is connected.
+- [Filters out bots](https://vireowp.com/docs/bot-filtering/) and referrer spam.
 
-Install it from the [WordPress plugin directory](https://wordpress.org/plugins/vireo-analytics/).
+Install it from the [WordPress plugin directory](https://wordpress.org/plugins/vireo-analytics/). Setup is covered in [Getting started](https://vireowp.com/docs/getting-started/), and the [features page](https://vireowp.com/features/) lists everything else.
 
 ## Requirements
 
